@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Input Label Checker: Bookmarklet</title>
+    <meta
+      name="description"
+      content="A bookmarklet that outlines every form control on a page and shows whether it has an explicit label, an implicit label, or no label at all."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="bookmarklet.css" />
+  </head>
+  <body class="input-label-checker">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="page-header">
+      <div class="tophat">
+        <a href="index.html" class="tophat__link">
+          <img
+            src="/img/spotcheck-logo--header-light.svg"
+            class="logo-header"
+            aria-hidden="true"
+          />
+          <span class="sr-only"
+            >SpotCheck: an Accessibility Bookmarklet Toolkit</span
+          ></a
+        >
+      </div>
+      <div class="wrap">
+        <a href="index.html" class="bookmarklet-back__link">All bookmarklets</a>
+        <h1 class="site-header__title">Input Label Checker</h1>
+        <p class="site-header__lede">
+          Outlines every input, select, and textarea on the page, then labels
+          each one with how it gets its accessible name. Green means an explicit
+          label, gold means an implicit or ARIA name, red means nothing at all.
+        </p>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap">
+        <section
+          aria-labelledby="install-heading"
+          class="install-heading__section"
+        >
+          <h2 id="install-heading" class="section__heading">Give it a try</h2>
+
+          <div class="bookmarklet-row">
+            <a
+              class="bookmarklet"
+              href="javascript:!function()%7Bvar%20e%3Dwindow%2Ct%3Ddocument%2Ci%3D%22__a11yInputLabelChecker%22%3Bif(e%5Bi%5D)e%5Bi%5D.clear()%3Belse%7Bvar%20n%2Cl%2Cr%2Ca%3D%7Bexplicit%3A%22%231a7d4f%22%2Cimplicit%3A%22%238b6800%22%2Cmissing%3A%22%23be412a%22%7D%2Cs%3D%7Bexplicit%3A%22%233fbf7f%22%2Cimplicit%3A%22%23e0b84f%22%2Cmissing%3A%22%23e06a4f%22%7D%2Co%3D%7Bexplicit%3A%22EXPLICIT%20LABEL%22%2Cimplicit%3A%22IMPLICIT%20LABEL%22%2Cmissing%3A%22NO%20LABEL%22%7D%2Cp%3D%5B%22hidden%22%2C%22submit%22%2C%22reset%22%2C%22button%22%2C%22image%22%5D%2Cc%3D%5B%5D%2Cd%3D%7Bexplicit%3A0%2Cimplicit%3A0%2Cmissing%3A0%7D%2Cu%3Dnull%3BArray.prototype.slice.call(t.querySelectorAll(%22input%2C%20select%2C%20textarea%22)).filter(function(e)%7Breturn-1%3D%3D%3Dp.indexOf(e.type)%7D).forEach(function(e)%7Bvar%20t%3Dx(e)%2Ci%3D%7Bel%3Ae%2Coutline%3Ae.style.outline%2Coffset%3Ae.style.outlineOffset%2Cbadge%3Am(t)%7D%3Bd%5Bt%5D%2B%3D1%2Ce.style.outline%3D%223px%20solid%20%22%2Ba%5Bt%5D%2Ce.style.outlineOffset%3D%222px%22%2Ce.insertAdjacentElement(%22afterend%22%2Ci.badge)%2Cc.push(i)%7D)%2Cn%3Dt.createElement(%22div%22)%2Cl%3Dt.createElement(%22strong%22)%2Cr%3Dt.createElement(%22button%22)%2Cn.setAttribute(%22data-a11y-label-check%22%2C%22panel%22)%2Cn.setAttribute(%22role%22%2C%22status%22)%2Cn.style.cssText%3D%5B%22position%3Afixed%22%2C%22right%3A16px%22%2C%22bottom%3A16px%22%2C%22max-width%3A260%22%2C%22padding%3A12px%2032px%2012px%2016px%22%2C%22border-radius%3A6px%22%2C%22background%3A%231b2430%22%2C%22color%3A%23e7eaed%22%2C%22font%3A400%2014px%2F1.5%20system-ui%2C-apple-system%2Csans-serif%22%2C%22box-shadow%3A0%208px%2024px%20rgba(0%2C0%2C0%2C0.35)%22%2C%22z-index%3A2147483647%22%5D.join(%22%3B%22)%2Cl.textContent%3D%22Input%20Label%20Checker%22%2Cl.style.cssText%3D%22display%3Ablock%3Bmargin-bottom%3A4px%22%2Cn.appendChild(l)%2Cn.appendChild(g(%22explicit%22%2C%22explicit%22))%2Cn.appendChild(g(%22implicit%22%2C%22implicit%22))%2Cn.appendChild(g(%22missing%22%2C%22no%20label%22))%2Cr.type%3D%22button%22%2Cr.textContent%3D%22%C3%97%22%2Cr.setAttribute(%22aria-label%22%2C%22Clear%20the%20label%20check%20results%22)%2Cr.style.cssText%3D%5B%22position%3Aabsolute%22%2C%22top%3A6px%22%2C%22right%3A6px%22%2C%22padding%3A2px%206px%22%2C%22border%3Anone%22%2C%22background%3Atransparent%22%2C%22color%3A%23e7eaed%22%2C%22font%3A16px%2F1%20system-ui%2C-apple-system%2Csans-serif%22%2C%22cursor%3Apointer%22%5D.join(%22%3B%22)%2Cr.addEventListener(%22click%22%2Cy)%2Cn.appendChild(r)%2Cu%3Dn%2Ct.body.appendChild(u)%2Ce%5Bi%5D%3D%7Bclear%3Ay%7D%7Dfunction%20b(e)%7Breturn(e%7C%7C%22%22).replace(%2F%5Cs%2B%2Fg%2C%22%20%22).trim()%7Dfunction%20f(e)%7Breturn%20e%3Fb(e.textContent)%3A%22%22%7Dfunction%20x(e)%7Bvar%20i%3D!1%2Cn%3D!1%3Breturn%20function(e)%7Bif(e.labels%26%26e.labels.length)return%20Array.prototype.slice.call(e.labels)%3Bvar%20i%3D%5B%5D%3Be.id%26%26Array.prototype.slice.call(t.querySelectorAll(%22label%22)).forEach(function(t)%7Bt.getAttribute(%22for%22)%3D%3D%3De.id%26%26i.push(t)%7D)%3Bvar%20n%3De.closest%3Fe.closest(%22label%22)%3Anull%3Breturn%20n%26%26-1%3D%3D%3Di.indexOf(n)%26%26i.push(n)%2Ci%7D(e).forEach(function(t)%7Bf(t)%26%26(e.id%26%26t.getAttribute(%22for%22)%3D%3D%3De.id%3Fi%3D!0%3At.contains(e)%26%26(n%3D!0))%7D)%2Ci%3F%22explicit%22%3An%7C%7Cfunction(e)%7Bvar%20i%3Db(e.getAttribute(%22aria-labelledby%22))%3Breturn%20i%3Fb(i.split(%22%20%22).map(function(e)%7Breturn%20f(t.getElementById(e))%7D).join(%22%20%22))%3A%22%22%7D(e)%7C%7Cb(e.getAttribute(%22aria-label%22))%7C%7Cb(e.getAttribute(%22title%22))%3F%22implicit%22%3A%22missing%22%7Dfunction%20m(e)%7Bvar%20i%3Dt.createElement(%22span%22)%3Breturn%20i.setAttribute(%22data-a11y-label-check%22%2C%22badge%22)%2Ci.textContent%3Do%5Be%5D%2Ci.style.cssText%3D%5B%22display%3Ainline-block%22%2C%22margin%3A0%200%200%204px%22%2C%22padding%3A2px%206px%22%2C%22border-radius%3A4px%22%2C%22background%3A%22%2Ba%5Be%5D%2C%22color%3A%23fff%22%2C%22font%3A500%2014px%2F1.2%20system-ui%2C-apple-system%2Csans-serif%22%2C%22letter-spacing%3A0.04em%22%2C%22vertical-align%3Amiddle%22%2C%22position%3Arelative%22%2C%22z-index%3A2147483646%22%5D.join(%22%3B%22)%2Ci%7Dfunction%20g(e%2Ci)%7Bvar%20n%3Dt.createElement(%22p%22)%2Cl%3Dt.createElement(%22span%22)%3Breturn%20n.style.cssText%3D%22margin%3A0%3Bpadding%3A0%22%2Cl.textContent%3D%22%E2%97%8F%22%2Cl.style.cssText%3D%22color%3A%22%2Bs%5Be%5D%2B%22%3Bmargin-right%3A6px%22%2Cn.appendChild(l)%2Cn.appendChild(t.createTextNode(d%5Be%5D%2B%22%20%22%2Bi))%2Cn%7Dfunction%20y()%7Bc.forEach(function(e)%7Be.el.style.outline%3De.outline%2Ce.el.style.outlineOffset%3De.offset%2Cb(e.el.getAttribute(%22style%22))%7C%7Ce.el.removeAttribute(%22style%22)%2Ce.badge.parentNode%26%26e.badge.parentNode.removeChild(e.badge)%7D)%2Cc%3D%5B%5D%2Cu%26%26u.parentNode%26%26u.parentNode.removeChild(u)%2Cu%3Dnull%2Cdelete%20e%5Bi%5D%7D%7D()"
+              onclick="return false;"
+              >SpotCheck - Input Label Checker
+            </a>
+          </div>
+          <ol class="steps">
+            <li>
+              To see your bookmarks bar, press the keys
+              <code class="helper-text">(Ctrl/Cmd + Shift + B)</code>
+              .
+            </li>
+            <li>
+              Drag the "SpotCheck - Input Label Checker" link to your bookmarks
+              bar or bookmark folder.
+            </li>
+            <li>Open any page, then click the bookmark to run it.</li>
+            <li>
+              Click it again or click the close button
+              <pre class="example-close-button" aria-hidden="true">×</pre>
+              in the popup to clear the results.
+            </li>
+          </ol>
+          <div class="results-popup-example-container">
+            <p>
+              Example of the popup that will appear in the bottom right corner
+              of your browser with a summary of the results.
+            </p>
+            <div class="results-popup-example" id="example-popup">
+              <strong style="display: block; margin-bottom: 4px"
+                >Input Label Checker</strong
+              >
+              <p style="margin: 0; padding: 0">
+                <span style="color: #3fbf7f; margin-right: 6px">●</span>2
+                explicit
+              </p>
+              <p style="margin: 0; padding: 0">
+                <span style="color: #e0b03f; margin-right: 6px">●</span>2
+                implicit
+              </p>
+              <p style="margin: 0; padding: 0">
+                <span style="color: #e06a4f; margin-right: 6px">●</span>1 no
+                label
+              </p>
+              <button
+                id="fadeOut"
+                type="button"
+                class="results-popup-example-close-button"
+                aria-label="example of the close button"
+              >
+                ×
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="legend-heading">
+          <h2 id="legend-heading">What the colors mean</h2>
+          <p class="section-intro">
+            Each control gets an outline and a badge. The color says how the
+            control is named, not just whether it is named.
+          </p>
+          <div class="legend">
+            <div class="legend__item legend__item--green">
+              <span class="legend__item-swatch" aria-hidden="true"></span>
+              <span class="legend__item-label">Explicit</span>
+              <p class="legend__item-body">
+                The control is named by a
+                <code class="helper-text">label</code>
+                whose
+                <code class="helper-text">for</code>
+                attribute matches the control's
+                <code class="helper-text">id</code>. This is the most durable
+                association, and it survives markup being moved around.
+              </p>
+            </div>
+            <div class="legend__item legend__item--gold">
+              <span class="legend__item-swatch" aria-hidden="true"></span>
+              <span class="legend__item-label">Implicit</span>
+              <p class="legend__item-body">
+                The control is wrapped in a
+                <code class="helper-text">label</code>
+                with no
+                <code class="helper-text">for</code>
+                attribute, or it is named only by
+                <code class="helper-text">aria-label</code>,
+                <code class="helper-text">aria-labelledby</code>, or
+                <code class="helper-text">title</code>. It works today, but it
+                is easier to break.
+              </p>
+            </div>
+            <div class="legend__item legend__item--red">
+              <span class="legend__item-swatch" aria-hidden="true"></span>
+              <span class="legend__item-label">No label</span>
+              <p class="legend__item-body">
+                Nothing gives the control an accessible name. A
+                <code class="helper-text">placeholder</code>
+                does not count; it disappears as soon as someone starts typing.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="demo-heading">
+          <h2 id="demo-heading">Try it here</h2>
+          <p class="section-intro">
+            Run the check against the sample markup below without leaving this
+            page.
+          </p>
+          <div class="demo">
+            <div class="demo__stage" id="demo-stage">
+              <ul class="demo__sample">
+                <li class="demo__sample-item">
+                  <label class="demo__label" for="demo-name">Full name</label>
+                  <input class="demo__control" id="demo-name" type="text" />
+                </li>
+                <li class="demo__sample-item">
+                  <label class="demo__label" for="demo-country">Country</label>
+                  <select class="demo__control" id="demo-country">
+                    <option>United States</option>
+                    <option>Canada</option>
+                  </select>
+                </li>
+                <li class="demo__sample-item">
+                  <label class="demo__label">
+                    Email address
+                    <input class="demo__control" type="email" />
+                  </label>
+                </li>
+                <li class="demo__sample-item">
+                  <textarea
+                    class="demo__control"
+                    aria-label="Delivery notes"
+                    rows="2"
+                  ></textarea>
+                </li>
+                <li class="demo__sample-item">
+                  <input
+                    class="demo__control"
+                    type="tel"
+                    placeholder="Phone number"
+                  />
+                </li>
+              </ul>
+            </div>
+            <div class="demo__controls">
+              <button type="button" class="button" id="demo-run">
+                Run check
+              </button>
+              <button
+                type="button"
+                class="button button--outline"
+                id="demo-clear"
+              >
+                Clear highlights
+              </button>
+            </div>
+            <div
+              class="demo__results"
+              id="demo-results"
+              aria-live="polite"
+            ></div>
+          </div>
+        </section>
+
+        <section aria-labelledby="criteria-heading">
+          <h2 id="criteria-heading">Applicable WCAG 2.2 success criteria</h2>
+          <p class="section-intro">
+            Labeling touches several criteria at once. These are the ones this
+            check speaks to most directly.
+          </p>
+          <ul class="criteria">
+            <li class="criteria__item">
+              <span class="criteria__number">1.3.1</span>
+              <div class="criteria__body">
+                <a
+                  class="criteria__link"
+                  href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >Info and Relationships</a
+                >
+                <span class="criteria__level">(Level A)</span>
+                <p class="criteria__desc">
+                  The relationship between a label and its control has to be
+                  exposed in the markup, not just implied by visual proximity.
+                </p>
+              </div>
+            </li>
+            <li class="criteria__item">
+              <span class="criteria__number">2.4.6</span>
+              <div class="criteria__body">
+                <a
+                  class="criteria__link"
+                  href="https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >Headings and Labels</a
+                >
+                <span class="criteria__level">(Level AA)</span>
+                <p class="criteria__desc">
+                  Once a label exists, it still has to describe what the field
+                  is asking for.
+                </p>
+              </div>
+            </li>
+            <li class="criteria__item">
+              <span class="criteria__number">2.5.3</span>
+              <div class="criteria__body">
+                <a
+                  class="criteria__link"
+                  href="https://www.w3.org/WAI/WCAG22/Understanding/label-in-name"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >Label in Name</a
+                >
+                <span class="criteria__level">(Level A)</span>
+                <p class="criteria__desc">
+                  When a visible label is present, the accessible name has to
+                  contain that same text so speech input users can target the
+                  field.
+                </p>
+              </div>
+            </li>
+            <li class="criteria__item">
+              <span class="criteria__number">3.3.2</span>
+              <div class="criteria__body">
+                <a
+                  class="criteria__link"
+                  href="https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >Labels or Instructions</a
+                >
+                <span class="criteria__level">(Level A)</span>
+                <p class="criteria__desc">
+                  Every control that needs user input needs a label or
+                  instructions telling people what to enter.
+                </p>
+              </div>
+            </li>
+            <li class="criteria__item">
+              <span class="criteria__number">4.1.2</span>
+              <div class="criteria__body">
+                <a
+                  class="criteria__link"
+                  href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >Name, Role, Value</a
+                >
+                <span class="criteria__level">(Level A)</span>
+                <p class="criteria__desc">
+                  A form control with no accessible name is announced by its
+                  role alone, which tells a screen reader user nothing about the
+                  field.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="source-heading">
+          <h2 id="source-heading">Read the source</h2>
+          <p class="section-intro">
+            The bookmarklet contains the TL;DR version of the code. Here's the
+            readable version.
+          </p>
+          <div class="source__actions">
+            <button type="button" class="button copy-button" id="copy-source">
+              Copy source
+            </button>
+          </div>
+          <pre class="source__code" id="source-code" tabindex="0">
+(function () {
+  var w = window;
+  var d = document;
+  var STATE_KEY = "__a11yInputLabelChecker";
+
+  // Toggle behavior: running the bookmarklet again clears the previous run.
+  if (w[STATE_KEY]) {
+    w[STATE_KEY].clear();
+    return;
+  }
+
+  var COLORS = {
+    explicit: "#1a7d4f",
+    implicit: "#8b6800",
+    missing: "#be412a"
+  };
+
+  // Lighter variants of the same hues, for use on the dark summary panel.
+  var DOTS = {
+    explicit: "#3fbf7f",
+    implicit: "#e0b84f",
+    missing: "#e06a4f"
+  };
+
+  var BADGES = {
+    explicit: "EXPLICIT LABEL",
+    implicit: "IMPLICIT LABEL",
+    missing: "NO LABEL"
+  };
+
+  // Buttons get their accessible name from value or alt, not from a label,
+  // so they are out of scope. Hidden inputs are not perceivable at all.
+  var SKIP_TYPES = ["hidden", "submit", "reset", "button", "image"];
+
+  var records = [];
+  var counts = { explicit: 0, implicit: 0, missing: 0 };
+  var panel = null;
+
+  function normalize(value) {
+    return (value || "").replace(/\s+/g, " ").trim();
+  }
+
+  function textFrom(el) {
+    return el ? normalize(el.textContent) : "";
+  }
+
+  // Older engines do not expose HTMLInputElement.labels, so fall back to
+  // querying for a matching for/id pair plus the nearest wrapping label.
+  function labelsFor(el) {
+    if (el.labels && el.labels.length) {
+      return Array.prototype.slice.call(el.labels);
+    }
+    var found = [];
+    if (el.id) {
+      Array.prototype.slice.call(d.querySelectorAll("label")).forEach(function (label) {
+        if (label.getAttribute("for") === el.id) {
+          found.push(label);
+        }
+      });
+    }
+    var wrapping = el.closest ? el.closest("label") : null;
+    if (wrapping && found.indexOf(wrapping) === -1) {
+      found.push(wrapping);
+    }
+    return found;
+  }
+
+  function ariaLabelledByText(el) {
+    var ids = normalize(el.getAttribute("aria-labelledby"));
+    if (!ids) {
+      return "";
+    }
+    return normalize(
+      ids
+        .split(" ")
+        .map(function (id) {
+          return textFrom(d.getElementById(id));
+        })
+        .join(" ")
+    );
+  }
+
+  // Explicit wins over implicit; ARIA naming is reported as implicit because
+  // there is no label element tying visible text to the control.
+  function classify(el) {
+    var hasExplicit = false;
+    var hasImplicit = false;
+
+    labelsFor(el).forEach(function (label) {
+      if (!textFrom(label)) {
+        return;
+      }
+      if (el.id && label.getAttribute("for") === el.id) {
+        hasExplicit = true;
+      } else if (label.contains(el)) {
+        hasImplicit = true;
+      }
+    });
+
+    if (hasExplicit) {
+      return "explicit";
+    }
+    if (hasImplicit) {
+      return "implicit";
+    }
+    if (ariaLabelledByText(el)) {
+      return "implicit";
+    }
+    if (normalize(el.getAttribute("aria-label"))) {
+      return "implicit";
+    }
+    if (normalize(el.getAttribute("title"))) {
+      return "implicit";
+    }
+    return "missing";
+  }
+
+  function makeBadge(kind) {
+    var badge = d.createElement("span");
+    badge.setAttribute("data-a11y-label-check", "badge");
+    badge.textContent = BADGES[kind];
+    // The control's parent may be a grid or flex container on the host page,
+    // which would otherwise stretch the badge to fill its track.
+    badge.style.cssText = [
+      "display:inline-block",
+      "width:fit-content",
+      "justify-self:start",
+      "margin:0 0 0 4px",
+      "padding:2px 6px",
+      "border-radius:4px",
+      "background:" + COLORS[kind],
+      "color:#fff",
+      "font:500 14px/1.2 system-ui,-apple-system,sans-serif",
+      "letter-spacing:0.04em",
+      "vertical-align:middle",
+      "position:relative",
+      "z-index:2147483646"
+    ].join(";");
+    return badge;
+  }
+
+  function mark(el) {
+    var kind = classify(el);
+    var record = {
+      el: el,
+      outline: el.style.outline,
+      offset: el.style.outlineOffset,
+      badge: makeBadge(kind)
+    };
+
+    counts[kind] += 1;
+    el.style.outline = "3px solid " + COLORS[kind];
+    el.style.outlineOffset = "2px";
+    el.insertAdjacentElement("afterend", record.badge);
+    records.push(record);
+  }
+
+  function makeCountLine(kind, word) {
+    var line = d.createElement("p");
+    var dot = d.createElement("span");
+
+    line.style.cssText = "margin:0;padding:0";
+    dot.textContent = "\u25cf";
+    dot.style.cssText = "color:" + DOTS[kind] + ";margin-right:6px";
+    line.appendChild(dot);
+    line.appendChild(d.createTextNode(counts[kind] + " " + word));
+    return line;
+  }
+
+  function makePanel() {
+    var wrapper = d.createElement("div");
+    var heading = d.createElement("strong");
+    var close = d.createElement("button");
+
+    wrapper.setAttribute("data-a11y-label-check", "panel");
+    wrapper.setAttribute("role", "status");
+    wrapper.style.cssText = [
+      "position:fixed",
+      "right:16px",
+      "bottom:16px",
+      "max-width:260px",
+      "padding:12px 32px 12px 16px",
+      "border-radius:6px",
+      "background:#1b2430",
+      "color:#e7eaed",
+      "font:400 14px/1.5 system-ui,-apple-system,sans-serif",
+      "box-shadow:0 8px 24px rgba(0,0,0,0.35)",
+      "z-index:2147483647"
+    ].join(";");
+
+    heading.textContent = "Input Label Checker";
+    heading.style.cssText = "display:block;margin-bottom:4px";
+    wrapper.appendChild(heading);
+
+    wrapper.appendChild(makeCountLine("explicit", "explicit"));
+    wrapper.appendChild(makeCountLine("implicit", "implicit"));
+    wrapper.appendChild(makeCountLine("missing", "no label"));
+
+    close.type = "button";
+    close.textContent = "\u00d7";
+    close.setAttribute("aria-label", "Clear the label check results");
+    close.style.cssText = [
+      "position:absolute",
+      "top:6px",
+      "right:6px",
+      "padding:2px 6px",
+      "border:none",
+      "background:transparent",
+      "color:#e7eaed",
+      "font:16px/1 system-ui,-apple-system,sans-serif",
+      "cursor:pointer"
+    ].join(";");
+    close.addEventListener("click", clear);
+    wrapper.appendChild(close);
+
+    return wrapper;
+  }
+
+  function clear() {
+    records.forEach(function (record) {
+      record.el.style.outline = record.outline;
+      record.el.style.outlineOffset = record.offset;
+      if (!normalize(record.el.getAttribute("style"))) {
+        record.el.removeAttribute("style");
+      }
+      if (record.badge.parentNode) {
+        record.badge.parentNode.removeChild(record.badge);
+      }
+    });
+    records = [];
+    if (panel && panel.parentNode) {
+      panel.parentNode.removeChild(panel);
+    }
+    panel = null;
+    delete w[STATE_KEY];
+  }
+
+  Array.prototype.slice
+    .call(d.querySelectorAll("input, select, textarea"))
+    .filter(function (el) {
+      return SKIP_TYPES.indexOf(el.type) === -1;
+    })
+    .forEach(mark);
+
+  panel = makePanel();
+  d.body.appendChild(panel);
+  w[STATE_KEY] = { clear: clear };
+})();
+</pre
+          >
+        </section>
+
+        <section aria-labelledby="notes-heading">
+          <h2 id="notes-heading">FYI</h2>
+          <ul class="notes">
+            <li>
+              Explicit and implicit labels both work, but explicit labels are
+              more robust. Explicit is marked green because a
+              <code class="helper-text">for</code> and
+              <code class="helper-text">id</code> pair keeps working when the
+              markup gets restructured, while a wrapping label breaks the moment
+              the control is moved out of it.
+            </li>
+            <li>
+              <code class="helper-text">aria-label</code>,
+              <code class="helper-text">aria-labelledby</code>, and
+              <code class="helper-text">title</code> are counted as gold. They
+              give the control a name, but there typically isn't a visible label
+              tied to it, so sighted speech input users have nothing to say out
+              loud. <code class="helper-text">title</code> is the weakest of the
+              three and should be a last resort.
+            </li>
+            <li>
+              Buttons are skipped.
+              <code class="helper-text">button</code> elements and inputs of
+              type submit, reset, button, and image take their name from their
+              content, <code class="helper-text">value</code>, or
+              <code class="helper-text">alt</code> instead of a label.
+            </li>
+            <li>
+              Hidden inputs are skipped, and a
+              <code class="helper-text">label</code> with no text counts as no
+              label at all.
+            </li>
+            <li>
+              Grouped controls additional verification. Radio and checkbox
+              groups also need a <code class="helper-text">fieldset</code> and a
+              <code class="helper-text">legend</code>, which this tool does not
+              cover.
+            </li>
+            <li>
+              Custom widgets are also out of scope. Anything built from
+              <code class="helper-text">div</code> elements with
+              <code class="helper-text">role="textbox"</code> or
+              <code class="helper-text">contenteditable</code> is not evaluated.
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>
+          <a href="index.html">
+            <img
+              src="/img/spotcheck-logo--header-light.svg"
+              class="logo-footer"
+              alt="go to SpotCheck homepage"
+          /></a>
+        </p>
+
+        <p>
+          &reg; 2026
+          <a
+            href="https://www.homergaines.com"
+            rel="noopener noreferrer"
+            target="_blank"
+            >Homer Gaines</a
+          >
+        </p>
+      </div>
+    </footer>
+    <script src="input-label-checker.js"></script>
+    <script src="play.js"></script>
+  </body>
+</html>

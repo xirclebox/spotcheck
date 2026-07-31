@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Landmark Visualizer: Bookmarklet</title>
+    <meta
+      name="description"
+      content="Outlines ARIA and HTML landmarks on any page and flags missing or ambiguous ones."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="bookmarklet.css" />
+  </head>
+  <body class="landmark-visualizer">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="page-header">
+      <div class="tophat">
+        <a href="index.html" class="tophat__link">
+          <img
+            src="/img/spotcheck-logo--header-light.svg"
+            class="logo-header"
+            aria-hidden="true"
+          />
+          <span class="sr-only"
+            >SpotCheck: an Accessibility Bookmarklet Toolkit</span
+          ></a
+        >
+      </div>
+      <div class="wrap">
+        <a href="index.html" class="bookmarklet-back__link">All bookmarklets</a>
+        <h1 class="site-header__title">Landmark Visualizer</h1>
+        <p class="site-header__lede">
+          Run this on any page to outline every landmark region (header, nav,
+          main, aside, footer, and role="region") and flag the ones that are
+          missing an accessible name or duplicated.
+        </p>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap">
+        <section
+          aria-labelledby="install-heading"
+          class="install-heading__section"
+        >
+          <h2 id="install-heading" class="section__heading">Give it a try</h2>
+
+          <div class="bookmarklet-row">
+            <a
+              class="bookmarklet"
+              href="javascript:!function()%7Bvar%20e%3D%22__a11yLandmarkViz%22%3Bif(window%5Be%5D%26%26window%5Be%5D.active)window%5Be%5D.teardown()%3Belse%7Bvar%20t%3D%22header%2Cnav%2Cmain%2Caside%2Cfooter%2Cform%2Csection%2C%5Brole%5D%22%2Cn%3D%7Bbanner%3A1%2Cnavigation%3A1%2Cmain%3A1%2Ccomplementary%3A1%2Ccontentinfo%3A1%2Csearch%3A1%2Cform%3A1%2Cregion%3A1%7D%2Co%3D%7BHEADER%3A%22banner%22%2CNAV%3A%22navigation%22%2CMAIN%3A%22main%22%2CASIDE%3A%22complementary%22%2CFOOTER%3A%22contentinfo%22%2CFORM%3A%22form%22%2CSECTION%3A%22region%22%7D%2Ca%3DArray.prototype.filter.call(document.querySelectorAll(t)%2Cfunction(e)%7Breturn!!p(e)%7D)%2Cr%3D%7B%7D%3Ba.forEach(function(e)%7Bvar%20t%3Dp(e)%3B(r%5Bt%5D%3Dr%5Bt%5D%7C%7C%5B%5D).push(e)%7D)%3Bvar%20i%3D%5B%5D%2Cl%3D%7Bgreen%3A0%2Cgold%3A0%2Cred%3A0%7D%3Ba.forEach(function(e)%7Bvar%20n%3Dp(e)%2Co%3Dr%5Bn%5D%2Ca%3Dfunction(e)%7Bvar%20t%3De.getAttribute(%22aria-labelledby%22)%3Bif(t)%7Bvar%20n%3Dt.split(%2F%5Cs%2B%2F).map(function(e)%7Bvar%20t%3Ddocument.getElementById(e)%3Breturn%20t%3Ft.textContent.trim()%3A%22%22%7D).join(%22%20%22).trim()%3Bif(n)return%20n%7Dvar%20o%3De.getAttribute(%22aria-label%22)%3Breturn%20o%26%26o.trim()%3Fo.trim()%3A%22%22%7D(e)%2Ci%3De.parentElement%26%26e.parentElement.closest(t)%26%26p(e.parentElement.closest(t))%3D%3D%3Dn%3B%22main%22%3D%3D%3Dn%26%26o.length%3E1%3Fc(e%2C%22red%22%2C%22main%20(duplicate)%22)%3Ai%3Fc(e%2C%22red%22%2Cn%2B%22%20(nested%20in%20same%20role)%22)%3A%22region%22!%3D%3Dn%26%26%22form%22!%3D%3Dn%7C%7Ca%3Fo.length%3E1%26%26!a%3Fc(e%2C%22gold%22%2Cn%2B%22%20(ambiguous%2C%20add%20aria-label)%22)%3Ac(e%2C%22green%22%2Cn%2B(a%3F%22%3A%20%22%2Ba%3A%22%22))%3Ac(e%2C%22red%22%2Cn%2B%22%20(no%20accessible%20name%2C%20not%20exposed%20as%20landmark)%22)%7D)%3Bvar%20s%3Ddocument.createElement(%22div%22)%3Bs.setAttribute(%22data-a11y-bm-panel%22%2C%22landmark%22)%2Cs.setAttribute(%22role%22%2C%22status%22)%2Cs.setAttribute(%22aria-live%22%2C%22polite%22)%2Cs.style.cssText%3D%5B%22position%3Afixed%22%2C%22bottom%3A16px%22%2C%22right%3A16px%22%2C%22z-index%3A2147483001%22%2C%22background%3A%231b2430%22%2C%22color%3A%23e7eaed%22%2C%22font%3A13px%2F1.5%20-apple-system%2Csans-serif%22%2C%22padding%3A12px%2032px%2012px%2016px%22%2C%22border-radius%3A6px%22%2C%22box-shadow%3A0%204px%2016px%20rgba(0%2C0%2C0%2C.3)%22%2C%22max-width%3A260px%22%5D.join(%22%3B%22)%2Cs.innerHTML%3D'%3Cstrong%20style%3D%22display%3Ablock%3Bmargin-bottom%3A4px%3B%22%3ELandmark%20Visualizer%3C%2Fstrong%3E%3Cspan%20style%3D%22color%3A%233fbf7f%3B%22%3E%26%239679%3B%3C%2Fspan%3E%20'%2Bl.green%2B'%20correct%20%26nbsp%3B%20%3Cspan%20style%3D%22color%3A%23e0b03f%3B%22%3E%26%239679%3B%3C%2Fspan%3E%20'%2Bl.gold%2B'%20flagged%20%26nbsp%3B%20%3Cspan%20style%3D%22color%3A%23e06a4f%3B%22%3E%26%239679%3B%3C%2Fspan%3E%20'%2Bl.red%2B%22%20incorrect%22%3Bvar%20d%3Ddocument.createElement(%22button%22)%3Bd.type%3D%22button%22%2Cd.textContent%3D%22%C3%97%22%2Cd.setAttribute(%22aria-label%22%2C%22Close%22)%2Cd.style.cssText%3D%5B%22position%3Aabsolute%22%2C%22top%3A4px%22%2C%22right%3A6px%22%2C%22background%3Atransparent%22%2C%22border%3Anone%22%2C%22color%3A%23e7eaed%22%2C%22font%3A16px%2F1%20-apple-system%2Csans-serif%22%2C%22cursor%3Apointer%22%2C%22padding%3A2px%206px%22%2C%22border-radius%3A4px%22%2C%22line-height%3A1%22%5D.join(%22%3B%22)%2Cd.addEventListener(%22click%22%2Cfunction()%7Bwindow%5Be%5D.teardown()%7D)%2Cs.appendChild(d)%2Cdocument.body.appendChild(s)%2Cwindow%5Be%5D%3D%7Bactive%3A!0%2Cteardown%3Afunction()%7Bi.forEach(function(e)%7Be.el.style.outline%3De.outline%2Ce.el.style.outlineOffset%3De.outlineOffset%2Ce.el.style.position%3De.position%2Ce.badge%26%26e.badge.parentNode%26%26e.badge.parentNode.removeChild(e.badge)%7D)%2Cs.parentNode%26%26s.parentNode.removeChild(s)%2Cwindow%5Be%5D.active%3D!1%7D%7D%7Dfunction%20p(e)%7Bvar%20t%3De.getAttribute(%22role%22)%3Bif(t%26%26n%5Bt%5D)return%20t%3Bvar%20a%3Do%5Be.tagName%5D%3Breturn%20a%26%26(%22HEADER%22!%3D%3De.tagName%26%26%22FOOTER%22!%3D%3De.tagName%7C%7C!e.closest(%22article%2Caside%2Cmain%2Cnav%2Csection%22))%3Fa%3Anull%7Dfunction%20c(e%2Ct%2Cn)%7Bi.push(%7Bel%3Ae%2Coutline%3Ae.style.outline%2CoutlineOffset%3Ae.style.outlineOffset%2Cposition%3Ae.style.position%2Cbadge%3Anull%7D)%3Bvar%20o%3D%22green%22%3D%3D%3Dt%3F%22%231a7d4f%22%3A%22gold%22%3D%3D%3Dt%3F%22%238b6800%22%3A%22%23be412a%22%3Be.style.outline%3D%223px%20solid%20%22%2Bo%2Ce.style.outlineOffset%3D%222px%22%2C%22static%22%3D%3D%3DgetComputedStyle(e).position%26%26(e.style.position%3D%22relative%22)%3Bvar%20a%3Ddocument.createElement(%22div%22)%3Ba.textContent%3Dn%2Ca.setAttribute(%22aria-hidden%22%2C%22true%22)%2Ca.setAttribute(%22data-a11y-bm-badge%22%2C%22landmark%22)%2Ca.style.cssText%3D%5B%22position%3Aabsolute%22%2C%22top%3A0%22%2C%22left%3A0%22%2C%22transform%3AtranslateY(-100%25)%22%2C%22background%3A%22%2Bo%2C%22color%3A%23fff%22%2C%22font%3A600%2014px%20monospace%22%2C%22padding%3A2px%206px%22%2C%22border-radius%3A3px%203px%200%200%22%2C%22z-index%3A2147483000%22%2C%22pointer-events%3Anone%22%2C%22white-space%3Anowrap%22%5D.join(%22%3B%22)%2Ce.insertBefore(a%2Ce.firstChild)%2Ci%5Bi.length-1%5D.badge%3Da%2Cl%5Bt%5D%2B%2B%7D%7D()%3B"
+              onclick="return false;"
+              >SpotCheck - Landmark Visualizer</a
+            >
+          </div>
+          <ol class="steps">
+            <li>
+              To see your bookmarks bar, press the keys
+              <code class="helper-text">(Ctrl/Cmd + Shift + B)</code>
+              .
+            </li>
+            <li>
+              Drag the "SpotCheck - Landmark Visualizer" link to your bookmarks
+              bar or bookmark folder.
+            </li>
+            <li>Open any page, then click the bookmark to run it.</li>
+            <li>
+              Click it again or click the close button
+              <pre class="example-close-button" aria-hidden="true">×</pre>
+              in the popup to clear the results.
+            </li>
+          </ol>
+          <div class="results-popup-example-container">
+            <p>
+              Example of the popup that will appear in the bottom right corner
+              of your browser with a summary of the results.
+            </p>
+            <div class="results-popup-example" id="example-popup">
+              <strong style="display: block; margin-bottom: 4px"
+                >Landmark Visualizer</strong
+              ><span style="color: #3fbf7f">●</span> 9 correct &nbsp;
+              <span style="color: #e0b03f">●</span> 0 flagged &nbsp;
+              <span style="color: #e06a4f">●</span> 0 incorrect
+              <button
+                id="fadeOut"
+                type="button"
+                class="results-popup-example-close-button"
+                aria-label="example of the close button"
+              >
+                ×
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="legend-heading">
+          <h2 id="legend-heading">What the colors mean</h2>
+          <p class="section-intro">
+            Each landmark gets an outline and a small label showing its role.
+          </p>
+          <div class="legend">
+            <div class="legend__item legend__item--green">
+              <span class="legend__item-swatch" aria-hidden="true"></span>
+              <span class="legend__item-label">Correct</span>
+              <p class="legend__item-body">
+                A uniquely identifiable landmark, or one with a clear accessible
+                name.
+              </p>
+            </div>
+            <div class="legend__item legend__item--gold">
+              <span class="legend__item-swatch" aria-hidden="true"></span>
+              <span class="legend__item-label">Flagged</span>
+              <p class="legend__item-body">
+                More than one landmark of the same type exists but this one has
+                no <code class="helper-text">aria-label</code> to tell it apart.
+              </p>
+            </div>
+            <div class="legend__item legend__item--red">
+              <span class="legend__item-swatch" aria-hidden="true"></span>
+              <span class="legend__item-label">Incorrect</span>
+              <p class="legend__item-body">
+                A duplicate <code class="helper-text">&lt;main&gt;</code>, a
+                landmark nested inside another of the same role, or a
+                region/form with no accessible name at all, so it isn't exposed
+                as a landmark.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="demo-heading">
+          <h2 id="demo-heading">Try it here</h2>
+          <p class="section-intro">
+            Run the check against the sample markup below without leaving this
+            page.
+          </p>
+          <div class="demo">
+            <div class="demo__stage" id="demo-stage">
+              <div class="fake-landmark-demo" data-fake-role="banner">
+                Site header (banner)
+              </div>
+              <div
+                class="fake-landmark-demo"
+                data-fake-role="navigation"
+                data-fake-label="Primary"
+              >
+                Primary nav
+              </div>
+              <div class="fake-landmark-demo" data-fake-role="main">
+                <div class="fake-landmark-demo" data-fake-role="region">
+                  Section with no accessible name
+                </div>
+              </div>
+              <div class="fake-landmark-demo" data-fake-role="complementary">
+                Aside one (no label)
+              </div>
+              <div class="fake-landmark-demo" data-fake-role="complementary">
+                Aside two (no label)
+              </div>
+              <div class="fake-landmark-demo" data-fake-role="contentinfo">
+                Site footer
+              </div>
+            </div>
+            <div class="demo__controls">
+              <button type="button" class="button button" id="demo-run">
+                Run check
+              </button>
+              <button
+                type="button"
+                class="button button--outline"
+                id="demo-clear"
+              >
+                Clear highlights
+              </button>
+            </div>
+            <div
+              class="demo__results"
+              id="demo-results"
+              aria-live="polite"
+            ></div>
+          </div>
+        </section>
+
+        <section aria-labelledby="criteria-heading">
+          <h2 id="criteria-heading">Applicable WCAG 2.2 success criteria</h2>
+          <p class="section-intro">
+            Landmarks give assistive technology a programmatic map of the page,
+            so people can jump straight to the content they need.
+          </p>
+          <ul class="criteria">
+            <li class="criteria__item">
+              <span class="criteria__number">1.3.1</span>
+              <div class="criteria__body">
+                <a
+                  class="criteria__link"
+                  href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Info and Relationships</a
+                ><span class="criteria__level">(Level A)</span>
+                <p class="criteria__desc">
+                  Structure that is visually obvious, like a header or a
+                  sidebar, must also be conveyed programmatically, which is
+                  exactly what landmark roles do.
+                </p>
+              </div>
+            </li>
+            <li class="criteria__item">
+              <span class="criteria__number">2.4.1</span>
+              <div class="criteria__body">
+                <a
+                  class="criteria__link"
+                  href="https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Bypass Blocks</a
+                ><span class="criteria__level">(Level A)</span>
+                <p class="criteria__desc">
+                  A properly labeled main and nav landmark let screen reader and
+                  keyboard users skip repeated blocks of content on every page.
+                </p>
+              </div>
+            </li>
+            <li class="criteria__item">
+              <span class="criteria__number">1.3.6</span>
+              <div class="criteria__body">
+                <a
+                  class="criteria__link"
+                  href="https://www.w3.org/WAI/WCAG22/Understanding/identify-purpose"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Identify Purpose</a
+                ><span class="criteria__level">(Level AAA)</span>
+                <p class="criteria__desc">
+                  Landmark roles help user-agent features and personalization
+                  tools recognize the purpose of each region.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="source-heading">
+          <h2 id="source-heading">Read the source</h2>
+          <p class="section-intro">
+            The bookmarklet contains the TL;DR version of the code. Here's the
+            readable version.
+          </p>
+          <div class="source__actions">
+            <button type="button" class="button copy-button" id="copy-source">
+              Copy source
+            </button>
+          </div>
+          <pre class="source__code" id="source-code" tabindex="0">
+(function () {
+  var NS = '__a11yLandmarkViz';
+  if (window[NS] &amp;&amp; window[NS].active) {
+    window[NS].teardown();
+    return;
+  }
+
+  var SEL = 'header,nav,main,aside,footer,form,section,[role]';
+  var LANDMARK_ROLES = {
+    banner: 1, navigation: 1, main: 1, complementary: 1, contentinfo: 1,
+    search: 1, form: 1, region: 1
+  };
+  var TAG_ROLE = {
+    HEADER: 'banner', NAV: 'navigation', MAIN: 'main',
+    ASIDE: 'complementary', FOOTER: 'contentinfo', FORM: 'form', SECTION: 'region'
+  };
+
+  function isTopLevel(el) {
+    // banner/contentinfo only count as landmarks when not nested in another
+    // sectioning element; keep it simple and just track nesting of same role.
+    return true;
+  }
+
+  function getRole(el) {
+    var explicit = el.getAttribute('role');
+    if (explicit &amp;&amp; LANDMARK_ROLES[explicit]) return explicit;
+    var byTag = TAG_ROLE[el.tagName];
+    if (byTag) {
+      if ((el.tagName === 'HEADER' || el.tagName === 'FOOTER') &amp;&amp; el.closest('article,aside,main,nav,section')) {
+        return null; // header/footer nested in sectioning content isn't a landmark
+      }
+      return byTag;
+    }
+    return null;
+  }
+
+  function getAccessibleName(el) {
+    var labelledby = el.getAttribute('aria-labelledby');
+    if (labelledby) {
+      var text = labelledby.split(/\s+/).map(function (id) {
+        var ref = document.getElementById(id);
+        return ref ? ref.textContent.trim() : '';
+      }).join(' ').trim();
+      if (text) return text;
+    }
+    var label = el.getAttribute('aria-label');
+    if (label &amp;&amp; label.trim()) return label.trim();
+    return '';
+  }
+
+  var els = Array.prototype.filter.call(document.querySelectorAll(SEL), function (el) {
+    return !!getRole(el);
+  });
+
+  var byRole = {};
+  els.forEach(function (el) {
+    var role = getRole(el);
+    (byRole[role] = byRole[role] || []).push(el);
+  });
+
+  var records = [];
+  var counts = { green: 0, gold: 0, red: 0 };
+
+  function mark(el, level, label) {
+    records.push({
+      el: el,
+      outline: el.style.outline,
+      outlineOffset: el.style.outlineOffset,
+      position: el.style.position,
+      badge: null
+    });
+    var color = level === 'green' ? '#1a7d4f' : level === 'gold' ? '#8b6800' : '#be412a';
+    el.style.outline = '3px solid ' + color;
+    el.style.outlineOffset = '2px';
+    if (getComputedStyle(el).position === 'static') {
+      el.style.position = 'relative';
+    }
+    var badge = document.createElement('div');
+    badge.textContent = label;
+    badge.setAttribute('aria-hidden', 'true');
+    badge.setAttribute('data-a11y-bm-badge', 'landmark');
+    badge.style.cssText = [
+      'position:absolute', 'top:0', 'left:0', 'transform:translateY(-100%)',
+      'background:' + color, 'color:#fff', 'font:600 14px monospace',
+      'padding:2px 6px', 'border-radius:3px 3px 0 0', 'z-index:2147483000',
+      'pointer-events:none', 'white-space:nowrap'
+    ].join(';');
+    el.insertBefore(badge, el.firstChild);
+    records[records.length - 1].badge = badge;
+    counts[level]++;
+  }
+
+  els.forEach(function (el) {
+    var role = getRole(el);
+    var group = byRole[role];
+    var name = getAccessibleName(el);
+    var nestedSame = el.parentElement &amp;&amp; el.parentElement.closest(SEL) &amp;&amp;
+      getRole(el.parentElement.closest(SEL)) === role;
+
+    if (role === 'main' &amp;&amp; group.length &gt; 1) {
+      mark(el, 'red', 'main (duplicate)');
+    } else if (nestedSame) {
+      mark(el, 'red', role + ' (nested in same role)');
+    } else if ((role === 'region' || role === 'form') &amp;&amp; !name) {
+      mark(el, 'red', role + ' (no accessible name, not exposed as landmark)');
+    } else if (group.length &gt; 1 &amp;&amp; !name) {
+      mark(el, 'gold', role + ' (ambiguous, add aria-label)');
+    } else {
+      mark(el, 'green', role + (name ? ': ' + name : ''));
+    }
+  });
+
+  var panel = document.createElement('div');
+  panel.setAttribute('data-a11y-bm-panel', 'landmark');
+  panel.setAttribute('role', 'status');
+  panel.setAttribute('aria-live', 'polite');
+  panel.style.cssText = [
+    'position:fixed', 'bottom:16px', 'right:16px', 'z-index:2147483001',
+    'background:#1b2430', 'color:#e7eaed', 'font:13px/1.5 -apple-system,sans-serif',
+    'padding:12px 32px 12px 16px', 'border-radius:6px', 'box-shadow:0 4px 16px rgba(0,0,0,.3)',
+    'max-width:260px'
+  ].join(';');
+  panel.innerHTML =
+    '&lt;strong style="display:block;margin-bottom:4px;"&gt;Landmark Visualizer&lt;/strong&gt;' +
+    '&lt;span style="color:#3fbf7f;"&gt;&amp;#9679;&lt;/span&gt; ' + counts.green + ' correct &amp;nbsp; ' +
+    '&lt;span style="color:#e0b03f;"&gt;&amp;#9679;&lt;/span&gt; ' + counts.gold + ' flagged &amp;nbsp; ' +
+    '&lt;span style="color:#e06a4f;"&gt;&amp;#9679;&lt;/span&gt; ' + counts.red + ' incorrect';
+  var closeBtn = document.createElement('button');
+  closeBtn.type = 'button';
+  closeBtn.textContent = '\u00d7';
+  closeBtn.setAttribute('aria-label', 'Close');
+  closeBtn.style.cssText = [
+    'position:absolute', 'top:4px', 'right:6px',
+    'background:transparent', 'border:none', 'color:#e7eaed',
+    'font:16px/1 -apple-system,sans-serif', 'cursor:pointer',
+    'padding:2px 6px', 'border-radius:4px', 'line-height:1'
+  ].join(';');
+  closeBtn.addEventListener('click', function () { window[NS].teardown(); });
+  panel.appendChild(closeBtn);
+  document.body.appendChild(panel);
+
+  function teardown() {
+    records.forEach(function (r) {
+      r.el.style.outline = r.outline;
+      r.el.style.outlineOffset = r.outlineOffset;
+      r.el.style.position = r.position;
+      if (r.badge &amp;&amp; r.badge.parentNode) r.badge.parentNode.removeChild(r.badge);
+    });
+    if (panel.parentNode) panel.parentNode.removeChild(panel);
+  }
+
+  window[NS] = {
+    active: true,
+    teardown: function () {
+      teardown();
+      window[NS].active = false;
+    }
+  };
+})();
+</pre
+          >
+        </section>
+
+        <section aria-labelledby="fyi-heading">
+          <h2 id="fyi-heading">FYI</h2>
+          <ul class="notes">
+            <li>
+              Only
+              <code class="helper-text">&lt;header&gt;</code>
+              /
+              <code class="helper-text">&lt;footer&gt;</code>
+              elements that are not nested inside
+              <code class="helper-text">&lt;article&gt;</code>
+              ,
+              <code class="helper-text">&lt;aside&gt;</code>
+              ,
+              <code class="helper-text">&lt;main&gt;</code>
+              ,
+              <code class="helper-text">&lt;nav&gt;</code>
+              , or
+              <code class="helper-text">&lt;section&gt;</code>
+              count as banner/contentinfo landmarks.
+            </li>
+            <li>
+              A
+              <code class="helper-text">&lt;section&gt;</code>
+              or
+              <code class="helper-text">&lt;form&gt;</code>
+              only becomes a landmark once it has an accessible name; otherwise
+              it is invisible to landmark navigation.
+            </li>
+            <li>
+              The "Try it here" demo uses plain, labeled placeholder boxes
+              rather than real
+              <code class="helper-text">&lt;header&gt;</code>
+              ,
+              <code class="helper-text">&lt;nav&gt;</code>
+              , and
+              <code class="helper-text">&lt;main&gt;</code>
+              elements, so trying it out doesn't create real duplicate landmarks
+              on this page. The actual bookmarklet checks real landmark elements
+              on whatever page you run it on.
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>
+          <a href="index.html">
+            <img
+              src="/img/spotcheck-logo--header-light.svg"
+              class="logo-footer"
+              alt="go to SpotCheck homepage"
+          /></a>
+        </p>
+
+        <p>
+          &reg; 2026
+          <a
+            href="https://www.homergaines.com"
+            rel="noopener noreferrer"
+            target="_blank"
+            >Homer Gaines</a
+          >
+        </p>
+      </div>
+    </footer>
+    <script src="landmark.js"></script>
+    <script src="play.js"></script>
+  </body>
+</html>

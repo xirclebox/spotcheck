@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SpotCheck: Accessibility Bookmarklet Toolkit</title>
+    <meta
+      name="description"
+      content="A collection of bookmarklets for testing common accessibility issues, each mapped to the WCAG 2.2 success criteria it covers."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="bookmarklet.css" />
+  </head>
+  <body class="hub">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="wrap">
+        <h1 class="site-header__title">
+          <img src="/img/spotcheck-logo.svg" class="logo" aria-hidden="true" />
+          <span class="sr-only"
+            >SpotCheck: an Accessibility Bookmarklet Toolkit</span
+          >
+        </h1>
+        <p class="site-header__lede">
+          A collection of free to use bookmarklets that test for common
+          accessibility issues directly in the browser. Each one maps to its
+          related WCAG 2.2 success criteria.
+        </p>
+        <ul class="site-header__stats">
+          <li class="site-header__stat"><strong>7</strong> bookmarklets</li>
+          <li class="site-header__stat">
+            <strong>16</strong> unique WCAG 2.2 criteria referenced
+          </li>
+          <li class="site-header__stat"><strong>0</strong> dependencies</li>
+        </ul>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap">
+        <section class="section" aria-labelledby="tools-heading">
+          <h2 class="section__title" id="tools-heading">Choose a tool</h2>
+          <ul class="tools">
+            <li class="tool tool--landmarks">
+              <div class="tool__header">
+                <h3 class="tool__name">Landmark Visualizer</h3>
+              </div>
+              <p class="tool__desc">
+                Outlines every ARIA and HTML landmark region and flags ones
+                missing an accessible name or duplicated.
+              </p>
+              <div class="tool__footer">
+                <a class="tool__link" href="landmark-visualizer.html"
+                  >Open tool</a
+                >
+              </div>
+            </li>
+
+            <li class="tool tool--links">
+              <div class="tool__header">
+                <h3 class="tool__name">Link Accessibility Auditor</h3>
+              </div>
+              <p class="tool__desc">
+                Checks every link for a real accessible name and flags generic
+                text like "click here".
+              </p>
+              <div class="tool__footer">
+                <a class="tool__link" href="link-accessibility-auditor.html"
+                  >Open tool</a
+                >
+              </div>
+            </li>
+
+            <li class="tool tool--headings">
+              <div class="tool__header">
+                <h3 class="tool__name">Heading Hierarchy Validator</h3>
+              </div>
+              <p class="tool__desc">
+                Walks the heading outline in document order and flags any level
+                that skips ahead.
+              </p>
+              <div class="tool__footer">
+                <a class="tool__link" href="heading-order-checker.html"
+                  >Open tool</a
+                >
+              </div>
+            </li>
+
+            <li class="tool tool--lists">
+              <div class="tool__header">
+                <h3 class="tool__name">List Identifier</h3>
+              </div>
+              <p class="tool__desc">
+                Flags empty lists, malformed markup, and list items that aren't
+                inside a list at all.
+              </p>
+              <div class="tool__footer">
+                <a class="tool__link" href="list-identifier.html">Open tool</a>
+              </div>
+            </li>
+
+            <li class="tool tool--keyboard">
+              <div class="tool__header">
+                <h3 class="tool__name">Tab Order Visualizer</h3>
+              </div>
+              <p class="tool__desc">
+                Numbers every focusable element in tab order and flags positive
+                tabindex values.
+              </p>
+              <div class="tool__footer">
+                <a class="tool__link" href="tab-order-visualizer.html"
+                  >Open tool</a
+                >
+              </div>
+            </li>
+
+            <li class="tool tool--contrast">
+              <div class="tool__header">
+                <h3 class="tool__name">Text Contrast Checker</h3>
+              </div>
+              <p class="tool__desc">
+                Measures text contrast against its effective background and
+                flags anything below WCAG AA minimum.
+              </p>
+              <div class="tool__footer">
+                <a class="tool__link" href="text-contrast-checker.html"
+                  >Open tool</a
+                >
+              </div>
+            </li>
+
+            <li class="tool">
+              <div class="tool__header">
+                <h3 class="tool__name">Image Alt Text Checker</h3>
+              </div>
+              <p class="tool__desc">
+                Checks every image for alt text and flags the ones missing it or
+                marked incorrectly.
+              </p>
+              <div class="tool__footer">
+                <a class="tool__link" href="image-alt-checker.html"
+                  >Open tool</a
+                >
+              </div>
+            </li>
+
+            <li class="tool">
+              <div class="tool__header">
+                <h3 class="tool__name">Input Label Checker</h3>
+              </div>
+              <p class="tool__desc">
+                Outlines every input, select, and textarea on the page, then
+                labels each one with how it gets its accessible name.
+              </p>
+              <div class="tool__footer">
+                <a class="tool__link" href="input-label-checker.html"
+                  >Open tool</a
+                >
+              </div>
+            </li>
+
+            <li class="tool coming-soon" aria-hidden="true">
+              <div class="tool__header">
+                <h3 class="tool__name">Look at you. Trying to be slick.</h3>
+              </div>
+              <p class="tool__desc">
+                Caught you trying sneak a peek at what's coming next.
+              </p>
+              <div class="tool__footer">
+                <div class="tool__link">Busted</div>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="section" aria-labelledby="about-heading">
+          <h2 class="section__title" id="about-heading">About this toolkit</h2>
+          <div class="about">
+            <ul class="about__list">
+              <li>
+                <strong>No installation.</strong> Each tool is a self-contained.
+                All you need to do is drag the bookmarklet link to your
+                bookmarks bar and it's ready to use on any site.
+              </li>
+              <li>
+                <strong>Nothing leaves your browser.</strong> Every check runs
+                entirely client-side against the current page's DOM.
+              </li>
+              <li>
+                <strong>Click again to clear.</strong> Running a bookmarklet a
+                second time on the same page removes its outlines and summary
+                panel. Or, you can click the close button
+                <pre class="example-close-button" aria-hidden="true">×</pre>
+                in the popup to clear the results. But sit tight, I have
+                something else coming to improve this UX pattern :)
+              </li>
+              <li>
+                <strong>WCAG 2.2 mapped.</strong> Every tool's page lists the
+                specific success criteria related to its bookmarklet, with a
+                link to the
+                <a
+                  href="https://www.w3.org/WAI/WCAG22/Understanding/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >W3C Understanding document</a
+                >.
+              </li>
+              <li>
+                <strong
+                  >These tools are a starting point, not a full audit.</strong
+                >
+                Bookmarklets are great for quick spot-checks that catch common
+                issues, but they don't replace a full manual and assistive tech
+                review.
+              </li>
+              <li>
+                <strong>Known issues.</strong> I know that the gold color used
+                for the "flagged" status is problematic for some with weak color
+                vision. I'm still working on a color option for it.
+              </li>
+            </ul>
+
+            <div class="version">v.1.0</div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>
+          &reg; 2026
+          <a
+            href="https://www.homergaines.com"
+            rel="noopener noreferrer"
+            target="_blank"
+            >Homer Gaines</a
+          >
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
