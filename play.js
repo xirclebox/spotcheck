@@ -54,6 +54,10 @@ const handle = (event, name) => {
   return link;
 };
 
+document.addEventListener("click", (event) => {
+  if (handle(event, "bookmarklet-run")) event.preventDefault();
+});
+
 document.addEventListener("dragstart", (event) => {
   handle(event, "bookmarklet-drag");
 });
