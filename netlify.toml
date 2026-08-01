@@ -1,0 +1,45 @@
+[[redirects]]
+  from = "https://spotcheck.tools/*"
+  to = "https://www.spotcheck.tools/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://spotcheck.tools/*"
+  to = "https://www.spotcheck.tools/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.spotcheck.tools/*"
+  to = "https://www.spotcheck.tools/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/heading-order-checker"
+  to = "/heading-validator"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/image-alt-checker"
+  to = "/alt-text-checker"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+
+[[headers]]
+  for = "/llms.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml; charset=utf-8"
+    
