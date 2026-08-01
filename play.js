@@ -36,3 +36,22 @@ if (copyBtn && codeEl) {
     });
   });
 }
+
+// bookmarklet tracking
+const track = (name, data) => window.umami?.track(name, data);
+
+const bookmarkletFrom = (event) =>
+  event.target.closest?.("a[data-bookmarklet]");
+
+document.addEventListener("click", (event) => {
+  const link = bookmarkletFrom(event);
+  if (!link) return;
+  event.preventDefault();
+  track("bookmarklet-run", { tool: link.dataset.bookmarklet });
+});
+
+document.addEventListener("dragstart", (event) => {
+  const link = bookmarkletFrom(event);
+  if (!link) return;
+  track("bookmarklet-drag", { tool: link.dataset.bookmarklet });
+});
