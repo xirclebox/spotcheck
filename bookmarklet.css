@@ -154,8 +154,11 @@ h3 {
 }
 
 .logo {
-  width: 100%;
-  max-width: 22.938rem;
+  display: block;
+  inline-size: 100%;
+  max-inline-size: 20rem;
+  block-size: auto;
+  aspect-ratio: 367 / 82;
 }
 
 .logomark {
