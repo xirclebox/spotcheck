@@ -1,6 +1,6 @@
 # SpotCheck
 
-SpotCheck is a collection of free to use bookmarklets that test for common accessibility issues directly in the browser. Each one maps to its related WCAG 2.2 success criteria.
+[SpotCheck](https://www.spotcheck.tools) is a collection of free to use bookmarklets that test for common accessibility issues directly in the browser. Each one maps to its related WCAG 2.2 success criteria.
 
 - **No installation.** Each tool is a self-contained. All you need to do is drag the bookmarklet link to your bookmarks bar and it's ready to use on any site.
 - **Nothing leaves your browser.** Every check runs entirely client-side against the current page's DOM.
