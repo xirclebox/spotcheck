@@ -20,7 +20,3 @@ Intended use: fast spot-checks during development, code review, and triage. Spot
 ## How to use a bookmarklet
 
 - [SpotCheck home](https://www.spotcheck.tools/): Drag any tool's button to your browser bookmarks bar, navigate to the page you want to test, then click the bookmark. Results are drawn as outlines on the page with a summary panel. Click the bookmark again to clear. Each tool page includes an inline demo you can run without installing anything, and the full source for review.
-
-## Optional
-
-- [WCAG 2.2 Understanding docs](https://www.w3.org/WAI/WCAG22/Understanding/): The W3C explanations for every success criterion referenced above. Each SpotCheck tool page links to the specific criteria it covers.
