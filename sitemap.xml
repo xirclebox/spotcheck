@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://www.spotcheck.tools/</loc>
+    <lastmod>2026-08-01</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.spotcheck.tools/landmark-visualizer</loc>
+    <lastmod>2026-08-01</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.spotcheck.tools/link-accessibility-auditor</loc>
+    <lastmod>2026-08-01</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.spotcheck.tools/heading-order-checker</loc>
+    <lastmod>2026-08-01</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.spotcheck.tools/list-identifier</loc>
+    <lastmod>2026-08-01</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.spotcheck.tools/tab-order-visualizer</loc>
+    <lastmod>2026-08-01</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.spotcheck.tools/text-contrast-checker</loc>
+    <lastmod>2026-08-01</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.spotcheck.tools/image-alt-checker</loc>
+    <lastmod>2026-08-01</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.spotcheck.tools/input-label-checker</loc>
+    <lastmod>2026-08-01</lastmod>
+  </url>
+
+</urlset>
