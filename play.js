@@ -53,5 +53,5 @@ document.addEventListener("click", (event) => {
 document.addEventListener("dragstart", (event) => {
   const link = bookmarkletFrom(event);
   if (!link) return;
-  track("bookmarklet-drag", { tool: link.dataset.bookmarklet });
+  track("a[data-bookmarklet]", { tool: link.dataset.bookmarklet });
 });
