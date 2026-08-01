@@ -49,10 +49,6 @@ const handle = (event, action) => {
   return link;
 };
 
-document.addEventListener("click", (event) => {
-  if (handle(event, "run")) event.preventDefault();
-});
-
 document.addEventListener("dragstart", (event) => {
   handle(event, "drag");
 });
