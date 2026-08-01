@@ -1,4 +1,8 @@
+# robots.txt for spotcheck.tools
+# Free accessibility bookmarklets, built by Homer Gaines, CPACC
+# See also: /llms.txt and /sitemap.xml
+
 User-agent: *
 Allow: /
 
-Sitemap: https://www.spotcheck.tools/sitemap.xml
+Sitemap: https://spotcheck.tools/sitemap.xml
