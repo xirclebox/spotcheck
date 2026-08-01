@@ -43,15 +43,21 @@ const track = (name, data) => window.umami?.track(name, data);
 const bookmarkletFrom = (event) =>
   event.target.closest?.("a[data-bookmarklet]");
 
-document.addEventListener("click", (event) => {
+const handle = (event, name) => {
   const link = bookmarkletFrom(event);
-  if (!link) return;
-  event.preventDefault();
-  track("bookmarklet-run", { tool: link.dataset.bookmarklet });
+  if (!link) return null;
+
+  const tool = link.dataset.bookmarklet;
+  if (!tool) return null;
+
+  track(name, { tool });
+  return link;
+};
+
+document.addEventListener("click", (event) => {
+  if (handle(event, "bookmarklet-run")) event.preventDefault();
 });
 
 document.addEventListener("dragstart", (event) => {
-  const link = bookmarkletFrom(event);
-  if (!link) return;
-  track(a[data-bookmarklet], { tool: link.dataset.bookmarklet });
+  handle(event, "bookmarklet-drag");
 });
