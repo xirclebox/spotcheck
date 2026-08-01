@@ -510,6 +510,10 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-12);
+
+  &.images {
+    flex-direction: column;
+  }
 }
 
 .source__actions {
