@@ -40,24 +40,19 @@ if (copyBtn && codeEl) {
 // bookmarklet tracking
 const track = (name, data) => window.umami?.track(name, data);
 
-const bookmarkletFrom = (event) =>
-  event.target.closest?.("a[data-bookmarklet]");
-
-const handle = (event, name) => {
-  const link = bookmarkletFrom(event);
-  if (!link) return null;
-
-  const tool = link.dataset.bookmarklet;
+const handle = (event, action) => {
+  const link = event.target.closest?.("a[data-bookmarklet]");
+  const tool = link?.dataset.bookmarklet;
   if (!tool) return null;
 
-  track(name, { tool });
+  track(`${tool}-${action}`, { tool, action });
   return link;
 };
 
 document.addEventListener("click", (event) => {
-  if (handle(event, "bookmarklet-run")) event.preventDefault();
+  if (handle(event, "run")) event.preventDefault();
 });
 
 document.addEventListener("dragstart", (event) => {
-  handle(event, "bookmarklet-drag");
+  handle(event, "drag");
 });
