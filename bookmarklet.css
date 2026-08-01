@@ -107,6 +107,7 @@ h3 {
 .version {
   display: inline-block;
   margin-top: var(--space-24);
+  padding: var(--space-4) var(--space-8);
 }
 
 :focus-visible,
