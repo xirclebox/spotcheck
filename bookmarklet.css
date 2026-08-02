@@ -18,6 +18,7 @@
   --color-code: #e7eaed;
   --focus-color: #ff00ff;
   --border-radius: 0.25rem;
+  --border-radius-lg: 1rem;
 
   --font-display: "Google Sans Flex", sans-serif;
   --font-body: "DM Sans", sans-serif;
@@ -916,7 +917,10 @@ main {
   .about {
     background: var(--color-surface);
     border: 1px solid var(--color-hairline);
-    border-radius: var(--border-radius);
+    border-radius:none;
+    border-top-left-radius: var(--border-radius-lg);
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius-lg);
     padding: var(--space-24);
   }
 
