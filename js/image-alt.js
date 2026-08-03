@@ -38,21 +38,21 @@
           var level, label;
           if (!img.hasAttribute("alt")) {
             level = "red";
-            label = "No alt attribute";
+            label = "Fail: Missing an alt attribute";
           } else {
             var alt = img.getAttribute("alt");
             if (alt.trim() === "") {
               level = "green";
-              label = "Decorative (empty alt)";
+              label = "Pass: Decorative (empty alt)";
             } else if (looksLikeFilename(alt)) {
-              level = "gold";
-              label = 'Alt text looks like a filename: "' + alt + '"';
+              level = "red";
+              label = 'Fail: Alt text looks like a filename';
             } else if (hasRedundantPhrase(alt)) {
               level = "gold";
-              label = 'Redundant phrase in alt text: "' + alt + '"';
+              label = 'Flagged: Redundant phrase in alt text: "' + alt + '"';
             } else {
               level = "green";
-              label = 'OK: "' + alt + '"';
+              label = 'Pass: "' + alt + '"';
             }
           }
           var color =
@@ -61,15 +61,21 @@
               : level === "gold"
                 ? "#8b6800"
                 : "#be412a";
-          img.style.outline = "3px solid " + color;
-          img.style.outlineOffset = "2px";
+          if(color === "#be412a") {
+                img.style.outline = "5px dashed " + color;
+          } else if (color === "#8b6800") {
+                img.style.outline = "6px dotted " + color;
+          } else {
+                img.style.outline = "5px solid " + color;
+          }
+          img.style.outlineOffset = "3px";
           var badge = document.createElement("div");
           badge.textContent = label;
           badge.setAttribute("aria-hidden", "true");
           badge.style.cssText =
             "position:absolute;background:" +
             color +
-            ";color:#fff;font:600 14px monospace;padding:1px 5px;border-radius:3px 3px 0 0;z-index:10;pointer-events:none;white-space:nowrap;max-width:min(90vw,24rem);overflow:hidden;text-overflow:ellipsis";
+            ";color:#fff;font:500 16px monospace;padding:4px 8px;border-radius:4px;z-index:10;max-width:min(90vw,24rem);";
           document.body.appendChild(badge);
           var rect = img.getBoundingClientRect(),
             badgeRect = badge.getBoundingClientRect();
@@ -79,8 +85,6 @@
           lines.push('<p class="demo__results-line">' + esc(label) + "</p>");
         });
       resultsEl.innerHTML = lines.join("");
-      // Run the same logic as the bookmarklet against #demo-stage,
-      // then write a short summary into resultsEl.
     });
   }
 
@@ -94,8 +98,7 @@
           r.badge.parentNode.removeChild(r.badge);
       });
       demoRecords.length = 0;
-      // Undo whatever the run handler applied to #demo-stage.
-      if (resultsEl) resultsEl.textContent = "";
+        if (resultsEl) resultsEl.textContent = "";
     });
   }
 })();
