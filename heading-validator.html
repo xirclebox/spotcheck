@@ -77,7 +77,7 @@
 
       <div class="wrap">
         <a href="index.html" class="bookmarklet-back__link">All bookmarklets</a>
-        <h1 class="site-header__title">Heading Validator</h1>
+        <h1 class="site-header__title">Heading Validator <div class="version">v.1.1</div></h1>
         <p class="site-header__lede">
           Run this on any page to show every heading in document order and flag
           any level that jumps (an h2 followed directly by an h4, for example)
@@ -97,7 +97,7 @@
           <div class="bookmarklet-row">
             <a
               class="bookmarklet"
-              href="javascript:!function()%7Bvar%20e%3D%22__a11yHeadingOrder%22%3Bif(window%5Be%5D%26%26window%5Be%5D.active)window%5Be%5D.teardown()%3Belse%7Bvar%20t%3DArray.prototype.filter.call(document.querySelectorAll('h1%2Ch2%2Ch3%2Ch4%2Ch5%2Ch6%2C%5Brole%3D%22heading%22%5D')%2Cfunction(e)%7Breturn%20null!%3D%3Ds(e)%7D)%2Cn%3D%5B%5D%2Ci%3D%7Bpass%3A0%2Cfail%3A0%7D%2Co%3D0%2Ca%3D!1%3Bt.forEach(function(e)%7Bvar%20t%3Ds(e)%3Bif(e.textContent.replace(%2F%5Cs%2B%2Fg%2C%22%20%22).trim())return%201%3D%3D%3Dt%3F(a%3Fd(e%2C!1%2C%22H1%3A%20multiple%20top-level%20headings%22)%3A(d(e%2C!0%2C%22H1%22)%2Ca%3D!0)%2Cvoid(o%3D1))%3Avoid(t%3Eo%2B1%3Fd(e%2C!1%2C%22H%22%2Bt%2B%22%3A%20skipped%20from%20H%22%2Bo)%3A(d(e%2C!0%2C%22H%22%2Bt)%2Co%3Dt))%3Bd(e%2C!1%2C%22H%22%2Bt%2B%22%3A%20empty%20heading%22)%7D)%3Bvar%20r%3Ddocument.createElement(%22div%22)%3Br.setAttribute(%22data-a11y-bm-panel%22%2C%22heading-order%22)%2Cr.setAttribute(%22role%22%2C%22status%22)%2Cr.setAttribute(%22aria-live%22%2C%22polite%22)%2Cr.style.cssText%3D%5B%22position%3Afixed%22%2C%22bottom%3A16px%22%2C%22right%3A16px%22%2C%22z-index%3A2147483001%22%2C%22background%3A%231b2430%22%2C%22color%3A%23e7eaed%22%2C%22font%3A13px%2F1.5%20-apple-system%2Csans-serif%22%2C%22padding%3A12px%2032px%2012px%2016px%22%2C%22border-radius%3A6px%22%2C%22box-shadow%3A0%204px%2016px%20rgba(0%2C0%2C0%2C.3)%22%2C%22max-width%3A260px%22%5D.join(%22%3B%22)%2Cr.innerHTML%3D'%3Cstrong%20style%3D%22display%3Ablock%3Bmargin-bottom%3A4px%3B%22%3EHeading%20Hierarchy%20Validator%3C%2Fstrong%3E%3Cspan%20style%3D%22color%3A%233fbf7f%3B%22%3E%26%239679%3B%3C%2Fspan%3E%20'%2Bi.pass%2B'%20passed%20%26nbsp%3B%20%3Cspan%20style%3D%22color%3A%23e06a4f%3B%22%3E%26%239679%3B%3C%2Fspan%3E%20'%2Bi.fail%2B%22%20failed%22%3Bvar%20l%3Ddocument.createElement(%22button%22)%3Bl.type%3D%22button%22%2Cl.textContent%3D%22%C3%97%22%2Cl.setAttribute(%22aria-label%22%2C%22Close%22)%2Cl.style.cssText%3D%5B%22position%3Aabsolute%22%2C%22top%3A4px%22%2C%22right%3A6px%22%2C%22background%3Atransparent%22%2C%22border%3Anone%22%2C%22color%3A%23e7eaed%22%2C%22font%3A16px%2F1%20-apple-system%2Csans-serif%22%2C%22cursor%3Apointer%22%2C%22padding%3A2px%206px%22%2C%22border-radius%3A4px%22%2C%22line-height%3A1%22%5D.join(%22%3B%22)%2Cl.addEventListener(%22click%22%2Cfunction()%7Bwindow%5Be%5D.teardown()%7D)%2Cr.appendChild(l)%2Cdocument.body.appendChild(r)%2Cwindow%5Be%5D%3D%7Bactive%3A!0%2Cteardown%3Afunction()%7Bn.forEach(function(e)%7Be.el.style.outline%3De.outline%2Ce.el.style.outlineOffset%3De.outlineOffset%2Ce.el.style.position%3De.position%2Ce.badge%26%26e.badge.parentNode%26%26e.badge.parentNode.removeChild(e.badge)%7D)%2Cr.parentNode%26%26r.parentNode.removeChild(r)%2Cwindow%5Be%5D.active%3D!1%7D%7D%7Dfunction%20s(e)%7Bif(%22heading%22%3D%3D%3De.getAttribute(%22role%22))%7Bvar%20t%3DparseInt(e.getAttribute(%22aria-level%22)%2C10)%3Breturn%20isNaN(t)%3F2%3At%7Dvar%20n%3De.tagName.match(%2F%5EH(%5B1-6%5D)%24%2F)%3Breturn%20n%3FparseInt(n%5B1%5D%2C10)%3Anull%7Dfunction%20d(e%2Ct%2Co)%7Bn.push(%7Bel%3Ae%2Coutline%3Ae.style.outline%2CoutlineOffset%3Ae.style.outlineOffset%2Cposition%3Ae.style.position%2Cbadge%3Anull%7D)%3Bvar%20a%3Dt%3F%22%231a7d4f%22%3A%22%23be412a%22%3Be.style.outline%3D%223px%20solid%20%22%2Ba%2Ce.style.outlineOffset%3D%222px%22%2C%22static%22%3D%3D%3DgetComputedStyle(e).position%26%26(e.style.position%3D%22relative%22)%3Bvar%20r%3Ddocument.createElement(%22span%22)%3Br.textContent%3Do%2Cr.setAttribute(%22aria-hidden%22%2C%22true%22)%2Cr.style.cssText%3D%5B%22display%3Ainline-block%22%2C%22margin-left%3A8px%22%2C%22vertical-align%3Amiddle%22%2C%22background%3A%22%2Ba%2C%22color%3A%23fff%22%2C%22font%3A600%2014px%20monospace%22%2C%22padding%3A2px%206px%22%2C%22border-radius%3A3px%22%2C%22white-space%3Anowrap%22%5D.join(%22%3B%22)%2Ce.appendChild(r)%2Cn%5Bn.length-1%5D.badge%3Dr%2Ci%5Bt%3F%22pass%22%3A%22fail%22%5D%2B%2B%7D%7D()%3B"
+              href="javascript:!function()%7Bvar%20e%3Dwindow%2Ct%3Ddocument%2Cn%3D%22__a11yHeadingOrder%22%3Bif(e%5Bn%5D)e%5Bn%5D.clear()%3Belse%7Bvar%20r%2Ci%2Ca%2Cl%3D%7Bgreen%3A%22%231a7d4f%22%2Cred%3A%22%23be412a%22%7D%2Cd%3D%7Bgreen%3A%225px%20solid%22%2Cred%3A%225px%20dashed%22%7D%2Co%3D%7Bgreen%3A%22%233fbf7f%22%2Cred%3A%22%23e06a4f%22%7D%2Cp%3D%7Bok%3A%22green%22%2Cempty%3A%22red%22%2Cmultiple%3A%22red%22%2Cskipped%3A%22red%22%7D%2Cs%3D%7Bok%3A%22Pass%22%2Cempty%3A%22Empty%20heading%22%2Cmultiple%3A%22Multiple%20top-level%20headings%22%2Cskipped%3A%22Skipped%20from%22%7D%2Cu%3D%2F%5EH(%5B1-6%5D)%24%2F%2Cc%3D%5B%5D%2Cf%3D%7Bgreen%3A0%2Cred%3A0%7D%2Cx%3D0%2Cg%3D!1%2Ch%3Dnull%3BArray.prototype.slice.call(t.querySelectorAll(%22h1%2Ch2%2Ch3%2Ch4%2Ch5%2Ch6%2C%5Brole%3D%5C%22heading%5C%22%5D%22)).filter(function(e)%7Breturn%20null!%3D%3Dy(e)%7D).forEach(function(e)%7Bvar%20t%3Dy(e)%2Cn%3Dfunction(e%2Ct)%7Breturn%20b(e.textContent)%3F1%3D%3D%3Dt%3Fg%3F(x%3D1%2C%22multiple%22)%3A(g%3D!0%2Cx%3D1%2C%22ok%22)%3At%3Ex%2B1%3F%22skipped%22%3A(x%3Dt%2C%22ok%22)%3A%22empty%22%7D(e%2Ct)%2Cr%3Dp%5Bn%5D%2Ci%3D%7Bel%3Ae%2Coutline%3Ae.style.outline%2Coffset%3Ae.style.outlineOffset%2Cbadge%3Am(n%2Ct)%7D%3Bf%5Br%5D%2B%3D1%2Ce.style.outline%3Dd%5Br%5D%2B%22%20%22%2Bl%5Br%5D%2Ce.style.outlineOffset%3D%223px%22%2Ce.appendChild(i.badge)%2Cc.push(i)%7D)%2Cr%3Dt.createElement(%22div%22)%2Ci%3Dt.createElement(%22strong%22)%2Ca%3Dt.createElement(%22button%22)%2Cr.setAttribute(%22data-a11y-heading-check%22%2C%22panel%22)%2Cr.setAttribute(%22role%22%2C%22status%22)%2Cr.style.cssText%3D%5B%22position%3Afixed%22%2C%22right%3A16px%22%2C%22bottom%3A16px%22%2C%22max-width%3A260px%22%2C%22padding%3A12px%2032px%2012px%2016px%22%2C%22border-radius%3A6px%22%2C%22background%3A%231b2430%22%2C%22color%3A%23e7eaed%22%2C%22font%3A400%2014px%2F1.5%20Arial%2C%20Helvetica%2C%20%5C%22Helvetica%20Neue%5C%22%2C%20sans-serif%22%2C%22box-shadow%3A0%208px%2024px%20rgba(0%2C0%2C0%2C0.35)%22%2C%22z-index%3A2147483647%22%5D.join(%22%3B%22)%2Ci.textContent%3D%22Heading%20Hierarchy%20Validator%22%2Ci.style.cssText%3D%22display%3Ablock%3Bmargin-bottom%3A4px%22%2Cr.appendChild(i)%2Cr.appendChild(v(%22green%22%2C%22passed%22))%2Cr.appendChild(v(%22red%22%2C%22failed%22))%2Ca.type%3D%22button%22%2Ca.textContent%3D%22%C3%97%22%2Ca.setAttribute(%22aria-label%22%2C%22Clear%20the%20heading%20order%20results%22)%2Ca.style.cssText%3D%5B%22position%3Aabsolute%22%2C%22top%3A6px%22%2C%22right%3A6px%22%2C%22width%3A24px%22%2C%22height%3A24px%22%2C%22padding%3A2px%206px%22%2C%22border%3Anone%22%2C%22background%3Atransparent%22%2C%22color%3A%23e7eaed%22%2C%22font%3A16px%2F1%20Arial%2C%20Helvetica%2C%20%5C%22Helvetica%20Neue%5C%22%2C%20sans-serif%22%2C%22cursor%3Apointer%22%5D.join(%22%3B%22)%2Ca.addEventListener(%22click%22%2Ck)%2Cr.appendChild(a)%2Ch%3Dr%2Ct.body.appendChild(h)%2Ce%5Bn%5D%3D%7Bclear%3Ak%7D%7Dfunction%20b(e)%7Breturn(e%7C%7C%22%22).replace(%2F%5Cs%2B%2Fg%2C%22%20%22).trim()%7Dfunction%20y(e)%7Bif(%22heading%22%3D%3D%3De.getAttribute(%22role%22))%7Bvar%20t%3DparseInt(e.getAttribute(%22aria-level%22)%2C10)%3Breturn%20isNaN(t)%3F2%3At%7Dvar%20n%3De.tagName.match(u)%3Breturn%20n%3FparseInt(n%5B1%5D%2C10)%3Anull%7Dfunction%20m(e%2Cn)%7Bvar%20r%3Dt.createElement(%22span%22)%3Breturn%20r.setAttribute(%22data-a11y-heading-check%22%2C%22badge%22)%2Cr.setAttribute(%22aria-hidden%22%2C%22true%22)%2Cr.textContent%3Dfunction(e%2Ct)%7Bvar%20n%3D%22H%22%2Bt%2B%22%3A%20%22%2Bs%5Be%5D%3Breturn%22skipped%22%3D%3D%3De%3Fn%2B%22%20H%22%2Bx%3An%7D(e%2Cn)%2Cr.style.cssText%3D%5B%22display%3Ainline-block%22%2C%22width%3Afit-content%22%2C%22justify-self%3Astart%22%2C%22margin%3A0%200%200%204px%22%2C%22padding%3A4px%208px%22%2C%22border-radius%3A4px%22%2C%22background%3A%22%2Bl%5Bp%5Be%5D%5D%2C%22color%3A%23fff%22%2C%22font%3A500%2016px%2F1.2%20Arial%2C%20Helvetica%2C%20%5C%22Helvetica%20Neue%5C%22%2C%20sans-serif%22%2C%22vertical-align%3Amiddle%22%2C%22position%3Arelative%22%2C%22z-index%3A2147483646%22%5D.join(%22%3B%22)%2Cr%7Dfunction%20v(e%2Cn)%7Bvar%20r%3Dt.createElement(%22p%22)%2Ci%3Dt.createElement(%22span%22)%3Breturn%20r.style.cssText%3D%22margin%3A0%3Bpadding%3A0%22%2Ci.textContent%3D%22%E2%97%8F%22%2Ci.style.cssText%3D%22color%3A%22%2Bo%5Be%5D%2B%22%3Bmargin-right%3A6px%22%2Cr.appendChild(i)%2Cr.appendChild(t.createTextNode(f%5Be%5D%2B%22%20%22%2Bn))%2Cr%7Dfunction%20k()%7Bc.forEach(function(e)%7Be.el.style.outline%3De.outline%2Ce.el.style.outlineOffset%3De.offset%2Cb(e.el.getAttribute(%22style%22))%7C%7Ce.el.removeAttribute(%22style%22)%2Ce.badge.parentNode%26%26e.badge.parentNode.removeChild(e.badge)%7D)%2Cc%3D%5B%5D%2Ch%26%26h.parentNode%26%26h.parentNode.removeChild(h)%2Ch%3Dnull%2Cdelete%20e%5Bn%5D%7D%7D()%3B"
               onclick="return false;"
               data-bookmarklet="heading-validator"
               >SpotCheck - Heading Validator
@@ -298,122 +298,229 @@
           </div>
           <pre class="source__code" id="source-code" tabindex="0">
 (function () {
-  var NS = '__a11yHeadingOrder';
-  if (window[NS] &amp;&amp; window[NS].active) {
-    window[NS].teardown();
+  var w = window;
+  var d = document;
+  var STATE_KEY = "__a11yHeadingOrder";
+
+  if (w[STATE_KEY]) {
+    w[STATE_KEY].clear();
     return;
   }
 
-  function getRole(el) {
-    var role = el.getAttribute('role');
-    if (role === 'heading') {
-      var lvl = parseInt(el.getAttribute('aria-level'), 10);
-      return isNaN(lvl) ? 2 : lvl;
-    }
-    var m = el.tagName.match(/^H([1-6])$/);
-    return m ? parseInt(m[1], 10) : null;
-  }
+  var COLORS = {
+    green: "#1a7d4f",
+    red: "#be412a"
+  };
 
-  var headings = Array.prototype.filter.call(
-    document.querySelectorAll('h1,h2,h3,h4,h5,h6,[role="heading"]'),
-    function (el) { return getRole(el) !== null; }
-  );
+  var OUTLINES = {
+    green: "5px solid",
+    red: "5px dashed"
+  };
+
+  var OUTLINE_OFFSET = "3px";
+
+  var DOTS = {
+    green: "#3fbf7f",
+    red: "#e06a4f"
+  };
+
+  var LEVELS = {
+    ok: "green",
+    empty: "red",
+    multiple: "red",
+    skipped: "red"
+  };
+
+  var BADGES = {
+    ok: "Pass",
+    empty: "Empty heading",
+    multiple: "Multiple top-level headings",
+    skipped: "Skipped from"
+  };
+
+  var HEADING_SELECTOR = "h1,h2,h3,h4,h5,h6,[role=\"heading\"]";
+  var TAG_PATTERN = /^H([1-6])$/;
+  var DEFAULT_ARIA_LEVEL = 2;
 
   var records = [];
-  var counts = { pass: 0, fail: 0 };
+  var counts = { green: 0, red: 0 };
   var lastGoodLevel = 0;
-  var seenH1 = false;
+  var seenTopLevel = false;
+  var panel = null;
 
-  function mark(el, pass, label) {
-    records.push({ el: el, outline: el.style.outline, outlineOffset: el.style.outlineOffset, position: el.style.position, badge: null });
-    var color = pass ? '#1a7d4f' : '#be412a';
-    el.style.outline = '3px solid ' + color;
-    el.style.outlineOffset = '2px';
-    if (getComputedStyle(el).position === 'static') el.style.position = 'relative';
-    var badge = document.createElement('span');
-    badge.textContent = label;
-    badge.setAttribute('aria-hidden', 'true');
-    badge.style.cssText = [
-      'display:inline-block', 'margin-left:8px', 'vertical-align:middle',
-      'background:' + color, 'color:#fff', 'font:600 14px monospace',
-      'padding:2px 6px', 'border-radius:3px', 'white-space:nowrap'
-    ].join(';');
-    el.appendChild(badge);
-    records[records.length - 1].badge = badge;
-    counts[pass ? 'pass' : 'fail']++;
+  function normalize(value) {
+    return (value || "").replace(/\s+/g, " ").trim();
   }
 
-  headings.forEach(function (h) {
-    var level = getRole(h);
-    var text = h.textContent.replace(/\s+/g, ' ').trim();
+  function levelOf(el) {
+    if (el.getAttribute("role") === "heading") {
+      var ariaLevel = parseInt(el.getAttribute("aria-level"), 10);
+      return isNaN(ariaLevel) ? DEFAULT_ARIA_LEVEL : ariaLevel;
+    }
+    var match = el.tagName.match(TAG_PATTERN);
+    return match ? parseInt(match[1], 10) : null;
+  }
 
-    if (!text) {
-      mark(h, false, 'H' + level + ': empty heading');
-      return;
+  function classify(el, level) {
+    if (!normalize(el.textContent)) {
+      return "empty";
     }
     if (level === 1) {
-      if (seenH1) {
-        mark(h, false, 'H1: multiple top-level headings');
-      } else {
-        mark(h, true, 'H1');
-        seenH1 = true;
+      if (seenTopLevel) {
+        lastGoodLevel = 1;
+        return "multiple";
       }
+      seenTopLevel = true;
       lastGoodLevel = 1;
-      return;
+      return "ok";
     }
-    if (level &gt; lastGoodLevel + 1) {
-      mark(h, false, 'H' + level + ': skipped from H' + lastGoodLevel);
-    } else {
-      mark(h, true, 'H' + level);
-      lastGoodLevel = level;
+    if (level > lastGoodLevel + 1) {
+      return "skipped";
     }
-  });
-
-  var panel = document.createElement('div');
-  panel.setAttribute('data-a11y-bm-panel', 'heading-order');
-  panel.setAttribute('role', 'status');
-  panel.setAttribute('aria-live', 'polite');
-  panel.style.cssText = [
-    'position:fixed', 'bottom:16px', 'right:16px', 'z-index:2147483001',
-    'background:#1b2430', 'color:#e7eaed', 'font:13px/1.5 -apple-system,sans-serif',
-    'padding:12px 32px 12px 16px', 'border-radius:6px', 'box-shadow:0 4px 16px rgba(0,0,0,.3)',
-    'max-width:260px'
-  ].join(';');
-  panel.innerHTML =
-    '&lt;strong style="display:block;margin-bottom:4px;"&gt;Heading Hierarchy Validator&lt;/strong&gt;' +
-    '&lt;span style="color:#3fbf7f;"&gt;&amp;#9679;&lt;/span&gt; ' + counts.pass + ' passed &amp;nbsp; ' +
-    '&lt;span style="color:#e06a4f;"&gt;&amp;#9679;&lt;/span&gt; ' + counts.fail + ' failed';
-  var closeBtn = document.createElement('button');
-  closeBtn.type = 'button';
-  closeBtn.textContent = '\u00d7';
-  closeBtn.setAttribute('aria-label', 'Close');
-  closeBtn.style.cssText = [
-    'position:absolute', 'top:4px', 'right:6px',
-    'background:transparent', 'border:none', 'color:#e7eaed',
-    'font:16px/1 -apple-system,sans-serif', 'cursor:pointer',
-    'padding:2px 6px', 'border-radius:4px', 'line-height:1'
-  ].join(';');
-  closeBtn.addEventListener('click', function () { window[NS].teardown(); });
-  panel.appendChild(closeBtn);
-  document.body.appendChild(panel);
-
-  function teardown() {
-    records.forEach(function (r) {
-      r.el.style.outline = r.outline;
-      r.el.style.outlineOffset = r.outlineOffset;
-      r.el.style.position = r.position;
-      if (r.badge &amp;&amp; r.badge.parentNode) r.badge.parentNode.removeChild(r.badge);
-    });
-    if (panel.parentNode) panel.parentNode.removeChild(panel);
+    lastGoodLevel = level;
+    return "ok";
   }
 
-  window[NS] = {
-    active: true,
-    teardown: function () {
-      teardown();
-      window[NS].active = false;
+  function labelFor(kind, level) {
+    var label = "H" + level + ": " + BADGES[kind];
+    if (kind === "skipped") {
+      return label + " H" + lastGoodLevel;
     }
-  };
+    return label;
+  }
+
+  function makeBadge(kind, level) {
+    var badge = d.createElement("span");
+
+    badge.setAttribute("data-a11y-heading-check", "badge");
+    badge.setAttribute("aria-hidden", "true");
+    badge.textContent = labelFor(kind, level);
+    badge.style.cssText = [
+      "display:inline-block",
+      "width:fit-content",
+      "justify-self:start",
+      "margin:0 0 0 4px",
+      "padding:4px 8px",
+      "border-radius:4px",
+      "background:" + COLORS[LEVELS[kind]],
+      "color:#fff",
+      "font:500 16px/1.2 Arial, Helvetica, \"Helvetica Neue\", sans-serif",
+      "vertical-align:middle",
+      "position:relative",
+      "z-index:2147483646"
+    ].join(";");
+    return badge;
+  }
+
+  function mark(el) {
+    var level = levelOf(el);
+    var kind = classify(el, level);
+    var color = LEVELS[kind];
+    var record = {
+      el: el,
+      outline: el.style.outline,
+      offset: el.style.outlineOffset,
+      badge: makeBadge(kind, level)
+    };
+
+    counts[color] += 1;
+    el.style.outline = OUTLINES[color] + " " + COLORS[color];
+    el.style.outlineOffset = OUTLINE_OFFSET;
+    el.appendChild(record.badge);
+    records.push(record);
+  }
+
+  function makeCountLine(color, word) {
+    var line = d.createElement("p");
+    var dot = d.createElement("span");
+
+    line.style.cssText = "margin:0;padding:0";
+    dot.textContent = "\u25cf";
+    dot.style.cssText = "color:" + DOTS[color] + ";margin-right:6px";
+    line.appendChild(dot);
+    line.appendChild(d.createTextNode(counts[color] + " " + word));
+    return line;
+  }
+
+  function makePanel() {
+    var wrapper = d.createElement("div");
+    var heading = d.createElement("strong");
+    var close = d.createElement("button");
+
+    wrapper.setAttribute("data-a11y-heading-check", "panel");
+    wrapper.setAttribute("role", "status");
+    wrapper.style.cssText = [
+      "position:fixed",
+      "right:16px",
+      "bottom:16px",
+      "max-width:260px",
+      "padding:12px 32px 12px 16px",
+      "border-radius:6px",
+      "background:#1b2430",
+      "color:#e7eaed",
+      "font:400 14px/1.5 Arial, Helvetica, \"Helvetica Neue\", sans-serif",
+      "box-shadow:0 8px 24px rgba(0,0,0,0.35)",
+      "z-index:2147483647"
+    ].join(";");
+
+    heading.textContent = "Heading Hierarchy Validator";
+    heading.style.cssText = "display:block;margin-bottom:4px";
+    wrapper.appendChild(heading);
+
+    wrapper.appendChild(makeCountLine("green", "passed"));
+    wrapper.appendChild(makeCountLine("red", "failed"));
+
+    close.type = "button";
+    close.textContent = "\u00d7";
+    close.setAttribute("aria-label", "Clear the heading order results");
+    close.style.cssText = [
+      "position:absolute",
+      "top:6px",
+      "right:6px",
+      "width:24px",
+      "height:24px",
+      "padding:2px 6px",
+      "border:none",
+      "background:transparent",
+      "color:#e7eaed",
+      "font:16px/1 Arial, Helvetica, \"Helvetica Neue\", sans-serif",
+      "cursor:pointer"
+    ].join(";");
+    close.addEventListener("click", clear);
+    wrapper.appendChild(close);
+
+    return wrapper;
+  }
+
+  function clear() {
+    records.forEach(function (record) {
+      record.el.style.outline = record.outline;
+      record.el.style.outlineOffset = record.offset;
+      if (!normalize(record.el.getAttribute("style"))) {
+        record.el.removeAttribute("style");
+      }
+      if (record.badge.parentNode) {
+        record.badge.parentNode.removeChild(record.badge);
+      }
+    });
+    records = [];
+    if (panel && panel.parentNode) {
+      panel.parentNode.removeChild(panel);
+    }
+    panel = null;
+    delete w[STATE_KEY];
+  }
+
+  Array.prototype.slice
+    .call(d.querySelectorAll(HEADING_SELECTOR))
+    .filter(function (el) {
+      return levelOf(el) !== null;
+    })
+    .forEach(mark);
+
+  panel = makePanel();
+  d.body.appendChild(panel);
+  w[STATE_KEY] = { clear: clear };
 })();
 </pre
           >

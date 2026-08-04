@@ -1,9 +1,3 @@
-/**
- * In-page demo for the Input Label Checker bookmarklet.
- *
- * Mirrors the classification the bookmarklet uses, but scoped to #demo-stage
- * so nothing else on this page gets outlined.
- */
 (function () {
   "use strict";
 
@@ -88,8 +82,6 @@
     return "missing";
   }
 
-  // "input[email]", "select", "textarea": the equivalent of "H2" in the
-  // heading order checker.
   function describe(el) {
     var tag = el.tagName.toLowerCase();
 
@@ -102,11 +94,7 @@
     badge.textContent = label;
     badge.setAttribute("aria-hidden", "true");
     badge.setAttribute("data-a11y-demo-badge", "");
-    // A form control is a replaced element and cannot hold children, so the
-    // badge sits after the control as an inline sibling rather than being
-    // absolutely positioned inside it.
-    // .demo__sample-item and .demo__label are grid containers, so the badge
-    // becomes a grid item and would otherwise stretch to fill the column.
+ 
     badge.style.cssText = [
       "display:inline-block",
       "width:fit-content",
@@ -114,9 +102,9 @@
       "margin-left:8px",
       "background:" + COLORS[kind],
       "color:#fff",
-      "font:600 14px monospace",
-      "padding:1px 5px",
-      "border-radius:3px",
+      "font:500 16px Arial, Helvetica, 'Helvetica Neue', sans-serif;",
+      "padding:4px 8px",
+      "border-radius:4px",
       "vertical-align:middle",
       "pointer-events:none",
       "white-space:nowrap"
@@ -166,8 +154,15 @@
           badge: makeBadge(kind, label)
         };
 
-        el.style.outline = "3px solid " + COLORS[kind];
-        el.style.outlineOffset = "2px";
+        if (kind === "explicit") {
+          el.style.outline = "5px solid " + COLORS.explicit;
+        } else if (kind === "implicit") {
+          el.style.outline = "6px dashed " + COLORS.implicit;
+        } else {
+          el.style.outline = "6px dotted " + COLORS.missing;
+        }
+        
+        el.style.outlineOffset = "3px";
         el.insertAdjacentElement("afterend", record.badge);
         records.push(record);
         addLine(label);

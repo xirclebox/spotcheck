@@ -29,8 +29,15 @@
             : level === "gold"
               ? "#8b6800"
               : "#be412a";
-        el.style.outline = "3px solid " + color;
-        el.style.outlineOffset = "2px";
+        if (color === "#1a7d4f") {
+          el.style.outline = "5px solid " + color;
+        } else if (color === "#8b6800") {
+          el.style.outline = "6px dotted " + color;
+        } else {
+          el.style.outline = "6px dashed " + color;
+        }
+
+        el.style.outlineOffset = "3px";
         if (getComputedStyle(el).position === "static")
           el.style.position = "relative";
         var badge = document.createElement("div");
@@ -39,7 +46,7 @@
         badge.style.cssText =
           "position:absolute;top:0;left:0;transform:translateY(-100%);background:" +
           color +
-          ";color:#fff;font:600 14px monospace;padding:1px 5px;border-radius:3px 3px 0 0;z-index:10;pointer-events:none;white-space:nowrap";
+          ";color:#fff;font:500 16px Arial, Helvetica, 'Helvetica Neue', sans-serif;padding:4px 8px;border-radius:4px;z-index:10;pointer-events:none;white-space:nowrap";
         el.insertBefore(badge, el.firstChild);
         demoRecords.push({ el: el, badge: badge });
         lines.push('<p class="demo__results-line">' + esc(label) + "</p>");
@@ -54,10 +61,22 @@
           var others = kids.filter(function (c) {
             return c.tagName !== "LI";
           });
+          var empties = lis.filter(function (li) {
+            return !li.textContent.trim() && !li.children.length;
+          });
           if (lis.length === 0)
             mark(list, "red", list.tagName.toLowerCase() + ": empty list");
           else if (others.length)
             mark(list, "red", list.tagName.toLowerCase() + ": non-<li> child");
+          else if (empties.length)
+            mark(
+              list,
+              "gold",
+              list.tagName.toLowerCase() +
+                ": " +
+                empties.length +
+                " empty <li>",
+            );
           else
             mark(
               list,
@@ -73,8 +92,6 @@
             mark(li, "red", "li: not inside a list");
         });
       resultsEl.innerHTML = lines.join("");
-      // Run the same logic as the bookmarklet against #demo-stage,
-      // then write a short summary into resultsEl.
     });
   }
 
@@ -88,7 +105,6 @@
           r.badge.parentNode.removeChild(r.badge);
       });
       demoRecords.length = 0;
-      // Undo whatever the run handler applied to #demo-stage.
       if (resultsEl) resultsEl.textContent = "";
     });
   }

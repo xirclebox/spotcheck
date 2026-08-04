@@ -11,6 +11,7 @@
       demoRecords.forEach(function (r) {
         r.el.style.outline = "";
         r.el.style.outlineOffset = "";
+        r.el.style.position = r.position || "";
         if (r.badge && r.badge.parentNode)
           r.badge.parentNode.removeChild(r.badge);
         if (r.noteBadge && r.noteBadge.parentNode)
@@ -27,16 +28,20 @@
         document.body.appendChild(badge);
         var rect = el.getBoundingClientRect(),
           badgeRect = badge.getBoundingClientRect();
-        badge.style.position = "fixed";
+        badge.style.position = "absolute";
+        badge.style.transform = "none";
         badge.style.top =
-          (corner ? rect.top - 12 : rect.top - badgeRect.height) + "px";
-        badge.style.left = (corner ? rect.left - 12 : rect.left) + "px";
+          (corner ? rect.top - 12 : rect.top - badgeRect.height) +
+          window.scrollY +
+          "px";
+        badge.style.left =
+          (corner ? rect.left - 12 : rect.left) + window.scrollX + "px";
       }
       var appliedTabindex = [];
       Array.prototype.forEach.call(
-        stage.querySelectorAll("[data-demo-tabindex]"),
+        stage.querySelectorAll("[tabindex]"),
         function (el) {
-          el.setAttribute("tabindex", el.getAttribute("data-demo-tabindex"));
+          el.setAttribute("tabindex", el.getAttribute("tabindex"));
           appliedTabindex.push(el);
         },
       );
@@ -75,8 +80,15 @@
         var color = level === "green" ? "#1a7d4f" : "#be412a";
         var baseText =
           el.textContent.trim() || el.placeholder || el.tagName.toLowerCase();
-        el.style.outline = "3px solid " + color;
-        el.style.outlineOffset = "2px";
+        var priorPosition = el.style.position;
+        if (color === "#1a7d4f") {
+          el.style.outline = "5px solid " + color;
+        } else {
+          el.style.outline = "6px dashed " + color;
+        }
+        el.style.outlineOffset = "3px";
+        if (getComputedStyle(el).position === "static")
+          el.style.position = "relative";
 
         var badge = document.createElement("span");
         badge.textContent = i + 1;
@@ -84,7 +96,7 @@
         badge.style.cssText =
           "position:absolute;top:-12px;left:-12px;background:" +
           color +
-          ";color:#fff;font:700 14px monospace;min-width:22px;height:22px;line-height:22px;text-align:center;border-radius:50%;pointer-events:none;z-index:10";
+          ";color:#fff;font:500 16px Arial, Helvetica, 'Helvetica Neue', sans-serif;min-width:22px;height:22px;line-height:22px;text-align:center;border-radius:50%;pointer-events:none;z-index:11";
         attachBadge(el, badge, true);
         var noteBadge = null;
 
@@ -94,9 +106,9 @@
             "tabindex=" + el.tabIndex + ", positive tabindex";
           noteBadge.setAttribute("aria-hidden", "true");
           noteBadge.style.cssText =
-            "position:absolute;top:0;left:0;transform:translateY(0%);background:" +
+            "position:absolute;top:0;left:0;transform:translateY(-100%);background:" +
             color +
-            ";color:#fff;font:600 14px monospace;padding:1px 5px;border-radius:3px 3px 0 0;z-index:10;pointer-events:none;white-space:nowrap";
+            ";color:#fff;font:500 16px Arial, Helvetica, 'Helvetica Neue', sans-serif;padding:4px 8px;border-radius:3px 3px 0 0;z-index:10;pointer-events:none;white-space:nowrap";
           if (REPLACED[el.tagName]) {
             attachBadge(el, noteBadge, false);
           } else {
@@ -107,6 +119,7 @@
           el: el,
           badge: badge,
           noteBadge: noteBadge,
+          position: priorPosition,
           appliedTabindex: appliedTabindex.indexOf(el) !== -1,
         });
         var itemLabel =
@@ -129,11 +142,11 @@
       demoRecords.forEach(function (r) {
         r.el.style.outline = "";
         r.el.style.outlineOffset = "";
+        r.el.style.position = r.position || "";
         if (r.badge && r.badge.parentNode)
           r.badge.parentNode.removeChild(r.badge);
         if (r.noteBadge && r.noteBadge.parentNode)
           r.noteBadge.parentNode.removeChild(r.noteBadge);
-        if (r.appliedTabindex) r.el.removeAttribute("tabindex");
       });
       demoRecords.length = 0;
       if (resultsEl) resultsEl.textContent = "";

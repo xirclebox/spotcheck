@@ -77,7 +77,7 @@
       </div>
       <div class="wrap">
         <a href="index.html" class="bookmarklet-back__link">All bookmarklets</a>
-        <h1 class="site-header__title">Text Contrast Checker</h1>
+        <h1 class="site-header__title">Text Contrast Checker <div class="version">v.1.1</div></h1>
         <p class="site-header__lede">
           Run this on any page to check the contrast ratio of every block of
           text against its effective background color, and flag anything that
@@ -97,7 +97,7 @@
           <div class="bookmarklet-row">
             <a
               class="bookmarklet"
-              href="javascript:!function()%7Bvar%20e%3D%22__a11yContrastChecker%22%3Bif(window%5Be%5D%26%26window%5Be%5D.active)window%5Be%5D.teardown()%3Belse%7Bvar%20t%3DArray.prototype.filter.call(document.querySelectorAll(%22body%20*%22)%2Cfunction(e)%7Bif(!e.childNodes.length)return!1%3Bif(!Array.prototype.some.call(e.childNodes%2Cfunction(e)%7Breturn%203%3D%3D%3De.nodeType%26%26e.textContent.trim().length%3E0%7D))return!1%3Bvar%20t%3De.getBoundingClientRect()%3Breturn%20t.width%3E0%26%26t.height%3E0%7D)%2Cn%3D%5B%5D%2Co%3D%7Bgreen%3A0%2Cgold%3A0%2Cred%3A0%7D%3Bt.forEach(function(e)%7Bvar%20t%3DgetComputedStyle(e)%2Cn%3Da(t.color)%3Bif(n)%7Bvar%20o%2Cr%2Ci%2Cp%3Dfunction(e)%7Bfor(var%20t%3De%3Bt%3B)%7Bvar%20n%3Da(getComputedStyle(t).backgroundColor)%3Bif(n%26%26n.a%3E0)return%20n%3Bt%3Dt.parentElement%7Dreturn%7Br%3A255%2Cg%3A255%2Cb%3A255%2Ca%3A1%7D%7D(e)%2Cd%3D(o%3Dp%2Cr%3Ds(n)%2B.05%2Ci%3Ds(o)%2B.05%2Cr%3Ei%3Fr%2Fi%3Ai%2Fr)%2Cu%3Dfunction(e)%7Bvar%20t%3DparseFloat(e.fontSize)%2Cn%3DparseInt(e.fontWeight%2C10)%7C%7C400%3Breturn%20t%3E%3D24%7C%7Ct%3E%3D18.66%26%26n%3E%3D700%7D(t)%2Cc%3Du%3F3%3A4.5%2Cf%3Du%3F4.5%3A7%2Cb%3Dd.toFixed(2)%2B%22%3A1%22%3Bd%3Cc%3Fl(e%2C%22red%22%2Cb%2B%22%2C%20fails%20AA%22)%3Ad%3Cf%3Fl(e%2C%22gold%22%2Cb%2B%22%2C%20passes%20AA%2C%20not%20AAA%22)%3Al(e%2C%22green%22%2Cb%2B%22%2C%20passes%20AAA%22)%7D%7D)%3Bvar%20r%3Ddocument.createElement(%22div%22)%3Br.setAttribute(%22data-a11y-bm-panel%22%2C%22contrast%22)%2Cr.setAttribute(%22role%22%2C%22status%22)%2Cr.setAttribute(%22aria-live%22%2C%22polite%22)%2Cr.style.cssText%3D%5B%22position%3Afixed%22%2C%22bottom%3A16px%22%2C%22right%3A16px%22%2C%22z-index%3A2147483001%22%2C%22background%3A%231b2430%22%2C%22color%3A%23e7eaed%22%2C%22font%3A13px%2F1.5%20-apple-system%2Csans-serif%22%2C%22padding%3A12px%2032px%2012px%2016px%22%2C%22border-radius%3A6px%22%2C%22box-shadow%3A0%204px%2016px%20rgba(0%2C0%2C0%2C.3)%22%2C%22max-width%3A260px%22%5D.join(%22%3B%22)%2Cr.innerHTML%3D'%3Cstrong%20style%3D%22display%3Ablock%3Bmargin-bottom%3A4px%3B%22%3EText%20Contrast%20Checker%3C%2Fstrong%3E%3Cspan%20style%3D%22color%3A%233fbf7f%3B%22%3E%26%239679%3B%3C%2Fspan%3E%20'%2Bo.green%2B'%20AAA%20%26nbsp%3B%20%3Cspan%20style%3D%22color%3A%23e0b03f%3B%22%3E%26%239679%3B%3C%2Fspan%3E%20'%2Bo.gold%2B'%20AA%20only%20%26nbsp%3B%20%3Cspan%20style%3D%22color%3A%23e06a4f%3B%22%3E%26%239679%3B%3C%2Fspan%3E%20'%2Bo.red%2B%22%20fail%22%3Bvar%20i%3Ddocument.createElement(%22button%22)%3Bi.type%3D%22button%22%2Ci.textContent%3D%22%C3%97%22%2Ci.setAttribute(%22aria-label%22%2C%22Close%22)%2Ci.style.cssText%3D%5B%22position%3Aabsolute%22%2C%22top%3A4px%22%2C%22right%3A6px%22%2C%22background%3Atransparent%22%2C%22border%3Anone%22%2C%22color%3A%23e7eaed%22%2C%22font%3A16px%2F1%20-apple-system%2Csans-serif%22%2C%22cursor%3Apointer%22%2C%22padding%3A2px%206px%22%2C%22border-radius%3A4px%22%2C%22line-height%3A1%22%5D.join(%22%3B%22)%2Ci.addEventListener(%22click%22%2Cfunction()%7Bwindow%5Be%5D.teardown()%7D)%2Cr.appendChild(i)%2Cdocument.body.appendChild(r)%2Cwindow%5Be%5D%3D%7Bactive%3A!0%2Cteardown%3Afunction()%7Bn.forEach(function(e)%7Be.el.style.outline%3De.outline%2Ce.el.style.outlineOffset%3De.outlineOffset%2Ce.el.style.position%3De.position%2Ce.badge%26%26e.badge.parentNode%26%26e.badge.parentNode.removeChild(e.badge)%7D)%2Cr.parentNode%26%26r.parentNode.removeChild(r)%2Cwindow%5Be%5D.active%3D!1%7D%7D%7Dfunction%20a(e)%7Bvar%20t%3De.match(%2Frgba%3F%5C((%5B%5E)%5D%2B)%5C)%2F)%3Bif(!t)return%20null%3Bvar%20n%3Dt%5B1%5D.split(%22%2C%22).map(function(e)%7Breturn%20parseFloat(e)%7D)%3Breturn%7Br%3An%5B0%5D%2Cg%3An%5B1%5D%2Cb%3An%5B2%5D%2Ca%3An.length%3E3%3Fn%5B3%5D%3A1%7D%7Dfunction%20s(e)%7Bfunction%20t(e)%7Breturn(e%2F%3D255)%3C%3D.03928%3Fe%2F12.92%3AMath.pow((e%2B.055)%2F1.055%2C2.4)%7Dreturn.2126*t(e.r)%2B.7152*t(e.g)%2B.0722*t(e.b)%7Dfunction%20l(e%2Ct%2Cr)%7Bn.push(%7Bel%3Ae%2Coutline%3Ae.style.outline%2CoutlineOffset%3Ae.style.outlineOffset%2Cposition%3Ae.style.position%2Cbadge%3Anull%7D)%3Bvar%20i%3D%22green%22%3D%3D%3Dt%3F%22%231a7d4f%22%3A%22gold%22%3D%3D%3Dt%3F%22%238b6800%22%3A%22%23be412a%22%3Be.style.outline%3D%223px%20solid%20%22%2Bi%2Ce.style.outlineOffset%3D%221px%22%2C%22static%22%3D%3D%3DgetComputedStyle(e).position%26%26(e.style.position%3D%22relative%22)%3Bvar%20a%3Ddocument.createElement(%22span%22)%3Ba.textContent%3Dr%2Ca.setAttribute(%22aria-hidden%22%2C%22true%22)%2Ca.style.cssText%3D%5B%22position%3Aabsolute%22%2C%22top%3A0%22%2C%22left%3A0%22%2C%22transform%3AtranslateY(-100%25)%22%2C%22background%3A%22%2Bi%2C%22color%3A%23fff%22%2C%22font%3A600%2014px%20monospace%22%2C%22padding%3A1px%204px%22%2C%22border-radius%3A3px%203px%200%200%22%2C%22z-index%3A2147483000%22%2C%22pointer-events%3Anone%22%2C%22white-space%3Anowrap%22%5D.join(%22%3B%22)%2Ce.insertBefore(a%2Ce.firstChild)%2Cn%5Bn.length-1%5D.badge%3Da%2Co%5Bt%5D%2B%2B%7D%7D()%3B"
+              href="javascript:!function()%7Bvar%20e%3Dwindow%2Ct%3Ddocument%2Cn%3D%22__a11yContrastChecker%22%3Bif(e%5Bn%5D)e%5Bn%5D.clear()%3Belse%7Bvar%20a%2Cr%2Co%2Ci%3D%7Bgreen%3A%22%231a7d4f%22%2Cgold%3A%22%238b6800%22%2Cred%3A%22%23be412a%22%7D%2Cl%3D%7Bgreen%3A%225px%20solid%22%2Cgold%3A%226px%20dotted%22%2Cred%3A%225px%20dashed%22%7D%2Cs%3D%7Bgreen%3A%22%233fbf7f%22%2Cgold%3A%22%23e0b84f%22%2Cred%3A%22%23e06a4f%22%7D%2Cd%3D%7Baaa%3A%22green%22%2Caa%3A%22gold%22%2Cfail%3A%22red%22%7D%2Cp%3D%7Baaa%3A%22passes%20AAA%22%2Caa%3A%22passes%20AA%2C%20not%20AAA%22%2Cfail%3A%22fails%20AA%22%7D%2Cu%3D%7Blarge%3A%7Baa%3A3%2Caaa%3A4.5%7D%2Cnormal%3A%7Baa%3A4.5%2Caaa%3A7%7D%7D%2Cc%3D%2Frgba%3F%5C((%5B%5E)%5D%2B)%5C)%2F%2Cf%3D%2F%5B%5Cs%2C%5C%2F%5D%2B%2F%2Cg%3D%7Br%3A255%2Cg%3A255%2Cb%3A255%2Ca%3A1%7D%2Cx%3D%5B%5D%2Cb%3D%7Bgreen%3A0%2Cgold%3A0%2Cred%3A0%7D%2Ch%3Dnull%3BArray.prototype.slice.call(t.querySelectorAll(%22body%20*%22)).filter(function(e)%7Breturn%20function(e)%7Breturn%20Array.prototype.some.call(e.childNodes%2Cfunction(e)%7Breturn%203%3D%3D%3De.nodeType%26%26y(e.textContent)%7D)%7D(e)%26%26function(e)%7Bvar%20t%3De.getBoundingClientRect()%3Breturn%20t.width%3E0%26%26t.height%3E0%7D(e)%7D).forEach(function(e)%7Bvar%20t%3DgetComputedStyle(e)%2Cn%3Dm(t.color)%3Bif(n)%7Bvar%20a%2Cr%2Co%2Cs%2Cp%3D(a%3Dn%2Cr%3Dfunction(e)%7Bfor(var%20t%3De%3Bt%3B)%7Bvar%20n%3Dm(getComputedStyle(t).backgroundColor)%3Bif(n%26%26n.a%3E0)return%20n%3Bt%3Dt.parentElement%7Dreturn%20g%7D(e)%2Co%3DC(a)%2B.05%2Cs%3DC(r)%2B.05%2Co%3Es%3Fo%2Fs%3As%2Fo)%2Cc%3Dfunction(e%2Ct)%7Bvar%20n%3Dt%3Fu.large%3Au.normal%3Breturn%20e%3Cn.aa%3F%22fail%22%3Ae%3Cn.aaa%3F%22aa%22%3A%22aaa%22%7D(p%2Cfunction(e)%7Bvar%20t%3DparseFloat(e.fontSize)%2Cn%3DparseInt(e.fontWeight%2C10)%7C%7C400%3Breturn%20t%3E%3D24%7C%7Ct%3E%3D18.66%26%26n%3E%3D700%7D(t))%3B!function(e%2Ct%2Cn)%7Bvar%20a%3Dd%5Bt%5D%2Cr%3D%7Bel%3Ae%2Coutline%3Ae.style.outline%2Coffset%3Ae.style.outlineOffset%2Cposition%3Ae.style.position%2Cbadge%3Aw(t%2Cn)%7D%3Bb%5Ba%5D%2B%3D1%2Ce.style.outline%3Dl%5Ba%5D%2B%22%20%22%2Bi%5Ba%5D%2Ce.style.outlineOffset%3D%223px%22%2C%22static%22%3D%3D%3DgetComputedStyle(e).position%26%26(e.style.position%3D%22relative%22)%2Ce.insertBefore(r.badge%2Ce.firstChild)%2Cx.push(r)%7D(e%2Cc%2Cp)%7D%7D)%2Ca%3Dt.createElement(%22div%22)%2Cr%3Dt.createElement(%22strong%22)%2Co%3Dt.createElement(%22button%22)%2Ca.setAttribute(%22data-a11y-contrast-check%22%2C%22panel%22)%2Ca.setAttribute(%22role%22%2C%22status%22)%2Ca.style.cssText%3D%5B%22position%3Afixed%22%2C%22right%3A16px%22%2C%22bottom%3A16px%22%2C%22max-width%3A300px%22%2C%22padding%3A12px%2032px%2012px%2016px%22%2C%22border-radius%3A6px%22%2C%22background%3A%231b2430%22%2C%22color%3A%23e7eaed%22%2C%22font%3A400%2014px%2F1.5%20Arial%2C%20Helvetica%2C%20%5C%22Helvetica%20Neue%5C%22%2C%20sans-serif%22%2C%22box-shadow%3A0%208px%2024px%20rgba(0%2C0%2C0%2C0.35)%22%2C%22z-index%3A2147483647%22%5D.join(%22%3B%22)%2Cr.textContent%3D%22Text%20Contrast%20Checker%22%2Cr.style.cssText%3D%22display%3Ablock%3Bmargin-bottom%3A4px%22%2Ca.appendChild(r)%2Ca.appendChild(N(%22green%22%2C%22AAA%22))%2Ca.appendChild(N(%22gold%22%2C%22AA%20only%22))%2Ca.appendChild(N(%22red%22%2C%22fail%22))%2Co.type%3D%22button%22%2Co.textContent%3D%22%C3%97%22%2Co.setAttribute(%22aria-label%22%2C%22Clear%20the%20contrast%20results%22)%2Co.style.cssText%3D%5B%22position%3Aabsolute%22%2C%22top%3A6px%22%2C%22right%3A6px%22%2C%22width%3A24px%22%2C%22height%3A24px%22%2C%22padding%3A2px%206px%22%2C%22border%3Anone%22%2C%22background%3Atransparent%22%2C%22color%3A%23e7eaed%22%2C%22font%3A16px%2F1%20Arial%2C%20Helvetica%2C%20%5C%22Helvetica%20Neue%5C%22%2C%20sans-serif%22%2C%22cursor%3Apointer%22%5D.join(%22%3B%22)%2Co.addEventListener(%22click%22%2Ck)%2Ca.appendChild(o)%2Ch%3Da%2Ct.body.appendChild(h)%2Ce%5Bn%5D%3D%7Bclear%3Ak%7D%7Dfunction%20y(e)%7Breturn(e%7C%7C%22%22).replace(%2F%5Cs%2B%2Fg%2C%22%20%22).trim()%7Dfunction%20v(e)%7Bvar%20t%3DparseFloat(e)%3Breturn%20isNaN(t)%3F1%3A-1%3D%3D%3De.indexOf(%22%25%22)%3Ft%3At%2F100%7Dfunction%20m(e)%7Bvar%20t%3DString(e).match(c)%3Bif(!t)return%20null%3Bvar%20n%3Dt%5B1%5D.split(f).filter(function(e)%7Breturn%20e.length%3E0%7D)%3Breturn%20n.length%3C3%3Fnull%3A%7Br%3AparseFloat(n%5B0%5D)%2Cg%3AparseFloat(n%5B1%5D)%2Cb%3AparseFloat(n%5B2%5D)%2Ca%3An.length%3E3%3Fv(n%5B3%5D)%3A1%7D%7Dfunction%20A(e)%7Bvar%20t%3De%2F255%3Breturn%20t%3C%3D.03928%3Ft%2F12.92%3AMath.pow((t%2B.055)%2F1.055%2C2.4)%7Dfunction%20C(e)%7Breturn.2126*A(e.r)%2B.7152*A(e.g)%2B.0722*A(e.b)%7Dfunction%20w(e%2Cn)%7Bvar%20a%3Dt.createElement(%22span%22)%3Breturn%20a.setAttribute(%22data-a11y-contrast-check%22%2C%22badge%22)%2Ca.setAttribute(%22aria-hidden%22%2C%22true%22)%2Ca.textContent%3Dfunction(e%2Ct)%7Breturn%20t.toFixed(2)%2B%22%3A1%2C%20%22%2Bp%5Be%5D%7D(e%2Cn)%2Ca.style.cssText%3D%5B%22position%3Aabsolute%22%2C%22top%3A0%22%2C%22left%3A0%22%2C%22transform%3AtranslateY(-100%25)%22%2C%22max-width%3Amin(90vw%2C%2024rem)%22%2C%22padding%3A4px%208px%22%2C%22border-radius%3A4px%22%2C%22background%3A%22%2Bi%5Bd%5Be%5D%5D%2C%22color%3A%23fff%22%2C%22font%3A500%2016px%2F1.2%20Arial%2C%20Helvetica%2C%20%5C%22Helvetica%20Neue%5C%22%2C%20sans-serif%22%2C%22pointer-events%3Anone%22%2C%22white-space%3Anowrap%22%2C%22z-index%3A2147483646%22%5D.join(%22%3B%22)%2Ca%7Dfunction%20N(e%2Cn)%7Bvar%20a%3Dt.createElement(%22p%22)%2Cr%3Dt.createElement(%22span%22)%3Breturn%20a.style.cssText%3D%22margin%3A0%3Bpadding%3A0%22%2Cr.textContent%3D%22%E2%97%8F%22%2Cr.style.cssText%3D%22color%3A%22%2Bs%5Be%5D%2B%22%3Bmargin-right%3A6px%22%2Ca.appendChild(r)%2Ca.appendChild(t.createTextNode(b%5Be%5D%2B%22%20%22%2Bn))%2Ca%7Dfunction%20k()%7Bx.forEach(function(e)%7Be.el.style.outline%3De.outline%2Ce.el.style.outlineOffset%3De.offset%2Ce.el.style.position%3De.position%2Cy(e.el.getAttribute(%22style%22))%7C%7Ce.el.removeAttribute(%22style%22)%2Ce.badge.parentNode%26%26e.badge.parentNode.removeChild(e.badge)%7D)%2Cx%3D%5B%5D%2Ch%26%26h.parentNode%26%26h.parentNode.removeChild(h)%2Ch%3Dnull%2Cdelete%20e%5Bn%5D%7D%7D()%3B"
               onclick="return false;"
               data-bookmarklet="text-contrast-checker"
               >SpotCheck - Contrast Checker</a
@@ -270,149 +270,309 @@
           </div>
           <pre class="source__code" id="source-code" tabindex="0">
 (function () {
-  var NS = '__a11yContrastChecker';
-  if (window[NS] &amp;&amp; window[NS].active) {
-    window[NS].teardown();
+  var w = window;
+  var d = document;
+  var STATE_KEY = "__a11yContrastChecker";
+
+  if (w[STATE_KEY]) {
+    w[STATE_KEY].clear();
     return;
   }
 
-  function parseColor(str) {
-    var m = str.match(/rgba?\(([^)]+)\)/);
-    if (!m) return null;
-    var parts = m[1].split(',').map(function (s) { return parseFloat(s); });
-    return { r: parts[0], g: parts[1], b: parts[2], a: parts.length &gt; 3 ? parts[3] : 1 };
+  var COLORS = {
+    green: "#1a7d4f",
+    gold: "#8b6800",
+    red: "#be412a"
+  };
+
+  var OUTLINES = {
+    green: "5px solid",
+    gold: "6px dotted",
+    red: "5px dashed"
+  };
+
+  var OUTLINE_OFFSET = "3px";
+
+  var DOTS = {
+    green: "#3fbf7f",
+    gold: "#e0b84f",
+    red: "#e06a4f"
+  };
+
+  var LEVELS = {
+    aaa: "green",
+    aa: "gold",
+    fail: "red"
+  };
+
+  var BADGES = {
+    aaa: "passes AAA",
+    aa: "passes AA, not AAA",
+    fail: "fails AA"
+  };
+
+  var THRESHOLDS = {
+    large: { aa: 3, aaa: 4.5 },
+    normal: { aa: 4.5, aaa: 7 }
+  };
+
+  var LARGE_TEXT_SIZE = 24;
+  var LARGE_BOLD_SIZE = 18.66;
+  var BOLD_WEIGHT = 700;
+  var DEFAULT_WEIGHT = 400;
+  var RATIO_DECIMALS = 2;
+  var TEXT_NODE = 3;
+  var TEXT_SELECTOR = "body *";
+  var COLOR_PATTERN = /rgba?\(([^)]+)\)/;
+  var COLOR_SEPARATOR = /[\s,\/]+/;
+  var WHITE = { r: 255, g: 255, b: 255, a: 1 };
+
+  var records = [];
+  var counts = { green: 0, gold: 0, red: 0 };
+  var panel = null;
+
+  function normalize(value) {
+    return (value || "").replace(/\s+/g, " ").trim();
   }
 
-  function relLuminance(c) {
-    function chan(v) {
-      v = v / 255;
-      return v &lt;= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+  function toAlpha(part) {
+    var value = parseFloat(part);
+    if (isNaN(value)) {
+      return 1;
     }
-    return 0.2126 * chan(c.r) + 0.7152 * chan(c.g) + 0.0722 * chan(c.b);
+    return part.indexOf("%") === -1 ? value : value / 100;
   }
 
-  function contrastRatio(c1, c2) {
-    var l1 = relLuminance(c1) + 0.05;
-    var l2 = relLuminance(c2) + 0.05;
-    return l1 &gt; l2 ? l1 / l2 : l2 / l1;
+  function parseColor(value) {
+    var match = String(value).match(COLOR_PATTERN);
+    if (!match) {
+      return null;
+    }
+    var parts = match[1].split(COLOR_SEPARATOR).filter(function (part) {
+      return part.length > 0;
+    });
+    if (parts.length < 3) {
+      return null;
+    }
+    return {
+      r: parseFloat(parts[0]),
+      g: parseFloat(parts[1]),
+      b: parseFloat(parts[2]),
+      a: parts.length > 3 ? toAlpha(parts[3]) : 1
+    };
   }
 
-  function getEffectiveBackground(el) {
+  function channelLuminance(value) {
+    var channel = value / 255;
+    return channel <= 0.03928
+      ? channel / 12.92
+      : Math.pow((channel + 0.055) / 1.055, 2.4);
+  }
+
+  function relativeLuminance(color) {
+    return (
+      0.2126 * channelLuminance(color.r) +
+      0.7152 * channelLuminance(color.g) +
+      0.0722 * channelLuminance(color.b)
+    );
+  }
+
+  function contrastRatio(first, second) {
+    var a = relativeLuminance(first) + 0.05;
+    var b = relativeLuminance(second) + 0.05;
+    return a > b ? a / b : b / a;
+  }
+
+  function backgroundOf(el) {
     var node = el;
     while (node) {
-      var style = getComputedStyle(node);
-      var bg = parseColor(style.backgroundColor);
-      if (bg &amp;&amp; bg.a &gt; 0) return bg;
+      var background = parseColor(getComputedStyle(node).backgroundColor);
+      if (background && background.a > 0) {
+        return background;
+      }
       node = node.parentElement;
     }
-    return { r: 255, g: 255, b: 255, a: 1 };
+    return WHITE;
   }
 
   function isLargeText(style) {
     var size = parseFloat(style.fontSize);
-    var weight = parseInt(style.fontWeight, 10) || 400;
-    return size &gt;= 24 || (size &gt;= 18.66 &amp;&amp; weight &gt;= 700);
+    var weight = parseInt(style.fontWeight, 10) || DEFAULT_WEIGHT;
+    return size >= LARGE_TEXT_SIZE || (size >= LARGE_BOLD_SIZE && weight >= BOLD_WEIGHT);
   }
 
-  var textEls = Array.prototype.filter.call(document.querySelectorAll('body *'), function (el) {
-    if (!el.childNodes.length) return false;
-    var hasOwnText = Array.prototype.some.call(el.childNodes, function (n) {
-      return n.nodeType === 3 &amp;&amp; n.textContent.trim().length &gt; 0;
+  function hasOwnText(el) {
+    return Array.prototype.some.call(el.childNodes, function (node) {
+      return node.nodeType === TEXT_NODE && normalize(node.textContent);
     });
-    if (!hasOwnText) return false;
+  }
+
+  function isRendered(el) {
     var rect = el.getBoundingClientRect();
-    return rect.width &gt; 0 &amp;&amp; rect.height &gt; 0;
-  });
+    return rect.width > 0 && rect.height > 0;
+  }
 
-  var records = [];
-  var counts = { green: 0, gold: 0, red: 0 };
+  function classify(ratio, large) {
+    var limits = large ? THRESHOLDS.large : THRESHOLDS.normal;
+    if (ratio < limits.aa) {
+      return "fail";
+    }
+    if (ratio < limits.aaa) {
+      return "aa";
+    }
+    return "aaa";
+  }
 
-  function mark(el, level, label) {
-    records.push({ el: el, outline: el.style.outline, outlineOffset: el.style.outlineOffset, position: el.style.position, badge: null });
-    var color = level === 'green' ? '#1a7d4f' : level === 'gold' ? '#8b6800' : '#be412a';
-    el.style.outline = '3px solid ' + color;
-    el.style.outlineOffset = '1px';
-    if (getComputedStyle(el).position === 'static') el.style.position = 'relative';
-    var badge = document.createElement('span');
-    badge.textContent = label;
-    badge.setAttribute('aria-hidden', 'true');
+  function labelFor(kind, ratio) {
+    return ratio.toFixed(RATIO_DECIMALS) + ":1, " + BADGES[kind];
+  }
+
+  function makeBadge(kind, ratio) {
+    var badge = d.createElement("span");
+
+    badge.setAttribute("data-a11y-contrast-check", "badge");
+    badge.setAttribute("aria-hidden", "true");
+    badge.textContent = labelFor(kind, ratio);
     badge.style.cssText = [
-      'position:absolute', 'top:0', 'left:0', 'transform:translateY(-100%)',
-      'background:' + color, 'color:#fff', 'font:600 14px monospace',
-      'padding:1px 4px', 'border-radius:3px 3px 0 0', 'z-index:2147483000',
-      'pointer-events:none', 'white-space:nowrap'
-    ].join(';');
-    el.insertBefore(badge, el.firstChild);
-    records[records.length - 1].badge = badge;
-    counts[level]++;
+      "position:absolute",
+      "top:0",
+      "left:0",
+      "transform:translateY(-100%)",
+      "max-width:min(90vw, 24rem)",
+      "padding:4px 8px",
+      "border-radius:4px",
+      "background:" + COLORS[LEVELS[kind]],
+      "color:#fff",
+      "font:500 16px/1.2 Arial, Helvetica, \"Helvetica Neue\", sans-serif",
+      "pointer-events:none",
+      "white-space:nowrap",
+      "z-index:2147483646"
+    ].join(";");
+    return badge;
   }
 
-  textEls.forEach(function (el) {
-    var style = getComputedStyle(el);
-    var fg = parseColor(style.color);
-    if (!fg) return;
-    var bg = getEffectiveBackground(el);
-    var ratio = contrastRatio(fg, bg);
-    var large = isLargeText(style);
-    var aaMin = large ? 3 : 4.5;
-    var aaaMin = large ? 4.5 : 7;
-    var label = ratio.toFixed(2) + ':1';
+  function mark(el, kind, ratio) {
+    var color = LEVELS[kind];
+    var record = {
+      el: el,
+      outline: el.style.outline,
+      offset: el.style.outlineOffset,
+      position: el.style.position,
+      badge: makeBadge(kind, ratio)
+    };
 
-    if (ratio &lt; aaMin) {
-      mark(el, 'red', label + ', fails AA');
-    } else if (ratio &lt; aaaMin) {
-      mark(el, 'gold', label + ', passes AA, not AAA');
-    } else {
-      mark(el, 'green', label + ', passes AAA');
+    counts[color] += 1;
+    el.style.outline = OUTLINES[color] + " " + COLORS[color];
+    el.style.outlineOffset = OUTLINE_OFFSET;
+    if (getComputedStyle(el).position === "static") {
+      el.style.position = "relative";
     }
-  });
+    el.insertBefore(record.badge, el.firstChild);
+    records.push(record);
+  }
 
-  var panel = document.createElement('div');
-  panel.setAttribute('data-a11y-bm-panel', 'contrast');
-  panel.setAttribute('role', 'status');
-  panel.setAttribute('aria-live', 'polite');
-  panel.style.cssText = [
-    'position:fixed', 'bottom:16px', 'right:16px', 'z-index:2147483001',
-    'background:#1b2430', 'color:#e7eaed', 'font:13px/1.5 -apple-system,sans-serif',
-    'padding:12px 32px 12px 16px', 'border-radius:6px', 'box-shadow:0 4px 16px rgba(0,0,0,.3)',
-    'max-width:260px'
-  ].join(';');
-  panel.innerHTML =
-    '&lt;strong style="display:block;margin-bottom:4px;"&gt;Text Contrast Checker&lt;/strong&gt;' +
-    '&lt;span style="color:#3fbf7f;"&gt;&amp;#9679;&lt;/span&gt; ' + counts.green + ' AAA &amp;nbsp; ' +
-    '&lt;span style="color:#e0b03f;"&gt;&amp;#9679;&lt;/span&gt; ' + counts.gold + ' AA only &amp;nbsp; ' +
-    '&lt;span style="color:#e06a4f;"&gt;&amp;#9679;&lt;/span&gt; ' + counts.red + ' fail';
-  var closeBtn = document.createElement('button');
-  closeBtn.type = 'button';
-  closeBtn.textContent = '\u00d7';
-  closeBtn.setAttribute('aria-label', 'Close');
-  closeBtn.style.cssText = [
-    'position:absolute', 'top:4px', 'right:6px',
-    'background:transparent', 'border:none', 'color:#e7eaed',
-    'font:16px/1 -apple-system,sans-serif', 'cursor:pointer',
-    'padding:2px 6px', 'border-radius:4px', 'line-height:1'
-  ].join(';');
-  closeBtn.addEventListener('click', function () { window[NS].teardown(); });
-  panel.appendChild(closeBtn);
-  document.body.appendChild(panel);
+  function makeCountLine(color, word) {
+    var line = d.createElement("p");
+    var dot = d.createElement("span");
 
-  function teardown() {
-    records.forEach(function (r) {
-      r.el.style.outline = r.outline;
-      r.el.style.outlineOffset = r.outlineOffset;
-      r.el.style.position = r.position;
-      if (r.badge &amp;&amp; r.badge.parentNode) r.badge.parentNode.removeChild(r.badge);
+    line.style.cssText = "margin:0;padding:0";
+    dot.textContent = "\u25cf";
+    dot.style.cssText = "color:" + DOTS[color] + ";margin-right:6px";
+    line.appendChild(dot);
+    line.appendChild(d.createTextNode(counts[color] + " " + word));
+    return line;
+  }
+
+  function makePanel() {
+    var wrapper = d.createElement("div");
+    var heading = d.createElement("strong");
+    var close = d.createElement("button");
+
+    wrapper.setAttribute("data-a11y-contrast-check", "panel");
+    wrapper.setAttribute("role", "status");
+    wrapper.style.cssText = [
+      "position:fixed",
+      "right:16px",
+      "bottom:16px",
+      "max-width:300px",
+      "padding:12px 32px 12px 16px",
+      "border-radius:6px",
+      "background:#1b2430",
+      "color:#e7eaed",
+      "font:400 14px/1.5 Arial, Helvetica, \"Helvetica Neue\", sans-serif",
+      "box-shadow:0 8px 24px rgba(0,0,0,0.35)",
+      "z-index:2147483647"
+    ].join(";");
+
+    heading.textContent = "Text Contrast Checker";
+    heading.style.cssText = "display:block;margin-bottom:4px";
+    wrapper.appendChild(heading);
+
+    wrapper.appendChild(makeCountLine("green", "AAA"));
+    wrapper.appendChild(makeCountLine("gold", "AA only"));
+    wrapper.appendChild(makeCountLine("red", "fail"));
+
+    close.type = "button";
+    close.textContent = "\u00d7";
+    close.setAttribute("aria-label", "Clear the contrast results");
+    close.style.cssText = [
+      "position:absolute",
+      "top:6px",
+      "right:6px",
+      "width:24px",
+      "height:24px",
+      "padding:2px 6px",
+      "border:none",
+      "background:transparent",
+      "color:#e7eaed",
+      "font:16px/1 Arial, Helvetica, \"Helvetica Neue\", sans-serif",
+      "cursor:pointer"
+    ].join(";");
+    close.addEventListener("click", clear);
+    wrapper.appendChild(close);
+
+    return wrapper;
+  }
+
+  function clear() {
+    records.forEach(function (record) {
+      record.el.style.outline = record.outline;
+      record.el.style.outlineOffset = record.offset;
+      record.el.style.position = record.position;
+      if (!normalize(record.el.getAttribute("style"))) {
+        record.el.removeAttribute("style");
+      }
+      if (record.badge.parentNode) {
+        record.badge.parentNode.removeChild(record.badge);
+      }
     });
-    if (panel.parentNode) panel.parentNode.removeChild(panel);
+    records = [];
+    if (panel && panel.parentNode) {
+      panel.parentNode.removeChild(panel);
+    }
+    panel = null;
+    delete w[STATE_KEY];
   }
 
-  window[NS] = {
-    active: true,
-    teardown: function () {
-      teardown();
-      window[NS].active = false;
-    }
-  };
+  Array.prototype.slice
+    .call(d.querySelectorAll(TEXT_SELECTOR))
+    .filter(function (el) {
+      return hasOwnText(el) && isRendered(el);
+    })
+    .forEach(function (el) {
+      var style = getComputedStyle(el);
+      var foreground = parseColor(style.color);
+      if (!foreground) {
+        return;
+      }
+      var ratio = contrastRatio(foreground, backgroundOf(el));
+      var kind = classify(ratio, isLargeText(style));
+      mark(el, kind, ratio);
+    });
+
+  panel = makePanel();
+  d.body.appendChild(panel);
+  w[STATE_KEY] = { clear: clear };
 })();
 </pre
           >

@@ -62,7 +62,7 @@
                 ? "#8b6800"
                 : "#be412a";
           if(color === "#be412a") {
-                img.style.outline = "5px dashed " + color;
+                img.style.outline = "6px dashed " + color;
           } else if (color === "#8b6800") {
                 img.style.outline = "6px dotted " + color;
           } else {
@@ -75,7 +75,7 @@
           badge.style.cssText =
             "position:absolute;background:" +
             color +
-            ";color:#fff;font:500 16px monospace;padding:4px 8px;border-radius:4px;z-index:10;max-width:min(90vw,24rem);";
+            ";color:#fff;font:500 16px Arial, Helvetica, 'Helvetica Neue', sans-serif;padding:4px 8px;border-radius:4px;z-index:10;max-width:min(90vw,24rem);";
           document.body.appendChild(badge);
           var rect = img.getBoundingClientRect(),
             badgeRect = badge.getBoundingClientRect();

@@ -452,7 +452,6 @@ main {
   display: block;
   width: 100%;
   height: 0.5rem;
-  border-radius: var(--border-radius);
   margin-bottom: var(--space-12);
 }
 
@@ -468,7 +467,7 @@ main {
 .legend__item--green,
 .legend__item--pass {
   .legend__item-swatch {
-    background: var(--color-green);
+    border-top: 5px solid var(--color-green);
   }
 
   .legend__item-label {
@@ -479,7 +478,7 @@ main {
 .legend__item--red,
 .legend__item--fail {
   .legend__item-swatch {
-    background: var(--color-red);
+    border-top: 6px dashed var(--color-red);
   }
 
   .legend__item-label {
@@ -489,7 +488,7 @@ main {
 
 .legend__item--gold {
   .legend__item-swatch {
-    background: var(--color-gold);
+    border-top: 6px dotted var(--color-gold);
   }
 
   .legend__item-label {
@@ -688,14 +687,6 @@ main {
   .fake-heading-demo--level-5 {
     margin-left: 4rem;
   }
-
-  .fake-heading-demo--pass {
-    border-color: var(--color-green);
-  }
-
-  .fake-heading-demo--fail {
-    border-color: var(--color-red);
-  }
 }
 
 /* .landmark-visualizer */
@@ -796,6 +787,12 @@ main {
     display: inline-flex;
     align-items: center;
     position: relative;
+  }
+
+  .legend {
+    @media (min-width: 40rem) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }
 

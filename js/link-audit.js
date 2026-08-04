@@ -57,8 +57,14 @@
             : level === "gold"
               ? "#8b6800"
               : "#be412a";
-        a.style.outline = "3px solid " + color;
-        a.style.outlineOffset = "2px";
+        if (color === "#be412a") {
+          a.style.outline = "6px dashed " + color;
+        } else if (color === "#8b6800") {
+          a.style.outline = "6px dotted " + color;
+        } else {
+          a.style.outline = "5px solid " + color;
+        }
+        a.style.outlineOffset = "3px";
         if (getComputedStyle(a).position === "static")
           a.style.position = "relative";
         var badge = document.createElement("span");
@@ -67,7 +73,7 @@
         badge.style.cssText =
           "position:absolute;top:0;left:0;transform:translateY(-100%);background:" +
           color +
-          ";color:#fff;font:600 14px monospace;padding:1px 5px;border-radius:3px 3px 0 0;z-index:10;pointer-events:none;white-space:nowrap";
+          ";color:#fff;font:500 16px Arial, Helvetica, 'Helvetica Neue', sans-serif;padding:4px 8px;border-radius:4px;z-index:10;pointer-events:none;white-space:nowrap";
         a.insertBefore(badge, a.firstChild);
         demoRecords.push({ el: a, badge: badge });
         lines.push('<p class="demo__results-line">' + esc(label) + "</p>");

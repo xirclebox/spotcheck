@@ -82,7 +82,7 @@
       </div>
       <div class="wrap">
         <a href="index.html" class="bookmarklet-back__link">All bookmarklets</a>
-        <h1 class="site-header__title">Link Accessibility Auditor</h1>
+        <h1 class="site-header__title">Link Accessibility Auditor <div class="version">v.1.1</div></h1>
         <p class="site-header__lede">
           Run this on any page to check every &lt;a&gt; element for a real
           accessible name, flag generic text like "click here", and catch
@@ -102,7 +102,7 @@
           <div class="bookmarklet-row">
             <a
               class="bookmarklet"
-              href="javascript:!function()%7Bvar%20e%3D%22__a11yLinkAuditor%22%3Bif(window%5Be%5D%26%26window%5Be%5D.active)window%5Be%5D.teardown()%3Belse%7Bvar%20t%3D%5B%22click%20here%22%2C%22here%22%2C%22read%20more%22%2C%22more%22%2C%22link%22%2C%22more%20info%22%2C%22learn%20more%22%2C%22this%20link%22%5D%2Co%3DArray.prototype.slice.call(document.querySelectorAll(%22a%22))%2Cr%3D%5B%5D%2Cn%3D%7Bgreen%3A0%2Cgold%3A0%2Cred%3A0%7D%3Bo.forEach(function(e)%7Bvar%20o%3Dfunction(e)%7Bvar%20t%3De.getAttribute(%22aria-labelledby%22)%3Bif(t)%7Bvar%20o%3Dt.split(%2F%5Cs%2B%2F).map(function(e)%7Bvar%20t%3Ddocument.getElementById(e)%3Breturn%20t%3Ft.textContent.trim()%3A%22%22%7D).join(%22%20%22).trim()%3Bif(o)return%20o%7Dvar%20r%3De.getAttribute(%22aria-label%22)%3Bif(r%26%26r.trim())return%20r.trim()%3Bvar%20n%3De.cloneNode(!0)%3BArray.prototype.forEach.call(n.querySelectorAll('%5Baria-hidden%3D%22true%22%5D')%2Cfunction(e)%7Be.parentNode.removeChild(e)%7D)%3Bvar%20i%3Dn.textContent.replace(%2F%5Cs%2B%2Fg%2C%22%20%22).trim()%3Bif(i)return%20i%3Bvar%20a%3De.querySelector(%22img%5Balt%5D%22)%3Breturn%20a%26%26a.getAttribute(%22alt%22).trim()%3Fa.getAttribute(%22alt%22).trim()%3Ae.title%26%26e.title.trim()%3Fe.title.trim()%3A%22%22%7D(e)%3Bo%3F-1!%3D%3Dt.indexOf(o.toLowerCase().trim())%3Fl(e%2C%22red%22%2C'Generic%20text%20out%20of%20context%3A%20%22'%2Bo%2B'%22')%3Ao.length%3C4%3Fl(e%2C%22gold%22%2C%22Very%20short%20link%20text%2C%20confirm%20it%20is%20descriptive%22)%3Al(e%2C%22green%22%2C'OK%3A%20%22'%2Bo%2B'%22')%3Al(e%2C%22red%22%2C%22No%20accessible%20name%22)%7D)%3Bvar%20i%3Ddocument.createElement(%22div%22)%3Bi.setAttribute(%22data-a11y-bm-panel%22%2C%22link-auditor%22)%2Ci.setAttribute(%22role%22%2C%22status%22)%2Ci.setAttribute(%22aria-live%22%2C%22polite%22)%2Ci.style.cssText%3D%5B%22position%3Afixed%22%2C%22bottom%3A16px%22%2C%22right%3A16px%22%2C%22z-index%3A2147483001%22%2C%22background%3A%231b2430%22%2C%22color%3A%23e7eaed%22%2C%22font%3A13px%2F1.5%20-apple-system%2Csans-serif%22%2C%22padding%3A12px%2032px%2012px%2016px%22%2C%22border-radius%3A6px%22%2C%22box-shadow%3A0%204px%2016px%20rgba(0%2C0%2C0%2C.3)%22%2C%22max-width%3A260px%22%5D.join(%22%3B%22)%2Ci.innerHTML%3D'%3Cstrong%20style%3D%22display%3Ablock%3Bmargin-bottom%3A4px%3B%22%3ELink%20Accessibility%20Auditor%3C%2Fstrong%3E%3Cspan%20style%3D%22color%3A%233fbf7f%3B%22%3E%26%239679%3B%3C%2Fspan%3E%20'%2Bn.green%2B'%20correct%20%26nbsp%3B%20%3Cspan%20style%3D%22color%3A%23e0b03f%3B%22%3E%26%239679%3B%3C%2Fspan%3E%20'%2Bn.gold%2B'%20flagged%20%26nbsp%3B%20%3Cspan%20style%3D%22color%3A%23e06a4f%3B%22%3E%26%239679%3B%3C%2Fspan%3E%20'%2Bn.red%2B%22%20incorrect%22%3Bvar%20a%3Ddocument.createElement(%22button%22)%3Ba.type%3D%22button%22%2Ca.textContent%3D%22%C3%97%22%2Ca.setAttribute(%22aria-label%22%2C%22Close%22)%2Ca.style.cssText%3D%5B%22position%3Aabsolute%22%2C%22top%3A4px%22%2C%22right%3A6px%22%2C%22background%3Atransparent%22%2C%22border%3Anone%22%2C%22color%3A%23e7eaed%22%2C%22font%3A16px%2F1%20-apple-system%2Csans-serif%22%2C%22cursor%3Apointer%22%2C%22padding%3A2px%206px%22%2C%22border-radius%3A4px%22%2C%22line-height%3A1%22%5D.join(%22%3B%22)%2Ca.addEventListener(%22click%22%2Cfunction()%7Bwindow%5Be%5D.teardown()%7D)%2Ci.appendChild(a)%2Cdocument.body.appendChild(i)%2Cwindow%5Be%5D%3D%7Bactive%3A!0%2Cteardown%3Afunction()%7Br.forEach(function(e)%7Be.el.style.outline%3De.outline%2Ce.el.style.outlineOffset%3De.outlineOffset%2Ce.el.style.position%3De.position%2Ce.el.removeAttribute(%22data-a11y-bm-note%22)%2Ce.badge%26%26e.badge.parentNode%26%26e.badge.parentNode.removeChild(e.badge)%7D)%2Ci.parentNode%26%26i.parentNode.removeChild(i)%2Cwindow%5Be%5D.active%3D!1%7D%7D%7Dfunction%20l(e%2Ct%2Co)%7Br.push(%7Bel%3Ae%2Coutline%3Ae.style.outline%2CoutlineOffset%3Ae.style.outlineOffset%2Cposition%3Ae.style.position%2Cbadge%3Anull%7D)%3Bvar%20i%3D%22green%22%3D%3D%3Dt%3F%22%231a7d4f%22%3A%22gold%22%3D%3D%3Dt%3F%22%238b6800%22%3A%22%23be412a%22%3Be.style.outline%3D%223px%20solid%20%22%2Bi%2Ce.style.outlineOffset%3D%222px%22%2Ce.setAttribute(%22data-a11y-bm-note%22%2Co)%2C%22static%22%3D%3D%3DgetComputedStyle(e).position%26%26(e.style.position%3D%22relative%22)%3Bvar%20a%3Ddocument.createElement(%22span%22)%3Ba.textContent%3Do%2Ca.setAttribute(%22aria-hidden%22%2C%22true%22)%2Ca.style.cssText%3D%5B%22position%3Aabsolute%22%2C%22top%3A0%22%2C%22left%3A0%22%2C%22transform%3AtranslateY(-100%25)%22%2C%22background%3A%22%2Bi%2C%22color%3A%23fff%22%2C%22font%3A600%2014px%20monospace%22%2C%22padding%3A1px%205px%22%2C%22border-radius%3A3px%203px%200%200%22%2C%22z-index%3A2147483000%22%2C%22pointer-events%3Anone%22%2C%22white-space%3Anowrap%22%5D.join(%22%3B%22)%2Ce.insertBefore(a%2Ce.firstChild)%2Cr%5Br.length-1%5D.badge%3Da%2Cn%5Bt%5D%2B%2B%7D%7D()%3B"
+              href="javascript:!function()%7Bvar%20e%3Dwindow%2Ct%3Ddocument%2Cn%3D%22__a11yLinkAuditor%22%3Bif(e%5Bn%5D)e%5Bn%5D.clear()%3Belse%7Bvar%20r%2Ci%2Co%2Cl%3D%7Bgreen%3A%22%231a7d4f%22%2Cgold%3A%22%238b6800%22%2Cred%3A%22%23be412a%22%7D%2Ca%3D%7Bgreen%3A%225px%20solid%22%2Cgold%3A%226px%20dotted%22%2Cred%3A%225px%20dashed%22%7D%2Cs%3D%7Bgreen%3A%22%233fbf7f%22%2Cgold%3A%22%23e0b84f%22%2Cred%3A%22%23e06a4f%22%7D%2Cd%3D%7Bok%3A%22green%22%2Cshort%3A%22gold%22%2Cgeneric%3A%22red%22%2Cmissing%3A%22red%22%7D%2Cc%3D%7Bok%3A%22Link%20text%22%2Cshort%3A%22Very%20short%20link%20text%2C%20confirm%20it%20is%20descriptive%22%2Cgeneric%3A%22Generic%20text%20out%20of%20context%22%2Cmissing%3A%22No%20accessible%20name%22%7D%2Cp%3D%5B%22ok%22%2C%22generic%22%5D%2Cu%3D%5B%22click%20here%22%2C%22here%22%2C%22read%20more%22%2C%22more%22%2C%22link%22%2C%22more%20info%22%2C%22learn%20more%22%2C%22this%20link%22%5D%2Cf%3D%22data-a11y-link-check-note%22%2Cg%3D%5B%5D%2Cx%3D%7Bgreen%3A0%2Cgold%3A0%2Cred%3A0%7D%2Cb%3Dnull%3BArray.prototype.slice.call(t.querySelectorAll(%22a%22)).forEach(function(e)%7Bvar%20t%3Dy(e)%2Cn%3Dfunction(e)%7Breturn%20e%3F-1!%3D%3Du.indexOf(e.toLowerCase())%3F%22generic%22%3Ae.length%3C4%3F%22short%22%3A%22ok%22%3A%22missing%22%7D(t)%2Cr%3Dd%5Bn%5D%2Ci%3D%7Bel%3Ae%2Coutline%3Ae.style.outline%2Coffset%3Ae.style.outlineOffset%2Cposition%3Ae.style.position%2Cbadge%3Ak(n%2Ct)%7D%3Bx%5Br%5D%2B%3D1%2Ce.style.outline%3Da%5Br%5D%2B%22%20%22%2Bl%5Br%5D%2Ce.style.outlineOffset%3D%223px%22%2Ce.setAttribute(f%2Cv(n%2Ct))%2C%22static%22%3D%3D%3DgetComputedStyle(e).position%26%26(e.style.position%3D%22relative%22)%2Ce.insertBefore(i.badge%2Ce.firstChild)%2Cg.push(i)%7D)%2Cr%3Dt.createElement(%22div%22)%2Ci%3Dt.createElement(%22strong%22)%2Co%3Dt.createElement(%22button%22)%2Cr.setAttribute(%22data-a11y-link-check%22%2C%22panel%22)%2Cr.setAttribute(%22role%22%2C%22status%22)%2Cr.style.cssText%3D%5B%22position%3Afixed%22%2C%22right%3A16px%22%2C%22bottom%3A16px%22%2C%22max-width%3A300px%22%2C%22padding%3A12px%2032px%2012px%2016px%22%2C%22border-radius%3A6px%22%2C%22background%3A%231b2430%22%2C%22color%3A%23e7eaed%22%2C%22font%3A400%2014px%2F1.5%20Arial%2C%20Helvetica%2C%20%5C%22Helvetica%20Neue%5C%22%2C%20sans-serif%22%2C%22box-shadow%3A0%208px%2024px%20rgba(0%2C0%2C0%2C0.35)%22%2C%22z-index%3A2147483647%22%5D.join(%22%3B%22)%2Ci.textContent%3D%22Link%20Accessibility%20Auditor%22%2Ci.style.cssText%3D%22display%3Ablock%3Bmargin-bottom%3A4px%22%2Cr.appendChild(i)%2Cr.appendChild(A(%22green%22%2C%22correct%22))%2Cr.appendChild(A(%22gold%22%2C%22flagged%22))%2Cr.appendChild(A(%22red%22%2C%22incorrect%22))%2Co.type%3D%22button%22%2Co.textContent%3D%22%C3%97%22%2Co.setAttribute(%22aria-label%22%2C%22Clear%20the%20link%20audit%20results%22)%2Co.style.cssText%3D%5B%22position%3Aabsolute%22%2C%22top%3A6px%22%2C%22right%3A6px%22%2C%22width%3A24px%22%2C%22height%3A24px%22%2C%22padding%3A2px%206px%22%2C%22border%3Anone%22%2C%22background%3Atransparent%22%2C%22color%3A%23e7eaed%22%2C%22font%3A16px%2F1%20Arial%2C%20Helvetica%2C%20%5C%22Helvetica%20Neue%5C%22%2C%20sans-serif%22%2C%22cursor%3Apointer%22%5D.join(%22%3B%22)%2Co.addEventListener(%22click%22%2CC)%2Cr.appendChild(o)%2Cb%3Dr%2Ct.body.appendChild(b)%2Ce%5Bn%5D%3D%7Bclear%3AC%7D%7Dfunction%20h(e)%7Breturn(e%7C%7C%22%22).replace(%2F%5Cs%2B%2Fg%2C%22%20%22).trim()%7Dfunction%20m(e)%7Breturn%20e%3Fh(e.textContent)%3A%22%22%7Dfunction%20y(e)%7Breturn%20function(e)%7Bvar%20n%3Dh(e.getAttribute(%22aria-labelledby%22))%3Breturn%20n%3Fh(n.split(%22%20%22).map(function(e)%7Breturn%20m(t.getElementById(e))%7D).join(%22%20%22))%3A%22%22%7D(e)%7C%7Ch(e.getAttribute(%22aria-label%22))%7C%7Cfunction(e)%7Bvar%20t%3De.cloneNode(!0)%3Breturn%20Array.prototype.slice.call(t.querySelectorAll(%22%5Baria-hidden%3D%5C%22true%5C%22%5D%22)).forEach(function(e)%7Be.parentNode.removeChild(e)%7D)%2Cm(t)%7D(e)%7C%7Cfunction(e)%7Bvar%20t%3De.querySelector(%22img%5Balt%5D%22)%3Breturn%20t%3Fh(t.getAttribute(%22alt%22))%3A%22%22%7D(e)%7C%7Ch(e.getAttribute(%22title%22))%7Dfunction%20v(e%2Ct)%7Breturn-1%3D%3D%3Dp.indexOf(e)%3Fc%5Be%5D%3Ac%5Be%5D%2B%22%3A%20%5C%22%22%2Bt%2B%22%5C%22%22%7Dfunction%20k(e%2Cn)%7Bvar%20r%3Dt.createElement(%22span%22)%3Breturn%20r.setAttribute(%22data-a11y-link-check%22%2C%22badge%22)%2Cr.setAttribute(%22aria-hidden%22%2C%22true%22)%2Cr.textContent%3Dv(e%2Cn)%2Cr.style.cssText%3D%5B%22position%3Aabsolute%22%2C%22top%3A0%22%2C%22left%3A0%22%2C%22transform%3AtranslateY(-100%25)%22%2C%22max-width%3Amin(90vw%2C%2024rem)%22%2C%22padding%3A4px%208px%22%2C%22border-radius%3A4px%22%2C%22background%3A%22%2Bl%5Bd%5Be%5D%5D%2C%22color%3A%23fff%22%2C%22font%3A500%2016px%2F1.2%20Arial%2C%20Helvetica%2C%20%5C%22Helvetica%20Neue%5C%22%2C%20sans-serif%22%2C%22z-index%3A2147483646%22%2C%22pointer-events%3Anone%22%2C%22white-space%3A%20nowrap%22%5D.join(%22%3B%22)%2Cr%7Dfunction%20A(e%2Cn)%7Bvar%20r%3Dt.createElement(%22p%22)%2Ci%3Dt.createElement(%22span%22)%3Breturn%20r.style.cssText%3D%22margin%3A0%3Bpadding%3A0%22%2Ci.textContent%3D%22%E2%97%8F%22%2Ci.style.cssText%3D%22color%3A%22%2Bs%5Be%5D%2B%22%3Bmargin-right%3A6px%22%2Cr.appendChild(i)%2Cr.appendChild(t.createTextNode(x%5Be%5D%2B%22%20%22%2Bn))%2Cr%7Dfunction%20C()%7Bg.forEach(function(e)%7Be.el.style.outline%3De.outline%2Ce.el.style.outlineOffset%3De.offset%2Ce.el.style.position%3De.position%2Ce.el.removeAttribute(f)%2Ch(e.el.getAttribute(%22style%22))%7C%7Ce.el.removeAttribute(%22style%22)%2Ce.badge.parentNode%26%26e.badge.parentNode.removeChild(e.badge)%7D)%2Cg%3D%5B%5D%2Cb%26%26b.parentNode%26%26b.parentNode.removeChild(b)%2Cb%3Dnull%2Cdelete%20e%5Bn%5D%7D%7D()%3B"
               onclick="return false;"
               data-bookmarklet="link-accessibility-auditor"
               >SpotCheck - Link Auditor</a
@@ -204,6 +204,12 @@
                   <a class="demo__link" href="#"
                     ><img class="demo__img" src="https://placehold.co/40x40"
                   /></a>
+                </li>
+                <li class="demo__sample-item">
+                  <span class="demo__link-icon" aria-hidden="true">→</span>
+                  <a class="demo__link" href="#"
+                    >D</a
+                  >
                 </li>
                 <li class="demo__sample-item">
                   <span class="demo__link-icon" aria-hidden="true">→</span>
@@ -309,126 +315,274 @@
           </div>
           <pre class="source__code" id="source-code" tabindex="0">
 (function () {
-  var NS = '__a11yLinkAuditor';
-  if (window[NS] &amp;&amp; window[NS].active) {
-    window[NS].teardown();
+  var w = window;
+  var d = document;
+  var STATE_KEY = "__a11yLinkAuditor";
+
+  if (w[STATE_KEY]) {
+    w[STATE_KEY].clear();
     return;
   }
 
-  var GENERIC = ['click here', 'here', 'read more', 'more', 'link', 'more info', 'learn more', 'this link'];
+  var COLORS = {
+    green: "#1a7d4f",
+    gold: "#8b6800",
+    red: "#be412a"
+  };
 
-  function getAccessibleName(a) {
-    var labelledby = a.getAttribute('aria-labelledby');
-    if (labelledby) {
-      var text = labelledby.split(/\s+/).map(function (id) {
-        var ref = document.getElementById(id);
-        return ref ? ref.textContent.trim() : '';
-      }).join(' ').trim();
-      if (text) return text;
-    }
-    var label = a.getAttribute('aria-label');
-    if (label &amp;&amp; label.trim()) return label.trim();
+  var OUTLINES = {
+    green: "5px solid",
+    gold: "6px dotted",
+    red: "5px dashed"
+  };
 
-    var clone = a.cloneNode(true);
-    Array.prototype.forEach.call(clone.querySelectorAll('[aria-hidden="true"]'), function (n) {
-      n.parentNode.removeChild(n);
-    });
-    var text2 = clone.textContent.replace(/\s+/g, ' ').trim();
-    if (text2) return text2;
+  var OUTLINE_OFFSET = "3px";
 
-    var img = a.querySelector('img[alt]');
-    if (img &amp;&amp; img.getAttribute('alt').trim()) return img.getAttribute('alt').trim();
+  var DOTS = {
+    green: "#3fbf7f",
+    gold: "#e0b84f",
+    red: "#e06a4f"
+  };
 
-    if (a.title &amp;&amp; a.title.trim()) return a.title.trim();
-    return '';
-  }
+  var LEVELS = {
+    ok: "green",
+    short: "gold",
+    generic: "red",
+    missing: "red"
+  };
 
-  var links = Array.prototype.slice.call(document.querySelectorAll('a'));
+  var BADGES = {
+    ok: "Link text",
+    short: "Very short link text, confirm it is descriptive",
+    generic: "Generic text out of context",
+    missing: "No accessible name"
+  };
+
+  var QUOTED_KINDS = ["ok", "generic"];
+
+  var GENERIC_NAMES = [
+    "click here",
+    "here",
+    "read more",
+    "more",
+    "link",
+    "more info",
+    "learn more",
+    "this link"
+  ];
+
+  var MIN_NAME_LENGTH = 4;
+  var HIDDEN_SELECTOR = "[aria-hidden=\"true\"]";
+  var NOTE_ATTRIBUTE = "data-a11y-link-check-note";
+
   var records = [];
   var counts = { green: 0, gold: 0, red: 0 };
+  var panel = null;
 
-  function mark(el, level, label) {
-    records.push({ el: el, outline: el.style.outline, outlineOffset: el.style.outlineOffset, position: el.style.position, badge: null });
-    var color = level === 'green' ? '#1a7d4f' : level === 'gold' ? '#8b6800' : '#be412a';
-    el.style.outline = '3px solid ' + color;
-    el.style.outlineOffset = '2px';
-    el.setAttribute('data-a11y-bm-note', label);
-    if (getComputedStyle(el).position === 'static') el.style.position = 'relative';
-    var badge = document.createElement('span');
-    badge.textContent = label;
-    badge.setAttribute('aria-hidden', 'true');
-    badge.style.cssText = [
-      'position:absolute', 'top:0', 'left:0', 'transform:translateY(-100%)',
-      'background:' + color, 'color:#fff', 'font:600 14px monospace',
-      'padding:1px 5px', 'border-radius:3px 3px 0 0', 'z-index:2147483000',
-      'pointer-events:none', 'white-space:nowrap'
-    ].join(';');
-    el.insertBefore(badge, el.firstChild);
-    records[records.length - 1].badge = badge;
-    counts[level]++;
+  function normalize(value) {
+    return (value || "").replace(/\s+/g, " ").trim();
   }
 
-  links.forEach(function (a) {
-    var name = getAccessibleName(a);
+  function textFrom(el) {
+    return el ? normalize(el.textContent) : "";
+  }
 
+  function referencedText(el) {
+    var ids = normalize(el.getAttribute("aria-labelledby"));
+    if (!ids) {
+      return "";
+    }
+    return normalize(
+      ids
+        .split(" ")
+        .map(function (id) {
+          return textFrom(d.getElementById(id));
+        })
+        .join(" ")
+    );
+  }
+
+  function visibleText(el) {
+    var clone = el.cloneNode(true);
+    Array.prototype.slice
+      .call(clone.querySelectorAll(HIDDEN_SELECTOR))
+      .forEach(function (hidden) {
+        hidden.parentNode.removeChild(hidden);
+      });
+    return textFrom(clone);
+  }
+
+  function imageText(el) {
+    var img = el.querySelector("img[alt]");
+    return img ? normalize(img.getAttribute("alt")) : "";
+  }
+
+  function accessibleName(el) {
+    return (
+      referencedText(el) ||
+      normalize(el.getAttribute("aria-label")) ||
+      visibleText(el) ||
+      imageText(el) ||
+      normalize(el.getAttribute("title"))
+    );
+  }
+
+  function classify(name) {
     if (!name) {
-      mark(a, 'red', 'No accessible name');
-    } else if (GENERIC.indexOf(name.toLowerCase().trim()) !== -1) {
-      mark(a, 'red', 'Generic text out of context: "' + name + '"');
-    } else if (name.length &lt; 4) {
-      mark(a, 'gold', 'Very short link text, confirm it is descriptive');
-    } else {
-      mark(a, 'green', 'OK: "' + name + '"');
+      return "missing";
     }
-  });
-
-  var panel = document.createElement('div');
-  panel.setAttribute('data-a11y-bm-panel', 'link-auditor');
-  panel.setAttribute('role', 'status');
-  panel.setAttribute('aria-live', 'polite');
-  panel.style.cssText = [
-    'position:fixed', 'bottom:16px', 'right:16px', 'z-index:2147483001',
-    'background:#1b2430', 'color:#e7eaed', 'font:13px/1.5 -apple-system,sans-serif',
-    'padding:12px 32px 12px 16px', 'border-radius:6px', 'box-shadow:0 4px 16px rgba(0,0,0,.3)',
-    'max-width:260px'
-  ].join(';');
-  panel.innerHTML =
-    '&lt;strong style="display:block;margin-bottom:4px;"&gt;Link Accessibility Auditor&lt;/strong&gt;' +
-    '&lt;span style="color:#3fbf7f;"&gt;&amp;#9679;&lt;/span&gt; ' + counts.green + ' correct &amp;nbsp; ' +
-    '&lt;span style="color:#e0b03f;"&gt;&amp;#9679;&lt;/span&gt; ' + counts.gold + ' flagged &amp;nbsp; ' +
-    '&lt;span style="color:#e06a4f;"&gt;&amp;#9679;&lt;/span&gt; ' + counts.red + ' incorrect';
-  var closeBtn = document.createElement('button');
-  closeBtn.type = 'button';
-  closeBtn.textContent = '\u00d7';
-  closeBtn.setAttribute('aria-label', 'Close');
-  closeBtn.style.cssText = [
-    'position:absolute', 'top:4px', 'right:6px',
-    'background:transparent', 'border:none', 'color:#e7eaed',
-    'font:16px/1 -apple-system,sans-serif', 'cursor:pointer',
-    'padding:2px 6px', 'border-radius:4px', 'line-height:1'
-  ].join(';');
-  closeBtn.addEventListener('click', function () { window[NS].teardown(); });
-  panel.appendChild(closeBtn);
-  document.body.appendChild(panel);
-
-  function teardown() {
-    records.forEach(function (r) {
-      r.el.style.outline = r.outline;
-      r.el.style.outlineOffset = r.outlineOffset;
-      r.el.style.position = r.position;
-      r.el.removeAttribute('data-a11y-bm-note');
-      if (r.badge &amp;&amp; r.badge.parentNode) r.badge.parentNode.removeChild(r.badge);
-    });
-    if (panel.parentNode) panel.parentNode.removeChild(panel);
+    if (GENERIC_NAMES.indexOf(name.toLowerCase()) !== -1) {
+      return "generic";
+    }
+    if (name.length < MIN_NAME_LENGTH) {
+      return "short";
+    }
+    return "ok";
   }
 
-  window[NS] = {
-    active: true,
-    teardown: function () {
-      teardown();
-      window[NS].active = false;
+  function labelFor(kind, name) {
+    if (QUOTED_KINDS.indexOf(kind) === -1) {
+      return BADGES[kind];
     }
-  };
+    return BADGES[kind] + ': "' + name + '"';
+  }
+
+  function makeBadge(kind, name) {
+    var badge = d.createElement("span");
+
+    badge.setAttribute("data-a11y-link-check", "badge");
+    badge.setAttribute("aria-hidden", "true");
+    badge.textContent = labelFor(kind, name);
+    badge.style.cssText = [
+      "position:absolute",
+      "top:0",
+      "left:0",
+      "transform:translateY(-100%)",
+      "max-width:min(90vw, 24rem)",
+      "padding:4px 8px",
+      "border-radius:4px",
+      "background:" + COLORS[LEVELS[kind]],
+      "color:#fff",
+      "font:500 16px/1.2 Arial, Helvetica, \"Helvetica Neue\", sans-serif",
+      "z-index:2147483646",
+      "pointer-events:none",
+      "white-space: nowrap"
+    ].join(";");
+    return badge;
+  }
+
+  function mark(el) {
+    var name = accessibleName(el);
+    var kind = classify(name);
+    var color = LEVELS[kind];
+    var record = {
+      el: el,
+      outline: el.style.outline,
+      offset: el.style.outlineOffset,
+      position: el.style.position,
+      badge: makeBadge(kind, name)
+    };
+
+    counts[color] += 1;
+    el.style.outline = OUTLINES[color] + " " + COLORS[color];
+    el.style.outlineOffset = OUTLINE_OFFSET;
+    el.setAttribute(NOTE_ATTRIBUTE, labelFor(kind, name));
+    if (getComputedStyle(el).position === "static") {
+      el.style.position = "relative";
+    }
+    el.insertBefore(record.badge, el.firstChild);
+    records.push(record);
+  }
+
+  function makeCountLine(color, word) {
+    var line = d.createElement("p");
+    var dot = d.createElement("span");
+
+    line.style.cssText = "margin:0;padding:0";
+    dot.textContent = "\u25cf";
+    dot.style.cssText = "color:" + DOTS[color] + ";margin-right:6px";
+    line.appendChild(dot);
+    line.appendChild(d.createTextNode(counts[color] + " " + word));
+    return line;
+  }
+
+  function makePanel() {
+    var wrapper = d.createElement("div");
+    var heading = d.createElement("strong");
+    var close = d.createElement("button");
+
+    wrapper.setAttribute("data-a11y-link-check", "panel");
+    wrapper.setAttribute("role", "status");
+    wrapper.style.cssText = [
+      "position:fixed",
+      "right:16px",
+      "bottom:16px",
+      "max-width:300px",
+      "padding:12px 32px 12px 16px",
+      "border-radius:6px",
+      "background:#1b2430",
+      "color:#e7eaed",
+      "font:400 14px/1.5 Arial, Helvetica, \"Helvetica Neue\", sans-serif",
+      "box-shadow:0 8px 24px rgba(0,0,0,0.35)",
+      "z-index:2147483647"
+    ].join(";");
+
+    heading.textContent = "Link Accessibility Auditor";
+    heading.style.cssText = "display:block;margin-bottom:4px";
+    wrapper.appendChild(heading);
+
+    wrapper.appendChild(makeCountLine("green", "correct"));
+    wrapper.appendChild(makeCountLine("gold", "flagged"));
+    wrapper.appendChild(makeCountLine("red", "incorrect"));
+
+    close.type = "button";
+    close.textContent = "\u00d7";
+    close.setAttribute("aria-label", "Clear the link audit results");
+    close.style.cssText = [
+      "position:absolute",
+      "top:6px",
+      "right:6px",
+      "width:24px",
+      "height:24px",
+      "padding:2px 6px",
+      "border:none",
+      "background:transparent",
+      "color:#e7eaed",
+      "font:16px/1 Arial, Helvetica, \"Helvetica Neue\", sans-serif",
+      "cursor:pointer"
+    ].join(";");
+    close.addEventListener("click", clear);
+    wrapper.appendChild(close);
+
+    return wrapper;
+  }
+
+  function clear() {
+    records.forEach(function (record) {
+      record.el.style.outline = record.outline;
+      record.el.style.outlineOffset = record.offset;
+      record.el.style.position = record.position;
+      record.el.removeAttribute(NOTE_ATTRIBUTE);
+      if (!normalize(record.el.getAttribute("style"))) {
+        record.el.removeAttribute("style");
+      }
+      if (record.badge.parentNode) {
+        record.badge.parentNode.removeChild(record.badge);
+      }
+    });
+    records = [];
+    if (panel && panel.parentNode) {
+      panel.parentNode.removeChild(panel);
+    }
+    panel = null;
+    delete w[STATE_KEY];
+  }
+
+  Array.prototype.slice.call(d.querySelectorAll("a")).forEach(mark);
+
+  panel = makePanel();
+  d.body.appendChild(panel);
+  w[STATE_KEY] = { clear: clear };
 })();
 </pre
           >
