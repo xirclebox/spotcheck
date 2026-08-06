@@ -111,11 +111,12 @@
             r.toFixed(2) +
             ":1, " +
             (level === "red"
-              ? "fails AA"
+              ? hasOpacity
+                ? "opacity fails AA"
+                : "fails AA"
               : level === "gold"
                 ? "passes AA, not AAA"
-                : "passes AAA") +
-            (level === "red" && hasOpacity ? ", opacity" : "");
+                : "passes AAA");
           var color =
             level === "green"
               ? "#1a7d4f"
@@ -160,7 +161,7 @@
             "border-radius:4px",
             "background:" + color,
             "color:#fff",
-            "font:500 16px/1.2 Arial, Helvetica, \"Helvetica Neue\", sans-serif",
+            'font:500 16px/1.2 Arial, Helvetica, "Helvetica Neue", sans-serif',
             "pointer-events:none",
             "white-space:nowrap",
             "z-index:2147483646",
