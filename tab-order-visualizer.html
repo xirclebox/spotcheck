@@ -47,6 +47,7 @@
     />
     <meta name="twitter:creator" content="@xirclebox" />
     <meta name="twitter:site" content="@xirclebox" />
+<meta name="color-scheme" content="light dark" />
     <link
       rel="canonical"
       href="https://www.spotcheck.tools/tab-order-visualizer"
@@ -61,18 +62,25 @@
       data-website-id="f4892d19-de6e-406d-9e85-edab362f1ae8"
       data-domains="spotcheck.tools,www.spotcheck.tools"
     ></script>
+    <script>
+  const t = localStorage.getItem("__spotcheck_theme") || "system";
+  
+   if (t === "system") {
+    document.documentElement.removeAttribute("data-theme");
+  } else {
+    document.documentElement.setAttribute("data-theme", t);
+  }
+</script>
+<script defer src="js/theme.js"></script>
   </head>
   <body class="tab-order">
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="page-header">
+      <div id="theme-toggle-container" class="theme-toggle-container"></div>
       <div class="tophat">
         <a href="index.html" class="tophat__link">
-          <img
-            src="/img/spotcheck-logo--header-light.svg"
-            class="logo-header"
-            alt="SpotCheck logo - home"
-        /></a>
+          <span class="logo-header" role="img" alt="SpotCheck logo - home"></span></a>
       </div>
       <div class="wrap">
         <a href="index.html" class="bookmarklet-back__link">All bookmarklets</a>
@@ -606,11 +614,7 @@
       <div class="wrap">
         <p>
           <a href="index.html">
-            <img
-              src="/img/spotcheck-logo--header-light.svg"
-              class="logo-footer"
-              alt="SpotCheck logo - home"
-          /></a>
+            <span class="logo-footer" role="img" alt="SpotCheck logo - home"></span></a>
         </p>
 
         <p>
