@@ -48,6 +48,7 @@
     />
     <meta name="twitter:creator" content="@xirclebox" />
     <meta name="twitter:site" content="@xirclebox" />
+<meta name="color-scheme" content="light dark" />
     <link rel="icon" href="/img/favicon.png" type="image/png" />
     <link rel="canonical" href="https://www.spotcheck.tools/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -59,14 +60,25 @@
       data-website-id="f4892d19-de6e-406d-9e85-edab362f1ae8"
       data-domains="spotcheck.tools,www.spotcheck.tools"
     ></script>
+    <script>
+  const t = localStorage.getItem("__spotcheck_theme") || "system";
+  
+   if (t === "system") {
+    document.documentElement.removeAttribute("data-theme");
+  } else {
+    document.documentElement.setAttribute("data-theme", t);
+  }
+</script>
+<script defer src="js/theme.js"></script>
   </head>
   <body class="hub">
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
       <div class="wrap">
+        <div id="theme-toggle-container" class="theme-toggle-container"></div>
         <h1 class="site-header__title">
-          <img src="/img/spotcheck-logo.svg" class="logo" aria-hidden="true" />
+          <span class="logo" aria-hidden="true"></span>
           <span class="sr-only"
             >SpotCheck: an Accessibility Bookmarklet Toolkit</span
           >
@@ -315,5 +327,6 @@
         </p>
       </div>
     </footer>
+
   </body>
 </html>
