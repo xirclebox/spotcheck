@@ -19,6 +19,7 @@
   --color-code: #e7eaed;
   --focus-color: #ff00ff;
   --accent: #646198;
+
   --border-radius: 0.25rem;
   --border-radius-lg: 1rem;
   --control-background: #3b375a;
@@ -26,6 +27,7 @@
   --control-background--hover: var(--accent);
   --control-border--hover: #344054;
   --ui-border: #344054;
+
   --source-code-background: var(--dark);
   --source-code-color: var(--color-code);
   --section-title-color: var(--color-navy-dark);
@@ -35,9 +37,11 @@
   --link-color: var(--dark);
   --back-link-color: var(--color-ink-muted);
   --criteria-level-color: var(--color-navy-soft);
+
   --font-display: "Google Sans Flex", sans-serif;
   --font-body: "DM Sans", sans-serif;
   --font-mono: "DM Mono", monospace;
+
   --font-size-11: 0.6875rem;
   --font-size-12: 0.75rem;
   --font-size-13: 0.8125rem;
@@ -51,6 +55,7 @@
   --font-size-28: 1.75rem;
   --font-size-32: 2rem;
   --font-size-36: 2.25rem;
+
   --space-4: 0.25rem;
   --space-8: 0.5rem;
   --space-12: 0.75rem;
@@ -77,6 +82,10 @@
     --color-navy-soft: #b8b5cc;
     --color-navy-dark: #e7eaed;
     --color-navy-tint: #1f1d2a;
+    --color-gold: #e0b03f;
+    --color-green: #3fbf7f;
+    --color-red: #e06a4f;
+
     --section-title-color: var(--light);
     --heading-color: var(--color-navy-dark);
     --body-color: var(--color-ink-muted);
@@ -98,6 +107,10 @@
   --color-navy-soft: #b8b5cc;
   --color-navy-dark: #e7eaed;
   --color-navy-tint: #1f1d2a;
+  --color-gold: #e0b03f;
+  --color-green: #3fbf7f;
+  --color-red: #e06a4f;
+
   --section-title-color: var(--light);
   --heading-color: var(--color-navy-dark);
   --body-color: var(--color-ink-muted);
@@ -119,6 +132,7 @@
   --color-navy-soft: #344054;
   --color-navy-dark: var(--dark);
   --color-navy-tint: #eef0f2;
+  
   --section-title-color: var(--color-navy-dark);
   --heading-color: var(--color-navy);
   --body-color: var(--color-navy-soft);
