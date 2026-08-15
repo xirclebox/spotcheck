@@ -132,7 +132,10 @@
   --color-navy-soft: #344054;
   --color-navy-dark: var(--dark);
   --color-navy-tint: #eef0f2;
-  
+  --color-green: #1a7d4f;
+  --color-red: #be412a;
+  --color-gold: #8b6800;
+
   --section-title-color: var(--color-navy-dark);
   --heading-color: var(--color-navy);
   --body-color: var(--color-navy-soft);
