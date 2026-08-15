@@ -72,7 +72,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --logo-url: url("./img/spotcheck-logo--header-light.svg");
+    --logo-url: url("./img/spotcheck-logo--header-dark.svg");
     --color-bg: #0f0e13;
     --color-bg-tint: #1b1a22;
     --color-surface: #181720;
@@ -97,7 +97,7 @@
 }
 
 [data-theme="dark"] {
-  --logo-url: url("./img/spotcheck-logo--header-light.svg");
+  --logo-url: url("./img/spotcheck-logo--header-dark.svg");
   --color-bg: #0f0e13;
   --color-bg-tint: #1b1a22;
   --color-surface: #181720;
@@ -122,7 +122,7 @@
 }
 
 [data-theme="light"] {
-  --logo-url: url("./img/spotcheck-logo--header-dark.svg");
+  --logo-url: url("./img/spotcheck-logo--header-light.svg");
   --color-bg: #fafafa;
   --color-bg-tint: #ededed;
   --color-surface: var(--light);
