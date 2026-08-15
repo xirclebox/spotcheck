@@ -249,7 +249,7 @@ h3 {
 .tophat__link {
   display: flex;
   width: 14rem;
-  height: var(--space-48);
+  height: 38px;
   background-image: var(--logo-url);
   background-size: contain;
   background-repeat: no-repeat;
