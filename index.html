@@ -48,7 +48,7 @@
     />
     <meta name="twitter:creator" content="@xirclebox" />
     <meta name="twitter:site" content="@xirclebox" />
-<meta name="color-scheme" content="light dark" />
+    <meta name="color-scheme" content="light dark" />
     <link rel="icon" href="/img/favicon.png" type="image/png" />
     <link rel="canonical" href="https://www.spotcheck.tools/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -61,15 +61,15 @@
       data-domains="spotcheck.tools,www.spotcheck.tools"
     ></script>
     <script>
-  const t = localStorage.getItem("__spotcheck_theme") || "system";
-  
-   if (t === "system") {
-    document.documentElement.removeAttribute("data-theme");
-  } else {
-    document.documentElement.setAttribute("data-theme", t);
-  }
-</script>
-<script defer src="js/theme.js"></script>
+      const t = localStorage.getItem("__spotcheck_theme") || "system";
+
+      if (t === "system") {
+        document.documentElement.removeAttribute("data-theme");
+      } else {
+        document.documentElement.setAttribute("data-theme", t);
+      }
+    </script>
+    <script defer src="js/theme.js"></script>
   </head>
   <body class="hub">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -103,6 +103,58 @@
         <section class="section" aria-labelledby="tools-heading">
           <h2 class="section__title" id="tools-heading">Choose a tool</h2>
           <ul class="tools">
+            <li class="devtools">
+              <div>
+                <h3 class="tool__name">SpotCheck DevTools</h3>
+                <p class="devtools-copy">
+                  Want access to SpotCheck in a single view? No problem.
+                  Download the browser extension to access them in devtools.
+                </p>
+                <ul class="devtools__list">
+                  <li class="devtools__list-item">
+                    <a
+                      class="tool__link devtools__link--outline devtools__link"
+                      href="https://chromewebstore.google.com/detail/spotcheck-accessibility-t/bcaahjkiibfcphmllamggoneejgpkncf?authuser=0&hl=en"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <span>Download the Chrome extension</span>
+                      <img src="./img/chrome.svg" alt="" class="browser__img" />
+                    </a>
+                  </li>
+
+                  <li class="devtools__list-item">
+                    <a
+                      class="tool__link devtools__link--outline devtools__link"
+                      href="https://addons.mozilla.org/en-US/firefox/addon/spotcheck-a11y-toolkit/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <span>Download the Firefox plugin</span>
+                      <img
+                        src="./img/firefox.svg"
+                        alt=""
+                        class="browser__img"
+                      />
+                    </a>
+                  </li>
+
+                  <li class="devtools__list-item">
+                    <a
+                      class="tool__link devtools__link--outline devtools__link"
+                      href="https://microsoftedge.microsoft.com/addons/detail/spotcheck-accessibility-/emnckkeinmbibkdihlafebegipoojcdb"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <span>Download the Edge extension</span>
+                      <img src="./img/edge.svg" alt="" class="browser__img" />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="devtools-screen"></div>
+            </li>
+
             <li class="tool tool--landmarks">
               <div class="tool__header">
                 <h3 class="tool__name">Landmark Visualizer</h3>
@@ -266,9 +318,11 @@
           <div class="about">
             <ul class="about__list">
               <li>
-                <strong>No installation.</strong> Each tool is self-contained.
-                All you need to do is drag the bookmarklet link to your
-                bookmarks bar and it's ready to use on any site.
+                <strong>No installation, sorta.</strong> Each tool is
+                self-contained. All you need to do is drag the bookmarklet link
+                to your bookmarks bar and it's ready to use on any site. The
+                DevTools extensions, however, will require an install, but it's
+                super easy.
               </li>
               <li>
                 <strong>Nothing leaves your browser.</strong> Every check runs
@@ -301,7 +355,6 @@
                 issues, but they don't replace a full manual and assistive tech
                 review.
               </li>
-
             </ul>
 
             <div class="version">v.1.1</div>
@@ -323,6 +376,5 @@
         </p>
       </div>
     </footer>
-
   </body>
 </html>
