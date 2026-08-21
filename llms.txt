@@ -1,22 +1,47 @@
 # SpotCheck
 
-> A free toolkit of eight browser bookmarklets and three DevTools extensions for spot-checking web accessibility. Each tool runs entirely client-side against the current page's DOM, requires no installation or extension permissions, and sends nothing to a server. Every tool maps to specific WCAG 2.2 success criteria.
+> SpotCheck is a free toolkit of accessibility bookmarklets that test for common accessibility issues directly in the browser. Each bookmarklet runs entirely client-side against the current page's DOM, requires no installation beyond dragging a link to the bookmarks bar, and has no dependencies. Every tool page maps its checks to the related WCAG 2.2 success criteria.
 
-SpotCheck is built and maintained by Homer Gaines, a UI engineer and certified accessibility professional. The tools are dependency-free vanilla JavaScript, and the readable unminified source for each one is published on its page.
+Key facts:
 
-Intended use: fast spot-checks during development, code review, and triage. SpotCheck is not a substitute for a full manual audit or for testing with assistive technology. Automated checks catch a minority of accessibility issues, and every tool page states what its check cannot detect.
+- 8 bookmarklets, 16 unique WCAG 2.2 success criteria referenced, 0 dependencies.
+- Nothing leaves the browser. No data is sent to a server, no accounts, no tracking of page content.
+- Every bookmarklet is a toggle. Running it a second time, or clicking the close button in its summary panel, removes all outlines, badges, and the panel.
+- Results are shown as colored outlines plus labeled badges, with a summary panel in the bottom right corner.
+- The tools are a starting point for spot checks, not a replacement for a full manual and assistive technology audit.
+- Also available as a DevTools panel via browser extensions for Chrome, Firefox, and Edge.
+- Built and maintained by Homer Gaines, a UI engineer and certified accessibility professional.
 
-## Tools
+## Bookmarklets
 
-- [Landmark Visualizer](https://www.spotcheck.tools/landmark-visualizer): Outlines every ARIA and HTML landmark region on the page and flags regions that are duplicated or missing an accessible name. Relates to 1.3.1 Info and Relationships and 2.4.1 Bypass Blocks.
-- [Link Accessibility Auditor](https://www.spotcheck.tools/link-accessibility-auditor): Checks every link for an accessible name and flags generic text such as "click here" or "read more" that gives no context out of order. Relates to 2.4.4 Link Purpose (In Context) and 2.4.9 Link Purpose (Link Only).
-- [Heading Validator](https://www.spotcheck.tools/heading-validator): Walks the heading outline in document order and flags any level that skips ahead, which breaks screen reader navigation by heading. Relates to 1.3.1 Info and Relationships and 2.4.6 Headings and Labels.
-- [List Identifier](https://www.spotcheck.tools/list-identifier): Flags empty lists, malformed markup, and list items that aren't inside a list at all, which corrupts the item count a screen reader announces. Relates to 1.3.1 Info and Relationships.
-- [Tab Order Visualizer](https://www.spotcheck.tools/tab-order-visualizer): Numbers every focusable element in tab order and flags positive tabindex values that desynchronize focus order from visual order. Relates to 2.4.3 Focus Order and 2.4.7 Focus Visible.
-- [Text Contrast Checker](https://www.spotcheck.tools/text-contrast-checker): Measures text contrast against its effective background and flags anything below the WCAG AA minimum. Relates to 1.4.3 Contrast (Minimum) and 1.4.6 Contrast (Enhanced).
-- [Alt Text Checker](https://www.spotcheck.tools/alt-text-checker): Checks every image for alt text and flags the ones missing it or marked incorrectly. Relates to 1.1.1 Non-text Content.
-- [Input Label Checker](https://www.spotcheck.tools/input-label-checker): Outlines every input, select, and textarea on the page and labels each one with how it gets its accessible name. Relates to 1.3.1 Info and Relationships, 3.3.2 Labels or Instructions, and 4.1.2 Name, Role, Value.
+- [Landmark Visualizer](https://www.spotcheck.tools/landmark-visualizer): Outlines every ARIA and HTML landmark region, header, nav, main, aside, footer, form, section, and role attribute equivalents, then flags duplicates, same-role nesting, and regions with no accessible name. WCAG 2.2: 1.3.1 Info and Relationships (A), 2.4.1 Bypass Blocks (A), 1.3.6 Identify Purpose (AAA).
+- [Link Accessibility Auditor](https://www.spotcheck.tools/link-accessibility-auditor): Checks every anchor element for a real accessible name, flags generic text such as "click here" or "read more", flags very short names, and catches links with no name at all. WCAG 2.2: 2.4.4 Link Purpose In Context (A), 4.1.2 Name, Role, Value (A), 2.4.9 Link Purpose Link Only (AAA).
+- [Heading Validator](https://www.spotcheck.tools/heading-validator): Walks the heading outline in document order and flags skipped levels, empty headings, and second or later h1 elements. Handles role="heading" with aria-level the same as native h1 through h6. WCAG 2.2: 1.3.1 Info and Relationships (A), 2.4.6 Headings and Labels (AA), 2.4.10 Section Headings (AAA).
+- [List Identifier](https://www.spotcheck.tools/list-identifier): Outlines every ul and ol, flags empty lists, empty list items, non-li direct children or stray text, and li elements that sit outside a ul, ol, or menu. WCAG 2.2: 1.3.1 Info and Relationships (A).
+- [Tab Order Visualizer](https://www.spotcheck.tools/tab-order-visualizer): Numbers every focusable element in the order the Tab key will actually visit it, and flags positive tabindex values that pull elements out of natural document order. Elements with tabindex="-1" are excluded. WCAG 2.2: 2.4.3 Focus Order (A), 2.1.1 Keyboard (A), 2.4.7 Focus Visible (AA).
+- [Text Contrast Checker](https://www.spotcheck.tools/text-contrast-checker): Measures each text block's contrast ratio against its effective background, resolved by walking up the DOM to the first non-transparent background, and labels each result as failing AA, passing AA only, or passing AAA. Large text is 24px and up, or 18.66px and up when bold. Covers text contrast only, not non-text contrast. WCAG 2.2: 1.4.3 Contrast Minimum (AA), 1.4.6 Contrast Enhanced (AAA).
+- [Alt Text Checker](https://www.spotcheck.tools/alt-text-checker): Checks every visible img element for an alt attribute, treats an empty alt as correctly decorative, and flags alt text that looks like a filename or opens with a redundant phrase like "image of". CSS background images and SVG icons are out of scope. WCAG 2.2: 1.1.1 Non-text Content (A).
+- [Input Label Checker](https://www.spotcheck.tools/input-label-checker): Outlines every input, select, and textarea, then reports how each one gets its accessible name: explicit label with a matching for and id pair, implicit naming from a wrapping label or aria-label, aria-labelledby, or title, or no accessible name at all. Buttons, hidden inputs, fieldset and legend grouping, and custom widgets are out of scope. WCAG 2.2: 1.3.1 Info and Relationships (A), 2.5.3 Label in Name (A), 3.3.2 Labels or Instructions (A), 4.1.2 Name, Role, Value (A), 2.4.6 Headings and Labels (AA).
 
-## How to use a bookmarklet
+## Browser extensions
 
-- [SpotCheck home](https://www.spotcheck.tools/): Drag any tool's button to your browser bookmarks bar, navigate to the page you want to test, then click the bookmark. Results are drawn as outlines on the page with a summary panel. Click the bookmark again to clear. Each tool page includes an inline demo you can run without installing anything, and the full source for review.
+- [SpotCheck for Chrome](https://chromewebstore.google.com/detail/spotcheck-accessibility-t/bcaahjkiibfcphmllamggoneejgpkncf): All SpotCheck tools in a single DevTools panel.
+- [SpotCheck for Firefox](https://addons.mozilla.org/en-US/firefox/addon/spotcheck-a11y-toolkit/): All SpotCheck tools in a single DevTools panel.
+- [SpotCheck for Edge](https://microsoftedge.microsoft.com/addons/detail/spotcheck-accessibility-/emnckkeinmbibkdihlafebegipoojcdb): All SpotCheck tools in a single DevTools panel.
+
+## How each tool page is structured
+
+Every bookmarklet page follows the same layout, which is useful when citing or summarizing a specific check:
+
+- A short description of what the bookmarklet does.
+- The draggable bookmarklet link, plus install and usage steps.
+- A color key explaining what correct, flagged, and incorrect mean for that specific check.
+- A "Try it here" demo that runs the check against sample markup on the page.
+- The applicable WCAG 2.2 success criteria, each linked to its W3C Understanding document.
+- The readable, unminified source for the bookmarklet, with a copy button.
+- An "FYI" section covering edge cases, known limits, and what the check does not cover.
+
+## Optional
+
+- [Understanding WCAG 2.2](https://www.w3.org/WAI/WCAG22/Understanding/): W3C reference for every success criterion linked from the tool pages.
+- [Homer Gaines](https://www.homergaines.com): Author and maintainer of SpotCheck.
