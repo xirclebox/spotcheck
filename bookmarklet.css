@@ -536,7 +536,7 @@ main section:last-of-type {
 
 .results-popup-example {
   position: relative;
-  background: #1b2430;
+  background: var(--dark);
   color: #e7eaed;
   font-size: var(--font-size-13);
   padding: 12px 32px 12px 16px;
