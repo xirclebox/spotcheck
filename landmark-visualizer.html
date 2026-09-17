@@ -47,7 +47,7 @@
     />
     <meta name="twitter:creator" content="@xirclebox" />
     <meta name="twitter:site" content="@xirclebox" />
-<meta name="color-scheme" content="light dark" />
+    <meta name="color-scheme" content="light dark" />
     <link
       rel="canonical"
       href="https://www.spotcheck.tools/landmark-visualizer"
@@ -63,15 +63,15 @@
       data-domains="spotcheck.tools,www.spotcheck.tools"
     ></script>
     <script>
-  const t = localStorage.getItem("__spotcheck_theme") || "system";
-  
-   if (t === "system") {
-    document.documentElement.removeAttribute("data-theme");
-  } else {
-    document.documentElement.setAttribute("data-theme", t);
-  }
-</script>
-<script defer src="js/theme.js"></script>
+      const t = localStorage.getItem("__spotcheck_theme") || "system";
+
+      if (t === "system") {
+        document.documentElement.removeAttribute("data-theme");
+      } else {
+        document.documentElement.setAttribute("data-theme", t);
+      }
+    </script>
+    <script defer src="js/theme.js"></script>
   </head>
   <body class="landmark-visualizer">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -80,11 +80,19 @@
       <div id="theme-toggle-container" class="theme-toggle-container"></div>
       <div class="tophat">
         <a href="index.html" class="tophat__link">
-          <span class="logo-header" role="img" alt="SpotCheck logo - home"></span></a>
+          <span
+            class="logo-header"
+            role="img"
+            alt="SpotCheck logo - home"
+          ></span
+        ></a>
       </div>
       <div class="wrap">
         <a href="index.html" class="bookmarklet-back__link">All bookmarklets</a>
-        <h1 class="site-header__title">Landmark Visualizer <div class="version">v.1.1</div></h1>
+        <h1 class="site-header__title">
+          Landmark Visualizer
+          <div class="version">v.1.2.0</div>
+        </h1>
         <p class="site-header__lede">
           Run this on any page to outline every landmark region (header, nav,
           main, aside, footer, and role="region") and flag the ones that are
@@ -104,12 +112,12 @@
           <div class="bookmarklet-row">
             <a
               class="bookmarklet"
-              href="javascript:!function()%7Bvar%20e%3Dwindow%2Ct%3Ddocument%2Cn%3D%22__a11yLandmarkViz%22%3Bif(e%5Bn%5D)e%5Bn%5D.clear()%3Belse%7Bvar%20r%2Ca%2Ci%2Co%3D%7Bgreen%3A%22%231a7d4f%22%2Cgold%3A%22%238b6800%22%2Cred%3A%22%23be412a%22%7D%2Cl%3D%7Bgreen%3A%225px%20solid%22%2Cgold%3A%226px%20dotted%22%2Cred%3A%225px%20dashed%22%7D%2Cd%3D%7Bgreen%3A%22%233fbf7f%22%2Cgold%3A%22%23e0b84f%22%2Cred%3A%22%23e06a4f%22%7D%2Cs%3D%7Bok%3A%22green%22%2Cambiguous%3A%22gold%22%2Cduplicate%3A%22red%22%2Cnested%3A%22red%22%2Cunnamed%3A%22red%22%7D%2Cu%3D%7Bduplicate%3A%22duplicate%22%2Cnested%3A%22nested%20in%20same%20role%22%2Cunnamed%3A%22no%20accessible%20name%2C%20not%20exposed%20as%20landmark%22%2Cambiguous%3A%22ambiguous%2C%20add%20aria-label%22%7D%2Cp%3D%22header%2Cnav%2Cmain%2Caside%2Cfooter%2Cform%2Csection%2C%5Brole%5D%22%2Cc%3D%7Bbanner%3A1%2Cnavigation%3A1%2Cmain%3A1%2Ccomplementary%3A1%2Ccontentinfo%3A1%2Csearch%3A1%2Cform%3A1%2Cregion%3A1%7D%2Cf%3D%7BHEADER%3A%22banner%22%2CNAV%3A%22navigation%22%2CMAIN%3A%22main%22%2CASIDE%3A%22complementary%22%2CFOOTER%3A%22contentinfo%22%2CFORM%3A%22form%22%2CSECTION%3A%22region%22%7D%2Cg%3D%7BHEADER%3A1%2CFOOTER%3A1%7D%2Cm%3D%7Bregion%3A1%2Cform%3A1%7D%2Cb%3D%5B%5D%2Cx%3D%7Bgreen%3A0%2Cgold%3A0%2Cred%3A0%7D%2Ch%3D%7B%7D%2Cv%3Dnull%2Cy%3DArray.prototype.slice.call(t.querySelectorAll(p)).filter(function(e)%7Breturn%20null!%3D%3DA(e)%7D)%3By.forEach(function(e)%7Bvar%20t%3DA(e)%3Bh%5Bt%5D%3Dh%5Bt%5D%7C%7C%5B%5D%2Ch%5Bt%5D.push(e)%7D)%2Cy.forEach(function(e)%7Bvar%20t%3DA(e)%2Cn%3DC(e)%2Cr%3Dk(e%2Ct%2Cn)%2Ca%3Ds%5Br%5D%2Ci%3D%7Bel%3Ae%2Coutline%3Ae.style.outline%2Coffset%3Ae.style.outlineOffset%2Cposition%3Ae.style.position%2Cbadge%3AN(r%2Ct%2Cn)%7D%3Bx%5Ba%5D%2B%3D1%2Ce.style.outline%3Dl%5Ba%5D%2B%22%20%22%2Bo%5Ba%5D%2Ce.style.outlineOffset%3D%223px%22%2C%22static%22%3D%3D%3DgetComputedStyle(e).position%26%26(e.style.position%3D%22relative%22)%2Ce.insertBefore(i.badge%2Ce.firstChild)%2Cb.push(i)%7D)%2Cr%3Dt.createElement(%22div%22)%2Ca%3Dt.createElement(%22strong%22)%2Ci%3Dt.createElement(%22button%22)%2Cr.setAttribute(%22data-a11y-landmark-check%22%2C%22panel%22)%2Cr.setAttribute(%22role%22%2C%22status%22)%2Cr.style.cssText%3D%5B%22position%3Afixed%22%2C%22right%3A16px%22%2C%22bottom%3A16px%22%2C%22max-width%3A260px%22%2C%22padding%3A12px%2032px%2012px%2016px%22%2C%22border-radius%3A6px%22%2C%22background%3A%231b2430%22%2C%22color%3A%23e7eaed%22%2C%22font%3A400%2014px%2F1.5%20Arial%2C%20Helvetica%2C%20%5C%22Helvetica%20Neue%5C%22%2C%20sans-serif%22%2C%22box-shadow%3A0%208px%2024px%20rgba(0%2C0%2C0%2C0.35)%22%2C%22z-index%3A2147483647%22%5D.join(%22%3B%22)%2Ca.textContent%3D%22Landmark%20Visualizer%22%2Ca.style.cssText%3D%22display%3Ablock%3Bmargin-bottom%3A4px%22%2Cr.appendChild(a)%2Cr.appendChild(T(%22green%22%2C%22correct%22))%2Cr.appendChild(T(%22gold%22%2C%22flagged%22))%2Cr.appendChild(T(%22red%22%2C%22incorrect%22))%2Ci.type%3D%22button%22%2Ci.textContent%3D%22%C3%97%22%2Ci.setAttribute(%22aria-label%22%2C%22Clear%20the%20landmark%20results%22)%2Ci.style.cssText%3D%5B%22position%3Aabsolute%22%2C%22top%3A6px%22%2C%22right%3A6px%22%2C%22width%3A24px%22%2C%22height%3A24px%22%2C%22padding%3A2px%206px%22%2C%22border%3Anone%22%2C%22background%3Atransparent%22%2C%22color%3A%23e7eaed%22%2C%22font%3A16px%2F1%20Arial%2C%20Helvetica%2C%20%5C%22Helvetica%20Neue%5C%22%2C%20sans-serif%22%2C%22cursor%3Apointer%22%5D.join(%22%3B%22)%2Ci.addEventListener(%22click%22%2CO)%2Cr.appendChild(i)%2Cv%3Dr%2Ct.body.appendChild(v)%2Ce%5Bn%5D%3D%7Bclear%3AO%7D%7Dfunction%20E(e)%7Breturn(e%7C%7C%22%22).replace(%2F%5Cs%2B%2Fg%2C%22%20%22).trim()%7Dfunction%20A(e)%7Bvar%20t%3De.getAttribute(%22role%22)%3Bif(t%26%26c%5Bt%5D)return%20t%3Bvar%20n%3Df%5Be.tagName%5D%3Breturn%20n%3Fg%5Be.tagName%5D%26%26e.closest(%22article%2Caside%2Cmain%2Cnav%2Csection%22)%3Fnull%3An%3Anull%7Dfunction%20C(e)%7Bvar%20n%3DE(e.getAttribute(%22aria-labelledby%22))%3Bif(n)%7Bvar%20r%3DE(n.split(%22%20%22).map(function(e)%7Breturn%20function(e)%7Breturn%20e%3FE(e.textContent)%3A%22%22%7D(t.getElementById(e))%7D).join(%22%20%22))%3Bif(r)return%20r%7Dreturn%20E(e.getAttribute(%22aria-label%22))%7Dfunction%20k(e%2Ct%2Cn)%7Bvar%20r%3Dh%5Bt%5D%7C%7C%5B%5D%3Breturn%22main%22%3D%3D%3Dt%26%26r.length%3E1%3F%22duplicate%22%3Afunction(e%2Ct)%7Bvar%20n%3De.parentElement%26%26e.parentElement.closest(p)%3Breturn!!n%26%26A(n)%3D%3D%3Dt%7D(e%2Ct)%3F%22nested%22%3Am%5Bt%5D%26%26!n%3F%22unnamed%22%3Ar.length%3E1%26%26!n%3F%22ambiguous%22%3A%22ok%22%7Dfunction%20N(e%2Cn%2Cr)%7Bvar%20a%3Dt.createElement(%22div%22)%3Breturn%20a.setAttribute(%22data-a11y-landmark-check%22%2C%22badge%22)%2Ca.setAttribute(%22aria-hidden%22%2C%22true%22)%2Ca.textContent%3Dfunction(e%2Ct%2Cn)%7Breturn%22ok%22%3D%3D%3De%3Fn%3Ft%2B%22%3A%20%22%2Bn%3At%3At%2B%22%20(%22%2Bu%5Be%5D%2B%22)%22%7D(e%2Cn%2Cr)%2Ca.style.cssText%3D%5B%22position%3Aabsolute%22%2C%22top%3A0%22%2C%22left%3A0%22%2C%22transform%3AtranslateY(-100%25)%22%2C%22width%3Afit-content%22%2C%22max-width%3Amin(90vw%2C%2024rem)%22%2C%22padding%3A4px%208px%22%2C%22border-radius%3A4px%22%2C%22background%3A%22%2Bo%5Bs%5Be%5D%5D%2C%22color%3A%23fff%22%2C%22font%3A500%2016px%2F1.2%20Arial%2C%20Helvetica%2C%20%5C%22Helvetica%20Neue%5C%22%2C%20sans-serif%22%2C%22pointer-events%3Anone%22%2C%22z-index%3A2147483646%22%5D.join(%22%3B%22)%2Ca%7Dfunction%20T(e%2Cn)%7Bvar%20r%3Dt.createElement(%22p%22)%2Ca%3Dt.createElement(%22span%22)%3Breturn%20r.style.cssText%3D%22margin%3A0%3Bpadding%3A0%22%2Ca.textContent%3D%22%E2%97%8F%22%2Ca.style.cssText%3D%22color%3A%22%2Bd%5Be%5D%2B%22%3Bmargin-right%3A6px%22%2Cr.appendChild(a)%2Cr.appendChild(t.createTextNode(x%5Be%5D%2B%22%20%22%2Bn))%2Cr%7Dfunction%20O()%7Bb.forEach(function(e)%7Be.el.style.outline%3De.outline%2Ce.el.style.outlineOffset%3De.offset%2Ce.el.style.position%3De.position%2CE(e.el.getAttribute(%22style%22))%7C%7Ce.el.removeAttribute(%22style%22)%2Ce.badge.parentNode%26%26e.badge.parentNode.removeChild(e.badge)%7D)%2Cb%3D%5B%5D%2Cv%26%26v.parentNode%26%26v.parentNode.removeChild(v)%2Cv%3Dnull%2Cdelete%20e%5Bn%5D%7D%7D()%3B"
+              href="javascript:!function()%7Bvar%20e%3Dwindow%2Ct%3Ddocument%2Cn%3D%22__a11yLandmarkViz%22%3Bif(e%5Bn%5D)e%5Bn%5D.clear()%3Belse%7Bvar%20r%2Ca%2Co%2Ci%2Cl%2Cd%2Cs%2Cu%3D%7Bgreen%3A%22%231a7d4f%22%2Cgold%3A%22%238b6800%22%2Cred%3A%22%23be412a%22%7D%2Cc%3D%7Bgreen%3A%225px%20solid%22%2Cgold%3A%226px%20dotted%22%2Cred%3A%225px%20dashed%22%7D%2Cp%3D%7Bgreen%3A%22%233fbf7f%22%2Cgold%3A%22%23e0b84f%22%2Cred%3A%22%23e06a4f%22%7D%2Cf%3D%7Bok%3A%22green%22%2Cambiguous%3A%22gold%22%2Cduplicate%3A%22red%22%2Cnested%3A%22red%22%2Cunnamed%3A%22red%22%7D%2Cg%3D%7Bduplicate%3A%22duplicate%22%2Cnested%3A%22nested%20in%20same%20role%22%2Cunnamed%3A%22no%20accessible%20name%2C%20not%20exposed%20as%20landmark%22%2Cambiguous%3A%22ambiguous%2C%20add%20aria-label%22%7D%2Cm%3D%22header%2Cnav%2Cmain%2Caside%2Cfooter%2Cform%2Csection%2C%5Brole%5D%22%2Cb%3D%7Bbanner%3A1%2Cnavigation%3A1%2Cmain%3A1%2Ccomplementary%3A1%2Ccontentinfo%3A1%2Csearch%3A1%2Cform%3A1%2Cregion%3A1%7D%2Cx%3D%7BHEADER%3A%22banner%22%2CNAV%3A%22navigation%22%2CMAIN%3A%22main%22%2CASIDE%3A%22complementary%22%2CFOOTER%3A%22contentinfo%22%2CFORM%3A%22form%22%2CSECTION%3A%22region%22%7D%2Ch%3D%7BHEADER%3A1%2CFOOTER%3A1%7D%2Cv%3D%7Bregion%3A1%2Cform%3A1%7D%2Cy%3D%5B%5D%2CE%3D%7Bgreen%3A0%2Cgold%3A0%2Cred%3A0%7D%2CA%3D%7B%7D%2CC%3Dnull%2Ck%3D(r%3Dm%2Co%3D%5B%5D%2Ci%3Dnew%20WeakSet%2Cfunction%20e(t)%7B(function(e)%7Bif(%22SLOT%22%3D%3D%3De.tagName%26%26e.assignedElements)%7Bvar%20t%3De.assignedElements(%7Bflatten%3A!0%7D)%3Bif(t.length)return%20t%7Dreturn%20Array.prototype.slice.call(e.children)%7D)(t).forEach(function(t)%7Bi.has(t)%7C%7C(i.add(t)%2Ct.matches(r)%26%26o.push(t)%2Ct.shadowRoot%3Fe(t.shadowRoot)%3Ae(t))%7D)%7D(a%7C%7Ct.body)%2Co).filter(function(e)%7Breturn%20null!%3D%3DR(e)%7D)%3Bk.forEach(function(e)%7Bvar%20t%3DR(e)%3BA%5Bt%5D%3DA%5Bt%5D%7C%7C%5B%5D%2CA%5Bt%5D.push(e)%7D)%2Ck.forEach(function(e)%7Bvar%20t%3DR(e)%2Cn%3DH(e)%2Cr%3DS(e%2Ct%2Cn)%2Ca%3Df%5Br%5D%2Co%3D%7Bel%3Ae%2Coutline%3Ae.style.outline%2Coffset%3Ae.style.outlineOffset%2Cposition%3Ae.style.position%2Cbadge%3AI(r%2Ct%2Cn)%7D%3BE%5Ba%5D%2B%3D1%2Ce.style.outline%3Dc%5Ba%5D%2B%22%20%22%2Bu%5Ba%5D%2Ce.style.outlineOffset%3D%223px%22%2C%22static%22%3D%3D%3DgetComputedStyle(e).position%26%26(e.style.position%3D%22relative%22)%2Ce.insertBefore(o.badge%2Ce.firstChild)%2Cy.push(o)%7D)%2Cl%3Dt.createElement(%22div%22)%2Cd%3Dt.createElement(%22strong%22)%2Cs%3Dt.createElement(%22button%22)%2Cl.setAttribute(%22data-a11y-landmark-check%22%2C%22panel%22)%2Cl.setAttribute(%22role%22%2C%22status%22)%2Cl.style.cssText%3D%5B%22position%3Afixed%22%2C%22right%3A16px%22%2C%22bottom%3A16px%22%2C%22max-width%3A260px%22%2C%22padding%3A12px%2032px%2012px%2016px%22%2C%22border-radius%3A6px%22%2C%22background%3A%23181720%22%2C%22color%3A%23e7eaed%22%2C%22font%3A400%2014px%2F1.5%20Arial%2C%20Helvetica%2C%20%5C%22Helvetica%20Neue%5C%22%2C%20sans-serif%22%2C%22box-shadow%3A0%208px%2024px%20rgba(0%2C0%2C0%2C0.35)%22%2C%22z-index%3A2147483647%22%5D.join(%22%3B%22)%2Cd.textContent%3D%22Landmark%20Visualizer%22%2Cd.style.cssText%3D%22display%3Ablock%3Bmargin-bottom%3A4px%3Bcolor%3A%23fff%22%2Cl.appendChild(d)%2Cl.appendChild(j(%22green%22%2C%22correct%22))%2Cl.appendChild(j(%22gold%22%2C%22flagged%22))%2Cl.appendChild(j(%22red%22%2C%22incorrect%22))%2Cs.type%3D%22button%22%2Cs.textContent%3D%22%C3%97%22%2Cs.setAttribute(%22aria-label%22%2C%22Clear%20the%20landmark%20results%22)%2Cs.style.cssText%3D%5B%22position%3Aabsolute%22%2C%22top%3A6px%22%2C%22right%3A6px%22%2C%22width%3A24px%22%2C%22height%3A24px%22%2C%22padding%3A2px%206px%22%2C%22border%3Anone%22%2C%22background%3Atransparent%22%2C%22color%3A%23e7eaed%22%2C%22font%3A16px%2F1%20Arial%2C%20Helvetica%2C%20%5C%22Helvetica%20Neue%5C%22%2C%20sans-serif%22%2C%22cursor%3Apointer%22%5D.join(%22%3B%22)%2Cs.addEventListener(%22click%22%2Cz)%2Cl.appendChild(s)%2CC%3Dl%2Ct.body.appendChild(C)%2Ce%5Bn%5D%3D%7Bclear%3Az%7D%7Dfunction%20N(e)%7Breturn(e%7C%7C%22%22).replace(%2F%5Cs%2B%2Fg%2C%22%20%22).trim()%7Dfunction%20w(e)%7Bvar%20t%3De.getRootNode%3Fe.getRootNode()%3Anull%3Breturn%20t%26%26t.host%3Ft.host%3Anull%7Dfunction%20T(e)%7Breturn%20e.assignedSlot%3Fe.assignedSlot.parentElement%7C%7Cw(e.assignedSlot)%3Ae.parentElement%3Fe.parentElement%3Aw(e)%7Dfunction%20O(e%2Ct)%7Bfor(var%20n%3DT(e)%3Bn%3B)%7Bif(n.matches(t))return%20n%3Bn%3DT(n)%7Dreturn%20null%7Dfunction%20R(e)%7Bvar%20t%3De.getAttribute(%22role%22)%3Bif(t%26%26b%5Bt%5D)return%20t%3Bvar%20n%3Dx%5Be.tagName%5D%3Breturn%20n%3Fh%5Be.tagName%5D%26%26O(e%2C%22article%2Caside%2Cmain%2Cnav%2Csection%22)%3Fnull%3An%3Anull%7Dfunction%20H(e)%7Bvar%20n%3DN(e.getAttribute(%22aria-labelledby%22))%3Bif(n)%7Bvar%20r%3DN(n.split(%22%20%22).map(function(n)%7Breturn%20function(e)%7Breturn%20e%3FN(e.textContent)%3A%22%22%7D(function(e%2Cn)%7Bvar%20r%3De.getRootNode()%3Breturn(r.getElementById%3Fr.getElementById(n)%3Anull)%7C%7Ct.getElementById(n)%7D(e%2Cn))%7D).join(%22%20%22))%3Bif(r)return%20r%7Dreturn%20N(e.getAttribute(%22aria-label%22))%7Dfunction%20S(e%2Ct%2Cn)%7Bvar%20r%3DA%5Bt%5D%7C%7C%5B%5D%3Breturn%22main%22%3D%3D%3Dt%26%26r.length%3E1%3F%22duplicate%22%3Afunction(e%2Ct)%7Bvar%20n%3DO(e%2Cm)%3Breturn!!n%26%26R(n)%3D%3D%3Dt%7D(e%2Ct)%3F%22nested%22%3Av%5Bt%5D%26%26!n%3F%22unnamed%22%3Ar.length%3E1%26%26!n%3F%22ambiguous%22%3A%22ok%22%7Dfunction%20I(e%2Cn%2Cr)%7Bvar%20a%3Dt.createElement(%22div%22)%3Breturn%20a.setAttribute(%22data-a11y-landmark-check%22%2C%22badge%22)%2Ca.setAttribute(%22aria-hidden%22%2C%22true%22)%2Ca.textContent%3Dfunction(e%2Ct%2Cn)%7Breturn%22ok%22%3D%3D%3De%3Fn%3Ft%2B%22%3A%20%22%2Bn%3At%3At%2B%22%20(%22%2Bg%5Be%5D%2B%22)%22%7D(e%2Cn%2Cr)%2Ca.style.cssText%3D%5B%22position%3Aabsolute%22%2C%22top%3A0%22%2C%22left%3A0%22%2C%22transform%3AtranslateY(-100%25)%22%2C%22width%3Afit-content%22%2C%22max-width%3Amin(90vw%2C%2024rem)%22%2C%22padding%3A4px%208px%22%2C%22border-radius%3A4px%22%2C%22background%3A%22%2Bu%5Bf%5Be%5D%5D%2C%22color%3A%23fff%22%2C%22font%3A500%2016px%2F1.2%20Arial%2C%20Helvetica%2C%20%5C%22Helvetica%20Neue%5C%22%2C%20sans-serif%22%2C%22pointer-events%3Anone%22%2C%22z-index%3A2147483646%22%5D.join(%22%3B%22)%2Ca%7Dfunction%20j(e%2Cn)%7Bvar%20r%3Dt.createElement(%22p%22)%2Ca%3Dt.createElement(%22span%22)%3Breturn%20r.style.cssText%3D%22margin%3A0%3Bpadding%3A0%22%2Ca.textContent%3D%22%E2%97%8F%22%2Ca.style.cssText%3D%22color%3A%22%2Bp%5Be%5D%2B%22%3Bmargin-right%3A6px%22%2Cr.appendChild(a)%2Cr.appendChild(t.createTextNode(E%5Be%5D%2B%22%20%22%2Bn))%2Cr%7Dfunction%20z()%7By.forEach(function(e)%7Be.el.style.outline%3De.outline%2Ce.el.style.outlineOffset%3De.offset%2Ce.el.style.position%3De.position%2CN(e.el.getAttribute(%22style%22))%7C%7Ce.el.removeAttribute(%22style%22)%2Ce.badge.parentNode%26%26e.badge.parentNode.removeChild(e.badge)%7D)%2Cy%3D%5B%5D%2CC%26%26C.parentNode%26%26C.parentNode.removeChild(C)%2CC%3Dnull%2Cdelete%20e%5Bn%5D%7D%7D()%3B"
               onclick="return false;"
               data-bookmarklet="landmark-visualizer"
               >SpotCheck - Landmark Visualizer</a
             >
-            <p class="updated-on">last updated: 08/04/2026</p>
+            <p class="updated-on">last updated: 09/16/2026</p>
           </div>
           <ol class="steps">
             <li>
@@ -322,13 +330,13 @@
   var COLORS = {
     green: "#1a7d4f",
     gold: "#8b6800",
-    red: "#be412a"
+    red: "#be412a",
   };
 
   var OUTLINES = {
     green: "5px solid",
     gold: "6px dotted",
-    red: "5px dashed"
+    red: "5px dashed",
   };
 
   var OUTLINE_OFFSET = "3px";
@@ -336,7 +344,7 @@
   var DOTS = {
     green: "#3fbf7f",
     gold: "#e0b84f",
-    red: "#e06a4f"
+    red: "#e06a4f",
   };
 
   var LEVELS = {
@@ -344,14 +352,14 @@
     ambiguous: "gold",
     duplicate: "red",
     nested: "red",
-    unnamed: "red"
+    unnamed: "red",
   };
 
   var BADGES = {
     duplicate: "duplicate",
     nested: "nested in same role",
     unnamed: "no accessible name, not exposed as landmark",
-    ambiguous: "ambiguous, add aria-label"
+    ambiguous: "ambiguous, add aria-label",
   };
 
   var LANDMARK_SELECTOR = "header,nav,main,aside,footer,form,section,[role]";
@@ -365,7 +373,7 @@
     contentinfo: 1,
     search: 1,
     form: 1,
-    region: 1
+    region: 1,
   };
 
   var TAG_ROLES = {
@@ -375,11 +383,13 @@
     ASIDE: "complementary",
     FOOTER: "contentinfo",
     FORM: "form",
-    SECTION: "region"
+    SECTION: "region",
   };
 
   var SCOPED_TAGS = { HEADER: 1, FOOTER: 1 };
   var NAME_REQUIRED_ROLES = { region: 1, form: 1 };
+
+  var SLOT_TAG = "SLOT";
 
   var records = [];
   var counts = { green: 0, gold: 0, red: 0 };
@@ -388,6 +398,73 @@
 
   function normalize(value) {
     return (value || "").replace(/\s+/g, " ").trim();
+  }
+
+  function flatChildren(node) {
+    if (node.tagName === SLOT_TAG && node.assignedElements) {
+      var assigned = node.assignedElements({ flatten: true });
+      if (assigned.length) {
+        return assigned;
+      }
+    }
+    return Array.prototype.slice.call(node.children);
+  }
+
+  function deepQuery(selector, root) {
+    var found = [];
+    var seen = new WeakSet();
+
+    function walk(node) {
+      flatChildren(node).forEach(function (el) {
+        if (seen.has(el)) {
+          return;
+        }
+        seen.add(el);
+        if (el.matches(selector)) {
+          found.push(el);
+        }
+        if (el.shadowRoot) {
+          walk(el.shadowRoot);
+          return;
+        }
+        walk(el);
+      });
+    }
+
+    walk(root || d.body);
+    return found;
+  }
+
+  function hostOf(node) {
+    var root = node.getRootNode ? node.getRootNode() : null;
+    return root && root.host ? root.host : null;
+  }
+
+  function flatParentOf(el) {
+    if (el.assignedSlot) {
+      return el.assignedSlot.parentElement || hostOf(el.assignedSlot);
+    }
+    if (el.parentElement) {
+      return el.parentElement;
+    }
+    return hostOf(el);
+  }
+
+  function ancestorMatching(el, selector) {
+    var node = flatParentOf(el);
+    while (node) {
+      if (node.matches(selector)) {
+        return node;
+      }
+      node = flatParentOf(node);
+    }
+    return null;
+  }
+
+  function byId(el, id) {
+    var root = el.getRootNode();
+    var found = root.getElementById ? root.getElementById(id) : null;
+    return found || d.getElementById(id);
   }
 
   function textFrom(el) {
@@ -403,7 +480,7 @@
     if (!byTag) {
       return null;
     }
-    if (SCOPED_TAGS[el.tagName] && el.closest(SECTIONING_SELECTOR)) {
+    if (SCOPED_TAGS[el.tagName] && ancestorMatching(el, SECTIONING_SELECTOR)) {
       return null;
     }
     return byTag;
@@ -416,9 +493,9 @@
         ids
           .split(" ")
           .map(function (id) {
-            return textFrom(d.getElementById(id));
+            return textFrom(byId(el, id));
           })
-          .join(" ")
+          .join(" "),
       );
       if (referenced) {
         return referenced;
@@ -428,7 +505,7 @@
   }
 
   function isNestedInSameRole(el, role) {
-    var parent = el.parentElement && el.parentElement.closest(LANDMARK_SELECTOR);
+    var parent = ancestorMatching(el, LANDMARK_SELECTOR);
     return !!parent && roleOf(parent) === role;
   }
 
@@ -474,9 +551,9 @@
       "border-radius:4px",
       "background:" + COLORS[LEVELS[kind]],
       "color:#fff",
-      "font:500 16px/1.2 Arial, Helvetica, \"Helvetica Neue\", sans-serif",
+      'font:500 16px/1.2 Arial, Helvetica, "Helvetica Neue", sans-serif',
       "pointer-events:none",
-      "z-index:2147483646"
+      "z-index:2147483646",
     ].join(";");
     return badge;
   }
@@ -491,7 +568,7 @@
       outline: el.style.outline,
       offset: el.style.outlineOffset,
       position: el.style.position,
-      badge: makeBadge(kind, role, name)
+      badge: makeBadge(kind, role, name),
     };
 
     counts[color] += 1;
@@ -530,15 +607,15 @@
       "max-width:260px",
       "padding:12px 32px 12px 16px",
       "border-radius:6px",
-      "background:#1b2430",
+      "background:#181720",
       "color:#e7eaed",
-      "font:400 14px/1.5 Arial, Helvetica, \"Helvetica Neue\", sans-serif",
+      'font:400 14px/1.5 Arial, Helvetica, "Helvetica Neue", sans-serif',
       "box-shadow:0 8px 24px rgba(0,0,0,0.35)",
-      "z-index:2147483647"
+      "z-index:2147483647",
     ].join(";");
 
     heading.textContent = "Landmark Visualizer";
-    heading.style.cssText = "display:block;margin-bottom:4px";
+    heading.style.cssText = "display:block;margin-bottom:4px;color:#fff";
     wrapper.appendChild(heading);
 
     wrapper.appendChild(makeCountLine("green", "correct"));
@@ -558,8 +635,8 @@
       "border:none",
       "background:transparent",
       "color:#e7eaed",
-      "font:16px/1 Arial, Helvetica, \"Helvetica Neue\", sans-serif",
-      "cursor:pointer"
+      'font:16px/1 Arial, Helvetica, "Helvetica Neue", sans-serif',
+      "cursor:pointer",
     ].join(";");
     close.addEventListener("click", clear);
     wrapper.appendChild(close);
@@ -587,11 +664,9 @@
     delete w[STATE_KEY];
   }
 
-  var landmarks = Array.prototype.slice
-    .call(d.querySelectorAll(LANDMARK_SELECTOR))
-    .filter(function (el) {
-      return roleOf(el) !== null;
-    });
+  var landmarks = deepQuery(LANDMARK_SELECTOR).filter(function (el) {
+    return roleOf(el) !== null;
+  });
 
   landmarks.forEach(function (el) {
     var role = roleOf(el);
@@ -658,7 +733,12 @@
       <div class="wrap">
         <p>
           <a href="index.html">
-            <span class="logo-footer" role="img" alt="SpotCheck logo - home"></span></a>
+            <span
+              class="logo-footer"
+              role="img"
+              alt="SpotCheck logo - home"
+            ></span
+          ></a>
         </p>
 
         <p>

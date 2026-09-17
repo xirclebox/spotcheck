@@ -47,7 +47,7 @@
     />
     <meta name="twitter:creator" content="@xirclebox" />
     <meta name="twitter:site" content="@xirclebox" />
-<meta name="color-scheme" content="light dark" />
+    <meta name="color-scheme" content="light dark" />
     <link
       rel="canonical"
       href="https://www.spotcheck.tools/tab-order-visualizer"
@@ -63,15 +63,15 @@
       data-domains="spotcheck.tools,www.spotcheck.tools"
     ></script>
     <script>
-  const t = localStorage.getItem("__spotcheck_theme") || "system";
-  
-   if (t === "system") {
-    document.documentElement.removeAttribute("data-theme");
-  } else {
-    document.documentElement.setAttribute("data-theme", t);
-  }
-</script>
-<script defer src="js/theme.js"></script>
+      const t = localStorage.getItem("__spotcheck_theme") || "system";
+
+      if (t === "system") {
+        document.documentElement.removeAttribute("data-theme");
+      } else {
+        document.documentElement.setAttribute("data-theme", t);
+      }
+    </script>
+    <script defer src="js/theme.js"></script>
   </head>
   <body class="tab-order">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -80,11 +80,19 @@
       <div id="theme-toggle-container" class="theme-toggle-container"></div>
       <div class="tophat">
         <a href="index.html" class="tophat__link">
-          <span class="logo-header" role="img" alt="SpotCheck logo - home"></span></a>
+          <span
+            class="logo-header"
+            role="img"
+            alt="SpotCheck logo - home"
+          ></span
+        ></a>
       </div>
       <div class="wrap">
         <a href="index.html" class="bookmarklet-back__link">All bookmarklets</a>
-        <h1 class="site-header__title">Tab Order Visualizer <div class="version">v.1.3</div></h1>
+        <h1 class="site-header__title">
+          Tab Order Visualizer
+          <div class="version">v.1.3.0</div>
+        </h1>
         <p class="site-header__lede">
           Run this on any page to number every visible and visually hidden
           focusable element in real tab order, and flag any element using a
@@ -755,7 +763,12 @@
       <div class="wrap">
         <p>
           <a href="index.html">
-            <span class="logo-footer" role="img" alt="SpotCheck logo - home"></span></a>
+            <span
+              class="logo-footer"
+              role="img"
+              alt="SpotCheck logo - home"
+            ></span
+          ></a>
         </p>
 
         <p>

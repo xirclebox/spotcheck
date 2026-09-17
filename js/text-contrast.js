@@ -140,15 +140,30 @@
           node = flatParentOf(node);
         }
         chain.reverse();
-        var backdrop = WHITE,
-          opacity = 1;
+        var opacities = [],
+          running = 1;
         chain.forEach(function (n) {
-          opacity *= opacityOf(n);
-          var bg = parseColor(getComputedStyle(n).backgroundColor);
-          if (bg && bg.a > 0)
-            backdrop = blend(withAlpha(bg, bg.a * opacity), backdrop);
+          running *= opacityOf(n);
+          opacities.push(running);
         });
-        return { color: backdrop, opacity: opacity };
+        var backdrop = { r: 0, g: 0, b: 0, a: 0 },
+          image = false,
+          index = chain.length - 1,
+          style,
+          bg;
+        while (index >= 0 && backdrop.a < 1) {
+          style = getComputedStyle(chain[index]);
+          if (style.backgroundImage && style.backgroundImage !== "none") {
+            image = true;
+            break;
+          }
+          bg = parseColor(style.backgroundColor);
+          if (bg && bg.a > 0)
+            backdrop = blend(backdrop, withAlpha(bg, bg.a * opacities[index]));
+          index -= 1;
+        }
+        if (backdrop.a < 1) backdrop = blend(backdrop, WHITE);
+        return { color: backdrop, opacity: running, image: image };
       }
       function lum(c) {
         function ch(v) {
@@ -178,18 +193,26 @@
         if (!alpha) return;
         var painted = blend(withAlpha(fg, alpha), backdrop.color);
         var r = ratio(painted, backdrop.color);
-        var level = r < 4.5 ? "red" : r < 7 ? "gold" : "green";
+        var level = backdrop.image
+          ? "gold"
+          : r < 4.5
+            ? "red"
+            : r < 7
+              ? "gold"
+              : "green";
         var hasOpacity = opacityOf(p) < 1;
         var label =
           r.toFixed(2) +
           ":1, " +
-          (level === "red"
-            ? hasOpacity
-              ? "opacity fails AA"
-              : "fails AA"
-            : level === "gold"
-              ? "passes AA, not AAA"
-              : "passes AAA");
+          (backdrop.image
+            ? "background image, check this one by hand"
+            : level === "red"
+              ? hasOpacity
+                ? "opacity fails AA"
+                : "fails AA"
+              : level === "gold"
+                ? "passes AA, not AAA"
+                : "passes AAA");
         var color =
           level === "green"
             ? "#1a7d4f"
