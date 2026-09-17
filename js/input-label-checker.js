@@ -6,6 +6,76 @@
   var clearButton = document.getElementById("demo-clear");
   var results = document.getElementById("demo-results");
 
+  var SLOT_TAG = "SLOT";
+
+  function flatChildren(node) {
+    if (node.tagName === SLOT_TAG && node.assignedElements) {
+      var assigned = node.assignedElements({ flatten: true });
+      if (assigned.length) return assigned;
+    }
+    return Array.prototype.slice.call(node.children);
+  }
+
+  function deepQuery(selector, root) {
+    var found = [];
+    var seen = new WeakSet();
+
+    function walk(node) {
+      flatChildren(node).forEach(function (el) {
+        if (seen.has(el)) return;
+        seen.add(el);
+        if (el.matches(selector)) found.push(el);
+        if (el.shadowRoot) {
+          walk(el.shadowRoot);
+          return;
+        }
+        walk(el);
+      });
+    }
+
+    walk(root);
+    return found;
+  }
+
+  function defineDemoComponent(name, markup) {
+    if (!window.customElements || customElements.get(name)) return;
+    customElements.define(
+      name,
+      class extends HTMLElement {
+        connectedCallback() {
+          if (this.shadowRoot) return;
+          this.attachShadow({ mode: "open" }).innerHTML = markup;
+        }
+      },
+    );
+  }
+
+  function byId(el, id) {
+    var root = el.getRootNode();
+    var found = root.getElementById ? root.getElementById(id) : null;
+    return found || document.getElementById(id);
+  }
+
+  var SHADOW_STYLE = [
+    "<style>",
+    ":host{display:block;padding:0.75rem;",
+    "border:1px dashed var(--color-hairline,#d8dbdd);",
+    "border-radius:var(--border-radius,0.25rem)}",
+    "*{font:inherit;color:inherit}",
+    "</style>",
+  ].join("");
+
+  defineDemoComponent(
+    "demo-widget",
+    SHADOW_STYLE +
+      [
+        '<label for="shadow-field">Shadow label</label>',
+        '<input id="shadow-field" type="text">',
+        '<input type="text">',
+        "<slot></slot>",
+      ].join(""),
+  );
+
   if (!stage || !runButton || !clearButton || !results) {
     return;
   }
@@ -13,13 +83,13 @@
   var COLORS = {
     explicit: "#1a7d4f",
     implicit: "#8b6800",
-    missing: "#be412a"
+    missing: "#be412a",
   };
 
   var REASONS = {
     explicit: "explicit label",
     implicit: "implicit label",
-    missing: "no label"
+    missing: "no label",
   };
 
   var SKIP_TYPES = ["hidden", "submit", "reset", "button", "image"];
@@ -45,9 +115,9 @@
       ids
         .split(" ")
         .map(function (id) {
-          return textFrom(document.getElementById(id));
+          return textFrom(byId(el, id));
         })
-        .join(" ")
+        .join(" "),
     );
   }
 
@@ -94,7 +164,7 @@
     badge.textContent = label;
     badge.setAttribute("aria-hidden", "true");
     badge.setAttribute("data-a11y-demo-badge", "");
- 
+
     badge.style.cssText = [
       "display:inline-block",
       "width:fit-content",
@@ -107,7 +177,7 @@
       "border-radius:4px",
       "vertical-align:middle",
       "pointer-events:none",
-      "white-space:nowrap"
+      "white-space:nowrap",
     ].join(";");
 
     return badge;
@@ -139,8 +209,7 @@
   function run() {
     clear();
 
-    Array.prototype.slice
-      .call(stage.querySelectorAll("input, select, textarea"))
+    deepQuery("input, select, textarea", stage)
       .filter(function (el) {
         return SKIP_TYPES.indexOf(el.type) === -1;
       })
@@ -151,7 +220,7 @@
           el: el,
           outline: el.style.outline,
           offset: el.style.outlineOffset,
-          badge: makeBadge(kind, label)
+          badge: makeBadge(kind, label),
         };
 
         if (kind === "explicit") {
@@ -161,7 +230,7 @@
         } else {
           el.style.outline = "6px dotted " + COLORS.missing;
         }
-        
+
         el.style.outlineOffset = "3px";
         el.insertAdjacentElement("afterend", record.badge);
         records.push(record);

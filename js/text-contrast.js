@@ -3,6 +3,81 @@
   var clearBtn = document.getElementById("demo-clear");
   var resultsEl = document.getElementById("demo-results");
 
+  var SLOT_TAG = "SLOT";
+
+  function flatChildren(node) {
+    if (node.tagName === SLOT_TAG && node.assignedElements) {
+      var assigned = node.assignedElements({ flatten: true });
+      if (assigned.length) return assigned;
+    }
+    return Array.prototype.slice.call(node.children);
+  }
+
+  function deepQuery(selector, root) {
+    var found = [];
+    var seen = new WeakSet();
+
+    function walk(node) {
+      flatChildren(node).forEach(function (el) {
+        if (seen.has(el)) return;
+        seen.add(el);
+        if (el.matches(selector)) found.push(el);
+        if (el.shadowRoot) {
+          walk(el.shadowRoot);
+          return;
+        }
+        walk(el);
+      });
+    }
+
+    walk(root);
+    return found;
+  }
+
+  function defineDemoComponent(name, markup) {
+    if (!window.customElements || customElements.get(name)) return;
+    customElements.define(
+      name,
+      class extends HTMLElement {
+        connectedCallback() {
+          if (this.shadowRoot) return;
+          this.attachShadow({ mode: "open" }).innerHTML = markup;
+        }
+      },
+    );
+  }
+
+  function hostOf(node) {
+    var root = node.getRootNode ? node.getRootNode() : null;
+    return root && root.host ? root.host : null;
+  }
+
+  function flatParentOf(el) {
+    if (el.assignedSlot)
+      return el.assignedSlot.parentElement || hostOf(el.assignedSlot);
+    if (el.parentElement) return el.parentElement;
+    return hostOf(el);
+  }
+
+  var SHADOW_STYLE = [
+    "<style>",
+    ":host{display:block;padding:0.75rem;",
+    "border:1px dashed var(--color-hairline,#d8dbdd);",
+    "border-radius:var(--border-radius,0.25rem)}",
+    "*{font:inherit;color:inherit}",
+    "</style>",
+  ].join("");
+
+  defineDemoComponent(
+    "demo-widget",
+    SHADOW_STYLE +
+      [
+        '<p style="color:#8a8a8a">Shadow paragraph, low contrast</p>',
+        '<p style="color:#181720">Shadow paragraph, high contrast</p>',
+        "<slot></slot>",
+      ].join(""),
+  );
+
   function resetRecords(demoRecords) {
     demoRecords.forEach(function (r) {
       r.el.style.outline = r.outline;
@@ -62,7 +137,7 @@
           node = el;
         while (node) {
           chain.push(node);
-          node = node.parentElement;
+          node = flatParentOf(node);
         }
         chain.reverse();
         var backdrop = WHITE,
@@ -94,84 +169,82 @@
           .replace(/</g, "&lt;")
           .replace(/>/g, "&gt;");
       }
-      Array.prototype.slice
-        .call(stage.querySelectorAll("p"))
-        .forEach(function (p) {
-          var style = getComputedStyle(p);
-          var fg = parseColor(style.color);
-          if (!fg) return;
-          var backdrop = backdropOf(p);
-          var alpha = fg.a * backdrop.opacity;
-          if (!alpha) return;
-          var painted = blend(withAlpha(fg, alpha), backdrop.color);
-          var r = ratio(painted, backdrop.color);
-          var level = r < 4.5 ? "red" : r < 7 ? "gold" : "green";
-          var hasOpacity = opacityOf(p) < 1;
-          var label =
-            r.toFixed(2) +
-            ":1, " +
-            (level === "red"
-              ? hasOpacity
-                ? "opacity fails AA"
-                : "fails AA"
-              : level === "gold"
-                ? "passes AA, not AAA"
-                : "passes AAA");
-          var color =
-            level === "green"
-              ? "#1a7d4f"
-              : level === "gold"
-                ? "#8b6800"
-                : "#be412a";
+      deepQuery("p", stage).forEach(function (p) {
+        var style = getComputedStyle(p);
+        var fg = parseColor(style.color);
+        if (!fg) return;
+        var backdrop = backdropOf(p);
+        var alpha = fg.a * backdrop.opacity;
+        if (!alpha) return;
+        var painted = blend(withAlpha(fg, alpha), backdrop.color);
+        var r = ratio(painted, backdrop.color);
+        var level = r < 4.5 ? "red" : r < 7 ? "gold" : "green";
+        var hasOpacity = opacityOf(p) < 1;
+        var label =
+          r.toFixed(2) +
+          ":1, " +
+          (level === "red"
+            ? hasOpacity
+              ? "opacity fails AA"
+              : "fails AA"
+            : level === "gold"
+              ? "passes AA, not AAA"
+              : "passes AAA");
+        var color =
+          level === "green"
+            ? "#1a7d4f"
+            : level === "gold"
+              ? "#8b6800"
+              : "#be412a";
 
-          if (color === "#be412a") {
-            p.style.outline = "6px dashed " + color;
-          } else if (color === "#8b6800") {
-            p.style.outline = "6px dotted " + color;
-          } else {
-            p.style.outline = "5px solid " + color;
-          }
+        if (color === "#be412a") {
+          p.style.outline = "6px dashed " + color;
+        } else if (color === "#8b6800") {
+          p.style.outline = "6px dotted " + color;
+        } else {
+          p.style.outline = "5px solid " + color;
+        }
 
-          var record = {
-            el: p,
-            outline: "",
-            offset: "",
-            position: p.style.position,
-            opacity: p.style.opacity,
-          };
+        var record = {
+          el: p,
+          outline: "",
+          offset: "",
+          position: p.style.position,
+          opacity: p.style.opacity,
+        };
 
-          p.style.outlineOffset = "3px";
-          if (getComputedStyle(p).position === "static") {
-            p.style.position = "relative";
-          }
-          if (hasOpacity) {
-            p.style.opacity = "1";
-          }
+        p.style.outlineOffset = "3px";
+        if (getComputedStyle(p).position === "static") {
+          p.style.position = "relative";
+        }
+        if (hasOpacity) {
+          p.style.opacity = "1";
+        }
 
-          var badge = document.createElement("span");
-          badge.textContent = label;
-          badge.setAttribute("aria-hidden", "true");
-          badge.style.cssText = [
-            "position:absolute",
-            "top:0",
-            "left:0",
-            "transform:translateY(-100%)",
-            "max-width:min(90vw, 24rem)",
-            "padding:4px 8px",
-            "border-radius:4px",
-            "background:" + color,
-            "color:#fff",
-            'font:500 16px/1.2 Arial, Helvetica, "Helvetica Neue", sans-serif',
-            "pointer-events:none",
-            "white-space:nowrap",
-            "z-index:2147483646",
-          ].join(";");
-          p.insertBefore(badge, p.firstChild);
+        var badge = document.createElement("span");
+        badge.textContent = label;
+        badge.setAttribute("aria-hidden", "true");
+        badge.style.cssText = [
+          "position:absolute",
+          "top:0",
+          "left:0",
+          "transform:translateY(-100%)",
+          "max-width:min(90vw, 24rem)",
+          "padding:4px 8px",
+          "border-radius:4px",
+          "background:" + color,
+          "color:#fff",
+          'font:500 16px/1.2 Arial, Helvetica, "Helvetica Neue", sans-serif',
+          "pointer-events:none",
+          "white-space:nowrap",
+          "z-index:2147483646",
+        ].join(";");
+        p.insertBefore(badge, p.firstChild);
 
-          record.badge = badge;
-          demoRecords.push(record);
-          lines.push('<p class="demo__results-line">' + esc(label) + "</p>");
-        });
+        record.badge = badge;
+        demoRecords.push(record);
+        lines.push('<p class="demo__results-line">' + esc(label) + "</p>");
+      });
       resultsEl.innerHTML = lines.join("");
     });
   }

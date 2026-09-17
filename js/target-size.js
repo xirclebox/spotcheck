@@ -6,6 +6,81 @@
 
   if (!stage) return;
 
+  var SLOT_TAG = "SLOT";
+
+  function flatChildren(node) {
+    if (node.tagName === SLOT_TAG && node.assignedElements) {
+      var assigned = node.assignedElements({ flatten: true });
+      if (assigned.length) return assigned;
+    }
+    return Array.prototype.slice.call(node.children);
+  }
+
+  function deepQuery(selector, root) {
+    var found = [];
+    var seen = new WeakSet();
+
+    function walk(node) {
+      flatChildren(node).forEach(function (el) {
+        if (seen.has(el)) return;
+        seen.add(el);
+        if (el.matches(selector)) found.push(el);
+        if (el.shadowRoot) {
+          walk(el.shadowRoot);
+          return;
+        }
+        walk(el);
+      });
+    }
+
+    walk(root);
+    return found;
+  }
+
+  function defineDemoComponent(name, markup) {
+    if (!window.customElements || customElements.get(name)) return;
+    customElements.define(
+      name,
+      class extends HTMLElement {
+        connectedCallback() {
+          if (this.shadowRoot) return;
+          this.attachShadow({ mode: "open" }).innerHTML = markup;
+        }
+      },
+    );
+  }
+
+  function hostOf(node) {
+    var root = node.getRootNode ? node.getRootNode() : null;
+    return root && root.host ? root.host : null;
+  }
+
+  function flatParentOf(el) {
+    if (el.assignedSlot)
+      return el.assignedSlot.parentElement || hostOf(el.assignedSlot);
+    if (el.parentElement) return el.parentElement;
+    return hostOf(el);
+  }
+
+  var SHADOW_STYLE = [
+    "<style>",
+    ":host{display:block;padding:0.75rem;",
+    "border:1px dashed var(--color-hairline,#d8dbdd);",
+    "border-radius:var(--border-radius,0.25rem)}",
+    "*{font:inherit;color:inherit}",
+    "</style>",
+  ].join("");
+
+  defineDemoComponent(
+    "demo-widget",
+    SHADOW_STYLE +
+      [
+        '<button type="button" data-target style="width:20px;height:20px">x</button>',
+        '<button type="button" data-target style="width:48px;height:48px">Shadow button</button>',
+        "<slot></slot>",
+      ].join(""),
+  );
+
   var MIN_SIZE = 24;
   var ENHANCED_SIZE = 44;
   var SPACING_RADIUS = 12;
@@ -90,7 +165,7 @@
 
   function isInlineTarget(el) {
     if (getComputedStyle(el).display !== "inline") return false;
-    var parent = el.parentNode;
+    var parent = flatParentOf(el);
     if (!parent) return false;
     var nodes = parent.childNodes;
     var text = "";
@@ -208,13 +283,10 @@
   }
 
   function reset() {
-    Array.prototype.forEach.call(
-      stage.querySelectorAll("[data-target]"),
-      function (el) {
-        el.style.outline = "";
-        el.style.outlineOffset = "";
-      },
-    );
+    deepQuery("[data-target]", stage).forEach(function (el) {
+      el.style.outline = "";
+      el.style.outlineOffset = "";
+    });
     Array.prototype.forEach.call(
       stage.querySelectorAll("[data-a11y-demo-badge]"),
       function (badge) {
@@ -228,25 +300,22 @@
       reset();
 
       var stageRect = stage.getBoundingClientRect();
-      var items = Array.prototype.map.call(
-        stage.querySelectorAll("[data-target]"),
-        function (el) {
-          var rect = el.getBoundingClientRect();
-          return {
-            el: el,
-            rect: rect,
-            box: {
-              left: rect.left - stageRect.left,
-              top: rect.top - stageRect.top,
-              right: rect.right - stageRect.left,
-              bottom: rect.bottom - stageRect.top,
-              width: rect.width,
-              height: rect.height,
-            },
-            undersized: rect.width < MIN_SIZE || rect.height < MIN_SIZE,
-          };
-        },
-      );
+      var items = deepQuery("[data-target]", stage).map(function (el) {
+        var rect = el.getBoundingClientRect();
+        return {
+          el: el,
+          rect: rect,
+          box: {
+            left: rect.left - stageRect.left,
+            top: rect.top - stageRect.top,
+            right: rect.right - stageRect.left,
+            bottom: rect.bottom - stageRect.top,
+            width: rect.width,
+            height: rect.height,
+          },
+          undersized: rect.width < MIN_SIZE || rect.height < MIN_SIZE,
+        };
+      });
 
       var entries = [];
       var lines = [];
@@ -255,9 +324,7 @@
         var kind = classify(item, items);
         var level = LEVELS[kind];
         var size =
-          Math.round(item.rect.width) +
-          "\u00d7" +
-          Math.round(item.rect.height);
+          Math.round(item.rect.width) + "\u00d7" + Math.round(item.rect.height);
         var label = size + " \u00b7 " + BADGES[kind];
         var name = normalize(item.el.textContent) || "unnamed control";
         var badge = makeBadge(label, level);

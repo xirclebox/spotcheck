@@ -181,9 +181,7 @@
   }
 
   function labelFor(el) {
-    return (
-      el.textContent.trim() || el.placeholder || el.tagName.toLowerCase()
-    );
+    return el.textContent.trim() || el.placeholder || el.tagName.toLowerCase();
   }
 
   function notesFor(entry) {
@@ -310,9 +308,7 @@
       closedHosts.forEach(function (host) {
         lines.push(
           '<p class="demo__results-line">' +
-            esc(
-              hostName(host) + ", closed shadow root, not inspectable",
-            ) +
+            esc(hostName(host) + ", closed shadow root, not inspectable") +
             "</p>",
         );
       });

@@ -3,17 +3,85 @@
   var clearBtn = document.getElementById("demo-clear");
   var resultsEl = document.getElementById("demo-results");
 
+  var SLOT_TAG = "SLOT";
+
+  function restoreRecord(record) {
+    record.el.style.outline = "";
+    record.el.style.outlineOffset = "";
+    record.el.style.position = record.position || "";
+    if (!(record.el.getAttribute("style") || "").trim())
+      record.el.removeAttribute("style");
+    if (record.badge && record.badge.parentNode)
+      record.badge.parentNode.removeChild(record.badge);
+  }
+
+  function flatChildren(node) {
+    if (node.tagName === SLOT_TAG && node.assignedElements) {
+      var assigned = node.assignedElements({ flatten: true });
+      if (assigned.length) return assigned;
+    }
+    return Array.prototype.slice.call(node.children);
+  }
+
+  function deepQuery(selector, root) {
+    var found = [];
+    var seen = new WeakSet();
+
+    function walk(node) {
+      flatChildren(node).forEach(function (el) {
+        if (seen.has(el)) return;
+        seen.add(el);
+        if (el.matches(selector)) found.push(el);
+        if (el.shadowRoot) {
+          walk(el.shadowRoot);
+          return;
+        }
+        walk(el);
+      });
+    }
+
+    walk(root);
+    return found;
+  }
+
+  function defineDemoComponent(name, markup) {
+    if (!window.customElements || customElements.get(name)) return;
+    customElements.define(
+      name,
+      class extends HTMLElement {
+        connectedCallback() {
+          if (this.shadowRoot) return;
+          this.attachShadow({ mode: "open" }).innerHTML = markup;
+        }
+      },
+    );
+  }
+
+  var SHADOW_STYLE = [
+    "<style>",
+    ":host{display:block;padding:0.75rem;",
+    "border:1px dashed var(--color-hairline,#d8dbdd);",
+    "border-radius:var(--border-radius,0.25rem)}",
+    "*{font:inherit;color:inherit}",
+    "</style>",
+  ].join("");
+
+  defineDemoComponent(
+    "demo-widget",
+    SHADOW_STYLE +
+      [
+        '<div data-fake-role="navigation" data-fake-label="Shadow nav">Shadow navigation</div>',
+        '<div data-fake-role="region">Shadow region with no name</div>',
+        "<slot></slot>",
+      ].join(""),
+  );
+
   if (runBtn) {
     runBtn.addEventListener("click", function () {
       var stage = document.getElementById("demo-stage");
       var demoRecords = (window.__landmarkDemoRecords =
         window.__landmarkDemoRecords || []);
-      demoRecords.forEach(function (r) {
-        r.el.style.outline = "";
-        r.el.style.outlineOffset = "";
-        if (r.badge && r.badge.parentNode)
-          r.badge.parentNode.removeChild(r.badge);
-      });
+      demoRecords.forEach(restoreRecord);
       demoRecords.length = 0;
       function role(el) {
         return el.getAttribute("data-fake-role");
@@ -22,9 +90,7 @@
         var l = el.getAttribute("data-fake-label");
         return l ? l.trim() : "";
       }
-      var els = Array.prototype.slice.call(
-        stage.querySelectorAll("[data-fake-role]"),
-      );
+      var els = deepQuery("[data-fake-role]", stage);
       var byRole = {};
       els.forEach(function (el) {
         var ro = role(el);
@@ -67,6 +133,7 @@
           el.style.outline = "5px solid " + color;
         }
         el.style.outlineOffset = "3px";
+        var priorPosition = el.style.position;
         if (getComputedStyle(el).position === "static")
           el.style.position = "relative";
         var badge = document.createElement("div");
@@ -77,7 +144,7 @@
           color +
           ";color:#fff;font:500 16px Arial, Helvetica, 'Helvetica Neue', sans-serif;padding:4px 8px;border-radius:4px;z-index:10;pointer-events:none;white-space:nowrap";
         el.insertBefore(badge, el.firstChild);
-        demoRecords.push({ el: el, badge: badge });
+        demoRecords.push({ el: el, badge: badge, position: priorPosition });
         lines.push('<p class="demo__results-line">' + esc(label) + "</p>");
       });
       resultsEl.innerHTML = lines.join("");
@@ -89,12 +156,7 @@
   if (clearBtn) {
     clearBtn.addEventListener("click", function () {
       var demoRecords = window.__landmarkDemoRecords || [];
-      demoRecords.forEach(function (r) {
-        r.el.style.outline = "";
-        r.el.style.outlineOffset = "";
-        if (r.badge && r.badge.parentNode)
-          r.badge.parentNode.removeChild(r.badge);
-      });
+      demoRecords.forEach(restoreRecord);
       demoRecords.length = 0;
       // Undo whatever the run handler applied to #demo-stage.
       if (resultsEl) resultsEl.textContent = "";
