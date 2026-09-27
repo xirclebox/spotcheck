@@ -385,7 +385,6 @@ main section:last-of-type {
   display: flex;
   flex-direction: column;
   font-family: var(--font-display);
-  align-items: center;
 }
 
 .site-header__title-brand {
