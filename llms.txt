@@ -1,10 +1,10 @@
 # SpotCheck
 
-> SpotCheck is a free toolkit of accessibility bookmarklets that test for common accessibility issues directly in the browser. Each bookmarklet runs entirely client-side against the current page's DOM, requires no installation beyond dragging a link to the bookmarks bar, and has no dependencies. Every tool page maps its checks to the related WCAG 2.2 success criteria.
+> SpotCheck is a free accessibility toolkit for testing common accessibility issues directly in the browser. Each bookmarklet runs entirely client-side against the current page's DOM, requires no installation beyond dragging a link to the bookmarks bar, and has no dependencies. Every tool page maps its checks to the related WCAG 2.2 success criteria. Want access to SpotCheck in a single view? No problem. Download the browser extension to access each tool from the browser's extension bar or in the DevTools panel.
 
 Key facts:
 
-- 8 bookmarklets, 16 unique WCAG 2.2 success criteria referenced, 0 dependencies.
+- 9 bookmarklets, 18 unique WCAG 2.2 success criteria referenced, 0 dependencies.
 - Nothing leaves the browser. No data is sent to a server, no accounts, no tracking of page content.
 - Every bookmarklet is a toggle. Running it a second time, or clicking the close button in its summary panel, removes all outlines, badges, and the panel.
 - Results are shown as colored outlines plus labeled badges, with a summary panel in the bottom right corner.
@@ -22,6 +22,7 @@ Key facts:
 - [Text Contrast Checker](https://www.spotcheck.tools/text-contrast-checker): Measures each text block's contrast ratio against its effective background, resolved by walking up the DOM to the first non-transparent background, and labels each result as failing AA, passing AA only, or passing AAA. Large text is 24px and up, or 18.66px and up when bold. Covers text contrast only, not non-text contrast. WCAG 2.2: 1.4.3 Contrast Minimum (AA), 1.4.6 Contrast Enhanced (AAA).
 - [Alt Text Checker](https://www.spotcheck.tools/alt-text-checker): Checks every visible img element for an alt attribute, treats an empty alt as correctly decorative, and flags alt text that looks like a filename or opens with a redundant phrase like "image of". CSS background images and SVG icons are out of scope. WCAG 2.2: 1.1.1 Non-text Content (A).
 - [Input Label Checker](https://www.spotcheck.tools/input-label-checker): Outlines every input, select, and textarea, then reports how each one gets its accessible name: explicit label with a matching for and id pair, implicit naming from a wrapping label or aria-label, aria-labelledby, or title, or no accessible name at all. Buttons, hidden inputs, fieldset and legend grouping, and custom widgets are out of scope. WCAG 2.2: 1.3.1 Info and Relationships (A), 2.5.3 Label in Name (A), 3.3.2 Labels or Instructions (A), 4.1.2 Name, Role, Value (A), 2.4.6 Headings and Labels (AA).
+- [Target Size Checker](https://www.spotcheck.tools/target-size-checker): Run this on any page to measure every clickable target, flag the ones under 24 by 24 CSS pixels, and show which ones clear the 44 by 44 enhanced threshold.
 
 ## Browser extensions
 
