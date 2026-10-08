@@ -1116,6 +1116,23 @@ textarea.input-label-checker .demo__control {
   padding: var(--space-40) 0;
 }
 
+.hub .props-heart__list {
+  list-style-type: none;
+  padding-left: var(--space-24);
+}
+
+.hub .props-heart__list .props {
+  margin-bottom: var(--space-48);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.hub .props-heart__list .props::marker {
+  content: "❤  ";
+}
+
 .hub .section__title {
   font-family: var(--font-display);
   font-weight: 600;
