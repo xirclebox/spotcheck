@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Table Name Checker Bookmarklet | SpotCheck</title>
+    <meta
+      name="description"
+      content="A bookmarklet that outlines every data table on a page, shows where its accessible name comes from, and passes only tables named by a caption."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://spotcheck.tools/table-name-checker"
+    />
+    <meta property="og:site_name" content="SpotCheck" />
+    <meta property="og:title" content="Table Name Checker Bookmarklet" />
+    <meta
+      property="og:description"
+      content="A bookmarklet that outlines every data table on a page and shows whether it has an accessible name, where that name comes from, or that it has none at all."
+    />
+    <meta
+      property="og:image"
+      content="https://www.spotcheck.tools/img/spotchecktools-share-banner.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="SpotCheck logo above the words: an accessibility bookmarklet toolkit."
+    />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Table Name Checker Bookmarklet" />
+    <meta
+      name="twitter:description"
+      content="A bookmarklet that outlines every data table on a page and shows whether it has an accessible name, where that name comes from, or that it has none at all."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.spotcheck.tools/img/spotchecktools-share-banner.jpg"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="SpotCheck logo above the words: an accessibility bookmarklet toolkit."
+    />
+    <meta name="twitter:creator" content="@xirclebox" />
+    <meta name="twitter:site" content="@xirclebox" />
+    <meta name="color-scheme" content="light dark" />
+    <link
+      rel="canonical"
+      href="https://www.spotcheck.tools/table-name-checker"
+    />
+    <link rel="icon" href="/img/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="table-name-checker.css" />
+    <link rel="stylesheet" href="bookmarklet.css" />
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="f4892d19-de6e-406d-9e85-edab362f1ae8"
+      data-domains="spotcheck.tools,www.spotcheck.tools"
+    ></script>
+    <script>
+      const t = localStorage.getItem("__spotcheck_theme") || "system";
+
+      if (t === "system") {
+        document.documentElement.removeAttribute("data-theme");
+      } else {
+        document.documentElement.setAttribute("data-theme", t);
+      }
+    </script>
+    <script defer src="js/theme.js"></script>
+  </head>
+  <body class="table-name-checker">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="page-header">
+      <div id="theme-toggle-container" class="theme-toggle-container"></div>
+      <div class="tophat">
+        <a href="index.html" class="tophat__link">
+          <span
+            class="logo-header"
+            role="img"
+            aria-label="SpotCheck logo - home"
+          ></span
+        ></a>
+      </div>
+      <div class="wrap">
+        <a href="index.html" class="bookmarklet-back__link">All bookmarklets</a>
+        <h1 class="site-header__title">
+          Table Name Checker <span class="version">v.1.0</span>
+        </h1>
+        <p class="site-header__lede">
+          Outlines every semantic table on the page, then labels each one with
+          where its accessible name comes from. Green means a caption, gold
+          means
+          <code class="helper-text">aria-labelledby</code>,
+          <code class="helper-text">aria-label</code>,
+          <code class="helper-text">title</code>, or
+          <code class="helper-text">aria-describedby</code>. Missing names and
+          broken descriptions are marked in red.
+        </p>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap">
+        <section
+          aria-labelledby="install-heading"
+          class="install-heading__section"
+        >
+          <h2 id="install-heading" class="section__heading">Give it a try</h2>
+
+          <div class="bookmarklet-row">
+            <a
+              class="bookmarklet"
+              href="javascript:!function()%7Bvar%20e%3Dwindow%2Ct%3Ddocument%2Cn%3D%22__a11yTableNameChecker%22%3Bif(e%5Bn%5D)e%5Bn%5D.clear()%3Belse%7Bvar%20r%2Ci%2Ca%2Cl%3D%7Bpass%3A%22%231a7d4f%22%2Cattribute%3A%22%238b6800%22%2Cmissing%3A%22%23be412a%22%7D%2Co%3D%7Bpass%3A%225px%20solid%22%2Cattribute%3A%226px%20dotted%22%2Cmissing%3A%225px%20dashed%22%7D%2Cs%3D%7Bpass%3A%22%233fbf7f%22%2Cattribute%3A%22%23e0b84f%22%2Cmissing%3A%22%23e06a4f%22%2Cbroken%3A%22%23e06a4f%22%7D%2Cd%3D%22No%20name%22%2Cu%3D%7Bdescribed%3A%22Described%22%2Cbroken%3A%22Broken%20description%22%7D%2Cc%3D%7Blabelledby%3A%22aria-labelledby%22%2Clabel%3A%22aria-label%22%2Ccaption%3A%22Caption%22%2Ctitle%3A%22Title%22%7D%2Cb%3D%7Blabelledby%3A%22attribute%22%2Clabel%3A%22attribute%22%2Ccaption%3A%22pass%22%2Ctitle%3A%22attribute%22%7D%2Cp%3D%5B%22table%22%2C%22grid%22%2C%22treegrid%22%5D%2Cf%3D%5B%22presentation%22%2C%22none%22%5D%2Cx%3D%5B%22aria-label%22%2C%22aria-labelledby%22%2C%22aria-describedby%22%5D%2Cg%3D%5B%22SCRIPT%22%2C%22STYLE%22%2C%22TEMPLATE%22%2C%22NOSCRIPT%22%5D%2Cy%3D%5B%5D%2Cm%3D%7Bpass%3A0%2Cattribute%3A0%2Cmissing%3A0%2Cbroken%3A0%7D%2Ch%3Dnull%3BArray.prototype.slice.call(t.querySelectorAll(%22table%2C%20%5Brole%5D%22)).filter(function(t)%7Breturn%20T(t)%26%26!function(t)%7Bif(t.closest%26%26t.closest(%22%5Baria-hidden%3D%5C%22true%5C%22%5D%22))return!0%3Bfor(var%20n%3Dt%3Bn%26%261%3D%3D%3Dn.nodeType%3Bn%3Dn.parentNode)if(%22none%22%3D%3D%3De.getComputedStyle(n).display)return!0%3Breturn%22hidden%22%3D%3D%3De.getComputedStyle(t).visibility%7D(t)%7D).forEach(function(e)%7Bvar%20t%3Dfunction(e)%7Bfor(var%20t%3D%5B%7Bsource%3A%22labelledby%22%2Ctext%3AE(e%2C%22aria-labelledby%22)%7D%2C%7Bsource%3A%22label%22%2Ctext%3AA(e.getAttribute(%22aria-label%22))%7D%2C%7Bsource%3A%22caption%22%2Ctext%3AN(e)%7D%2C%7Bsource%3A%22title%22%2Ctext%3AA(e.getAttribute(%22title%22))%7D%5D%2Cn%3D0%3Bn%3Ct.length%3Bn%2B%3D1)if(t%5Bn%5D.text)return%20t%5Bn%5D%3Breturn%20null%7D(e)%2Cn%3Dfunction(e)%7Breturn%20A(e.getAttribute(%22aria-describedby%22))%3FE(e%2C%22aria-describedby%22)%3F%22described%22%3A%22broken%22%3Anull%7D(e)%2Cr%3Dfunction(e%2Ct)%7Breturn%20e%3Fb%5Be.source%5D%3A%22described%22%3D%3D%3Dt%3F%22attribute%22%3A%22missing%22%7D(t%2Cn)%2Ci%3D%7Bel%3Ae%2Coutline%3Ae.style.outline%2Coffset%3Ae.style.outlineOffset%2Cbadge%3Aw(r%2Ct%2Cn)%7D%3Bm%5Br%5D%2B%3D1%2C%22broken%22%3D%3D%3Dn%26%26(m.broken%2B%3D1)%2Ce.style.outline%3Do%5Br%5D%2B%22%20%22%2Bl%5Br%5D%2Ce.style.outlineOffset%3D%223px%22%2Ce.insertAdjacentElement(%22beforebegin%22%2Ci.badge)%2Cy.push(i)%7D)%2Cr%3Dt.createElement(%22div%22)%2Ci%3Dt.createElement(%22strong%22)%2Ca%3Dt.createElement(%22button%22)%2Cr.setAttribute(%22data-a11y-table-name-check%22%2C%22panel%22)%2Cr.setAttribute(%22role%22%2C%22status%22)%2Cr.style.cssText%3D%5B%22position%3Afixed%22%2C%22right%3A16px%22%2C%22bottom%3A16px%22%2C%22max-width%3A260px%22%2C%22padding%3A12px%2032px%2012px%2016px%22%2C%22border-radius%3A6px%22%2C%22background%3A%231b2430%22%2C%22color%3A%23e7eaed%22%2C%22font%3A400%2014px%2F1.5%20Arial%2C%20Helvetica%2C%20%5C%22Helvetica%20Neue%5C%22%2C%20sans-serif%22%2C%22box-shadow%3A0%208px%2024px%20rgba(0%2C0%2C0%2C0.35)%22%2C%22z-index%3A2147483647%22%5D.join(%22%3B%22)%2Ci.textContent%3D%22Table%20Name%20Checker%22%2Ci.style.cssText%3D%22display%3Ablock%3Bmargin-bottom%3A4px%22%2Cr.appendChild(i)%2Cr.appendChild(O(%22pass%22%2C%22named%20by%20caption%22))%2Cr.appendChild(O(%22attribute%22%2C%22named%20or%20described%20by%20ARIA%20or%20title%22))%2Cr.appendChild(O(%22missing%22%2C%22no%20name%22))%2Cr.appendChild(O(%22broken%22%2C%22with%20a%20broken%20description%22))%2Ca.type%3D%22button%22%2Ca.textContent%3D%22%C3%97%22%2Ca.setAttribute(%22aria-label%22%2C%22Clear%20the%20table%20name%20check%20results%22)%2Ca.style.cssText%3D%5B%22position%3Aabsolute%22%2C%22top%3A6px%22%2C%22right%3A6px%22%2C%22width%3A24px%22%2C%22height%3A24px%22%2C%22padding%3A2px%206px%22%2C%22border%3Anone%22%2C%22background%3Atransparent%22%2C%22color%3A%23e7eaed%22%2C%22font%3A16px%2F1%20Arial%2C%20Helvetica%2C%20%5C%22Helvetica%20Neue%5C%22%2C%20sans-serif%22%2C%22cursor%3Apointer%22%5D.join(%22%3B%22)%2Ca.addEventListener(%22click%22%2Cj)%2Cr.appendChild(a)%2Ch%3Dr%2Ct.body.appendChild(h)%2Ce%5Bn%5D%3D%7Bclear%3Aj%7D%7Dfunction%20A(e)%7Breturn(e%7C%7C%22%22).replace(%2F%5Cs%2B%2Fg%2C%22%20%22).trim()%7Dfunction%20v(e)%7Breturn%20e.nodeName.toUpperCase()%7Dfunction%20C(e%2Ct)%7Bif(3%3D%3D%3De.nodeType)return%20e.nodeValue%3Bif(1!%3D%3De.nodeType%7C%7C-1!%3D%3Dg.indexOf(v(e)))return%22%22%3Bif(!t%26%26%22true%22%3D%3D%3De.getAttribute(%22aria-hidden%22))return%22%22%3Bvar%20n%3DA(e.getAttribute(%22aria-label%22))%3Breturn%20n%3F%22%20%22%2Bn%2B%22%20%22%3A%22IMG%22%3D%3D%3Dv(e)%3F%22%20%22%2BA(e.getAttribute(%22alt%22))%2B%22%20%22%3AArray.prototype.slice.call(e.childNodes).map(function(e)%7Breturn%20C(e%2C!1)%7D).join(%22%22)%7Dfunction%20k(e)%7Breturn%20e%3FA(C(e%2C!0))%3A%22%22%7Dfunction%20T(e)%7Bvar%20t%3Dfunction(e)%7Breturn%20A(e.getAttribute(%22role%22)).toLowerCase().split(%22%20%22)%5B0%5D%7D(e)%3Breturn%22TABLE%22!%3D%3Dv(e)%3F-1!%3D%3Dp.indexOf(t)%3A-1!%3D%3Df.indexOf(t)%3Ffunction(e)%7Breturn%20x.some(function(t)%7Breturn!!A(e.getAttribute(t))%7D)%7D(e)%3A!t%7C%7C-1!%3D%3Dp.indexOf(t)%7Dfunction%20E(e%2Cn)%7Bvar%20r%3DA(e.getAttribute(n))%3Breturn%20r%3FA(r.split(%22%20%22).map(function(e)%7Bvar%20n%3Dt.getElementById(e)%3Breturn%20n%3Fk(n)%3A%22%22%7D).join(%22%20%22))%3A%22%22%7Dfunction%20N(e)%7Breturn%20e.caption%3Fk(e.caption)%3A%22%22%7Dfunction%20w(e%2Cn%2Cr)%7Bvar%20i%3Dt.createElement(%22span%22)%3Breturn%20i.setAttribute(%22data-a11y-table-name-check%22%2C%22badge%22)%2Ci.setAttribute(%22aria-hidden%22%2C%22true%22)%2Ci.textContent%3Dfunction(e%2Ct)%7Bvar%20n%3De%3Fc%5Be.source%5D%2B%22%3A%20%22%2Bfunction(e)%7Breturn%20e.length%3C%3D48%3Fe%3Ae.slice(0%2C47).trim()%2B%22%E2%80%A6%22%7D(e.text)%3Ad%3Breturn%20t%26%26(n%2B%3D%22%20%C2%B7%20%22%2Bu%5Bt%5D)%2Cn%7D(n%2Cr)%2Ci.style.cssText%3D%5B%22display%3Ainline-block%22%2C%22width%3Afit-content%22%2C%22justify-self%3Astart%22%2C%22margin%3A0%200%200%204px%22%2C%22padding%3A4px%208px%22%2C%22border-radius%3A4px%22%2C%22background%3A%22%2Bl%5Be%5D%2C%22color%3A%23fff%22%2C%22font%3A500%2016px%2F1.2%20Arial%2C%20Helvetica%2C%20%5C%22Helvetica%20Neue%5C%22%2C%20sans-serif%22%2C%22vertical-align%3Amiddle%22%2C%22position%3Arelative%22%2C%22z-index%3A2147483646%22%5D.join(%22%3B%22)%2Ci%7Dfunction%20O(e%2Cn)%7Bvar%20r%3Dt.createElement(%22p%22)%2Ci%3Dt.createElement(%22span%22)%3Breturn%20r.style.cssText%3D%22margin%3A0%3Bpadding%3A0%22%2Ci.textContent%3D%22%E2%97%8F%22%2Ci.style.cssText%3D%22color%3A%22%2Bs%5Be%5D%2B%22%3Bmargin-right%3A6px%22%2Cr.appendChild(i)%2Cr.appendChild(t.createTextNode(m%5Be%5D%2B%22%20%22%2Bn))%2Cr%7Dfunction%20j()%7By.forEach(function(e)%7Be.el.style.outline%3De.outline%2Ce.el.style.outlineOffset%3De.offset%2CA(e.el.getAttribute(%22style%22))%7C%7Ce.el.removeAttribute(%22style%22)%2Ce.badge.parentNode%26%26e.badge.parentNode.removeChild(e.badge)%7D)%2Cy%3D%5B%5D%2Ch%26%26h.parentNode%26%26h.parentNode.removeChild(h)%2Ch%3Dnull%2Cdelete%20e%5Bn%5D%7D%7D()%3B"
+              onclick="return false;"
+              data-bookmarklet="table-name-checker"
+              >SpotCheck - Table Name Checker</a
+            >
+            <p class="updated-on">last updated: 10/26/2026</p>
+          </div>
+          <ol class="steps">
+            <li>
+              To see your bookmarks bar, press the keys
+              <code class="helper-text">(Ctrl/Cmd + Shift + B)</code>.
+            </li>
+            <li>
+              Drag the "SpotCheck - Table Name Checker" link to your bookmarks
+              bar or bookmark folder.
+            </li>
+            <li>Open any page, then click the bookmark to run it.</li>
+            <li>
+              Click it again or click the close button
+              <span class="example-close-button" aria-hidden="true">×</span>
+              in the popup to clear the results.
+            </li>
+          </ol>
+          <div class="results-popup-example-container">
+            <p>
+              Example of the popup that will appear in the bottom right corner
+              of your browser with a summary of the results.
+            </p>
+            <div class="results-popup-example" id="example-popup">
+              <strong style="display: block; margin-bottom: 4px"
+                >Table Name Checker</strong
+              >
+              <p style="margin: 0; padding: 0">
+                <span
+                  style="color: #3fbf7f; margin-right: 6px"
+                  aria-hidden="true"
+                  >●</span
+                >1 named by caption
+              </p>
+              <p style="margin: 0; padding: 0">
+                <span
+                  style="color: #e0b84f; margin-right: 6px"
+                  aria-hidden="true"
+                  >●</span
+                >2 named or described by ARIA or title
+              </p>
+              <p style="margin: 0; padding: 0">
+                <span
+                  style="color: #e06a4f; margin-right: 6px"
+                  aria-hidden="true"
+                  >●</span
+                >2 no name
+              </p>
+              <p style="margin: 0; padding: 0">
+                <span
+                  style="color: #e06a4f; margin-right: 6px"
+                  aria-hidden="true"
+                  >●</span
+                >1 with a broken description
+              </p>
+              <button
+                id="fadeOut"
+                type="button"
+                class="results-popup-example-close-button"
+                aria-label="example of the close button"
+              >
+                ×
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="legend-heading">
+          <h2 id="legend-heading">What the colors mean</h2>
+          <p class="section-intro">
+            Each table gets an outline and a badge above it. The badge shows
+            which source supplied the name and the first part of the name
+            itself, so you can judge whether it actually describes the data.
+            When a table has
+            <code class="helper-text">aria-describedby</code>, the badge adds
+            "Described" if the referenced text exists, or "Broken description"
+            if the IDs are missing or empty. Only a caption earns green.
+          </p>
+          <div class="legend">
+            <div class="legend__item legend__item--green">
+              <span class="legend__item-swatch" aria-hidden="true"></span>
+              <span class="legend__item-label">Caption</span>
+              <p class="legend__item-body">
+                The table is named by a
+                <code class="helper-text">caption</code>
+                element with text. The name is native, visible to everyone, and
+                announced when a screen reader user enters the table.
+              </p>
+            </div>
+            <div class="legend__item legend__item--gold">
+              <span class="legend__item-swatch" aria-hidden="true"></span>
+              <span class="legend__item-label">ARIA or title</span>
+              <p class="legend__item-body">
+                The name comes from
+                <code class="helper-text">aria-labelledby</code>,
+                <code class="helper-text">aria-label</code>, or
+                <code class="helper-text">title</code>, or the table has no name
+                but has a working
+                <code class="helper-text">aria-describedby</code>. It may not
+                match anything on screen, and an ARIA name silently replaces a
+                visible caption.
+              </p>
+            </div>
+            <div class="legend__item legend__item--red">
+              <span class="legend__item-swatch" aria-hidden="true"></span>
+              <span class="legend__item-label">No name</span>
+              <p class="legend__item-body">
+                The table has no accessible name and no working description. An
+                empty
+                <code class="helper-text">caption</code>, or an
+                <code class="helper-text">aria-labelledby</code> that points at
+                missing IDs, counts as no name.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="demo-heading">
+          <h2 id="demo-heading">Try it here</h2>
+          <p class="section-intro">
+            Run the check against the sample tables below.
+          </p>
+          <div class="demo">
+            <div class="demo__stage" id="demo-stage">
+              <ul class="demo__sample">
+                <li class="demo__sample-item">
+                  <table class="demo__table">
+                    <caption class="demo__caption">
+                      Office hours
+                    </caption>
+                    <thead>
+                      <tr>
+                        <th class="demo__cell demo__cell--head" scope="col">
+                          Day
+                        </th>
+                        <th class="demo__cell demo__cell--head" scope="col">
+                          Hours
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="demo__cell">Monday</td>
+                        <td class="demo__cell">9 to 5</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </li>
+                <li class="demo__sample-item">
+                  <h3 class="demo__table-heading" id="demo-shipping-heading">
+                    Shipping rates
+                  </h3>
+                  <p class="demo__table-note" id="demo-shipping-note">
+                    Rates exclude sales tax.
+                  </p>
+                  <table
+                    class="demo__table"
+                    aria-labelledby="demo-shipping-heading"
+                    aria-describedby="demo-shipping-note"
+                  >
+                    <thead>
+                      <tr>
+                        <th class="demo__cell demo__cell--head" scope="col">
+                          Method
+                        </th>
+                        <th class="demo__cell demo__cell--head" scope="col">
+                          Cost
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="demo__cell">Ground</td>
+                        <td class="demo__cell">$8</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </li>
+                <li class="demo__sample-item">
+                  <table
+                    class="demo__table"
+                    aria-label="Team roster"
+                    aria-describedby="demo-roster-note"
+                  >
+                    <thead>
+                      <tr>
+                        <th class="demo__cell demo__cell--head" scope="col">
+                          Name
+                        </th>
+                        <th class="demo__cell demo__cell--head" scope="col">
+                          Role
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="demo__cell">Ana</td>
+                        <td class="demo__cell">Lead</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </li>
+
+                <li class="demo__sample-item">
+                  <table class="demo__table">
+                    <thead>
+                      <tr>
+                        <th class="demo__cell demo__cell--head" scope="col">
+                          City
+                        </th>
+                        <th class="demo__cell demo__cell--head" scope="col">
+                          High
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="demo__cell">Atlanta</td>
+                        <td class="demo__cell">72°F</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </li>
+              </ul>
+            </div>
+            <div class="demo__controls">
+              <button type="button" class="button" id="demo-run">
+                Run check
+              </button>
+              <button
+                type="button"
+                class="button button--outline"
+                id="demo-clear"
+              >
+                Clear highlights
+              </button>
+            </div>
+            <div
+              class="demo__results"
+              id="demo-results"
+              aria-live="polite"
+            ></div>
+          </div>
+        </section>
+
+        <section aria-labelledby="criteria-heading">
+          <h2 id="criteria-heading">Applicable WCAG 2.2 success criteria</h2>
+          <p class="section-intro">
+            No success criterion requires a table name outright. A name is still
+            the fastest way for screen reader users to tell tables apart, and
+            these criteria are where a missing or misleading one shows up.
+          </p>
+          <ul class="criteria">
+            <li class="criteria__item">
+              <span class="criteria__number">1.3.1</span>
+              <div class="criteria__body">
+                <a
+                  class="criteria__link"
+                  href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >Info and Relationships</a
+                >
+                <span class="criteria__level">(Level A)</span>
+                <p class="criteria__desc">
+                  When a visible title sits above a table, the relationship
+                  between the two has to be in the markup, not just implied by
+                  where the text happens to be.
+                </p>
+              </div>
+            </li>
+            <li class="criteria__item">
+              <span class="criteria__number">2.4.6</span>
+              <div class="criteria__body">
+                <a
+                  class="criteria__link"
+                  href="https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >Headings and Labels</a
+                >
+                <span class="criteria__level">(Level AA)</span>
+                <p class="criteria__desc">
+                  Once a table has a name, it has to describe the data. "Table
+                  1" passes this tool and fails a person.
+                </p>
+              </div>
+            </li>
+            <li class="criteria__item">
+              <span class="criteria__number">4.1.2</span>
+              <div class="criteria__body">
+                <a
+                  class="criteria__link"
+                  href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >Name, Role, Value</a
+                >
+                <span class="criteria__level">(Level A)</span>
+                <p class="criteria__desc">
+                  Interactive grids built with
+                  <code class="helper-text">role="grid"</code> or
+                  <code class="helper-text">role="treegrid"</code> are user
+                  interface components, so they need a programmatic name.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="source-heading">
+          <h2 id="source-heading">Read the source</h2>
+          <p class="section-intro">
+            The bookmarklet contains the TL;DR version of the code. Here's the
+            readable version.
+          </p>
+          <div class="source__actions">
+            <button type="button" class="button copy-button" id="copy-source">
+              Copy source
+            </button>
+          </div>
+          <pre
+            class="source__code"
+            id="source-code"
+            tabindex="0"
+            aria-label="Bookmarklet source code"
+          >
+(function () {
+  var w = window;
+  var d = document;
+  var STATE_KEY = "__a11yTableNameChecker";
+
+  if (w[STATE_KEY]) {
+    w[STATE_KEY].clear();
+    return;
+  }
+
+  var COLORS = {
+    pass: "#1a7d4f",
+    attribute: "#8b6800",
+    missing: "#be412a"
+  };
+
+  var OUTLINES = {
+    pass: "5px solid",
+    attribute: "6px dotted",
+    missing: "5px dashed"
+  };
+
+  var OUTLINE_OFFSET = "3px";
+
+  var DOTS = {
+    pass: "#3fbf7f",
+    attribute: "#e0b84f",
+    missing: "#e06a4f",
+    broken: "#e06a4f"
+  };
+
+  var BADGES = {
+    missing: "No name"
+  };
+
+  var DESCRIPTION_BADGES = {
+    described: "Described",
+    broken: "Broken description"
+  };
+
+  var SOURCE_LABELS = {
+    labelledby: "aria-labelledby",
+    label: "aria-label",
+    caption: "Caption",
+    title: "Title"
+  };
+
+  var SOURCE_KINDS = {
+    labelledby: "attribute",
+    label: "attribute",
+    caption: "pass",
+    title: "attribute"
+  };
+
+  var TABLE_SELECTOR = "table, [role]";
+  var TABLE_ROLES = ["table", "grid", "treegrid"];
+  var PRESENTATION_ROLES = ["presentation", "none"];
+  var GLOBAL_ATTRIBUTES = ["aria-label", "aria-labelledby", "aria-describedby"];
+  var IGNORED_TAGS = ["SCRIPT", "STYLE", "TEMPLATE", "NOSCRIPT"];
+  var HIDDEN_SELECTOR = "[aria-hidden=\"true\"]";
+  var ELEMENT_NODE = 1;
+  var TEXT_NODE = 3;
+  var MAX_NAME_LENGTH = 48;
+  var ELLIPSIS = "\u2026";
+  var SEPARATOR = " \u00b7 ";
+
+  var records = [];
+  var counts = { pass: 0, attribute: 0, missing: 0, broken: 0 };
+  var panel = null;
+
+  function normalize(value) {
+    return (value || "").replace(/\s+/g, " ").trim();
+  }
+
+  function tagOf(node) {
+    return node.nodeName.toUpperCase();
+  }
+
+  function contentText(node, isRoot) {
+    if (node.nodeType === TEXT_NODE) {
+      return node.nodeValue;
+    }
+    if (node.nodeType !== ELEMENT_NODE || IGNORED_TAGS.indexOf(tagOf(node)) !== -1) {
+      return "";
+    }
+    if (!isRoot && node.getAttribute("aria-hidden") === "true") {
+      return "";
+    }
+    var label = normalize(node.getAttribute("aria-label"));
+    if (label) {
+      return " " + label + " ";
+    }
+    if (tagOf(node) === "IMG") {
+      return " " + normalize(node.getAttribute("alt")) + " ";
+    }
+    return Array.prototype.slice
+      .call(node.childNodes)
+      .map(function (child) {
+        return contentText(child, false);
+      })
+      .join("");
+  }
+
+  function textFrom(el) {
+    return el ? normalize(contentText(el, true)) : "";
+  }
+
+  function truncate(text) {
+    if (text.length <= MAX_NAME_LENGTH) {
+      return text;
+    }
+    return text.slice(0, MAX_NAME_LENGTH - 1).trim() + ELLIPSIS;
+  }
+
+  function roleOf(el) {
+    return normalize(el.getAttribute("role")).toLowerCase().split(" ")[0];
+  }
+
+  function hasGlobalAttribute(el) {
+    return GLOBAL_ATTRIBUTES.some(function (attribute) {
+      return !!normalize(el.getAttribute(attribute));
+    });
+  }
+
+  function isTable(el) {
+    var role = roleOf(el);
+    if (tagOf(el) !== "TABLE") {
+      return TABLE_ROLES.indexOf(role) !== -1;
+    }
+    if (PRESENTATION_ROLES.indexOf(role) !== -1) {
+      return hasGlobalAttribute(el);
+    }
+    return !role || TABLE_ROLES.indexOf(role) !== -1;
+  }
+
+  function isHidden(el) {
+    if (el.closest && el.closest(HIDDEN_SELECTOR)) {
+      return true;
+    }
+    for (var node = el; node && node.nodeType === ELEMENT_NODE; node = node.parentNode) {
+      if (w.getComputedStyle(node).display === "none") {
+        return true;
+      }
+    }
+    return w.getComputedStyle(el).visibility === "hidden";
+  }
+
+  function referencedText(el, attribute) {
+    var ids = normalize(el.getAttribute(attribute));
+    if (!ids) {
+      return "";
+    }
+    return normalize(
+      ids
+        .split(" ")
+        .map(function (id) {
+          var target = d.getElementById(id);
+          if (!target) {
+            return "";
+          }
+          return textFrom(target);
+        })
+        .join(" ")
+    );
+  }
+
+  function captionText(el) {
+    return el.caption ? textFrom(el.caption) : "";
+  }
+
+  function nameFor(el) {
+    var candidates = [
+      { source: "labelledby", text: referencedText(el, "aria-labelledby") },
+      { source: "label", text: normalize(el.getAttribute("aria-label")) },
+      { source: "caption", text: captionText(el) },
+      { source: "title", text: normalize(el.getAttribute("title")) }
+    ];
+    for (var i = 0; i < candidates.length; i += 1) {
+      if (candidates[i].text) {
+        return candidates[i];
+      }
+    }
+    return null;
+  }
+
+  function describe(el) {
+    if (!normalize(el.getAttribute("aria-describedby"))) {
+      return null;
+    }
+    return referencedText(el, "aria-describedby") ? "described" : "broken";
+  }
+
+  function classify(name, description) {
+    if (name) {
+      return SOURCE_KINDS[name.source];
+    }
+    return description === "described" ? "attribute" : "missing";
+  }
+
+  function badgeText(name, description) {
+    var text = name
+      ? SOURCE_LABELS[name.source] + ": " + truncate(name.text)
+      : BADGES.missing;
+    if (description) {
+      text += SEPARATOR + DESCRIPTION_BADGES[description];
+    }
+    return text;
+  }
+
+  function makeBadge(kind, name, description) {
+    var badge = d.createElement("span");
+    badge.setAttribute("data-a11y-table-name-check", "badge");
+    badge.setAttribute("aria-hidden", "true");
+    badge.textContent = badgeText(name, description);
+    badge.style.cssText = [
+      "display:inline-block",
+      "width:fit-content",
+      "justify-self:start",
+      "margin:0 0 0 4px",
+      "padding:4px 8px",
+      "border-radius:4px",
+      "background:" + COLORS[kind],
+      "color:#fff",
+      "font:500 16px/1.2 Arial, Helvetica, \"Helvetica Neue\", sans-serif",
+      "vertical-align:middle",
+      "position:relative",
+      "z-index:2147483646"
+    ].join(";");
+    return badge;
+  }
+
+  function mark(el) {
+    var name = nameFor(el);
+    var description = describe(el);
+    var kind = classify(name, description);
+    var record = {
+      el: el,
+      outline: el.style.outline,
+      offset: el.style.outlineOffset,
+      badge: makeBadge(kind, name, description)
+    };
+
+    counts[kind] += 1;
+    if (description === "broken") {
+      counts.broken += 1;
+    }
+    el.style.outline = OUTLINES[kind] + " " + COLORS[kind];
+    el.style.outlineOffset = OUTLINE_OFFSET;
+    el.insertAdjacentElement("beforebegin", record.badge);
+    records.push(record);
+  }
+
+  function makeCountLine(kind, word) {
+    var line = d.createElement("p");
+    var dot = d.createElement("span");
+
+    line.style.cssText = "margin:0;padding:0";
+    dot.textContent = "\u25cf";
+    dot.style.cssText = "color:" + DOTS[kind] + ";margin-right:6px";
+    line.appendChild(dot);
+    line.appendChild(d.createTextNode(counts[kind] + " " + word));
+    return line;
+  }
+
+  function makePanel() {
+    var wrapper = d.createElement("div");
+    var heading = d.createElement("strong");
+    var close = d.createElement("button");
+
+    wrapper.setAttribute("data-a11y-table-name-check", "panel");
+    wrapper.setAttribute("role", "status");
+    wrapper.style.cssText = [
+      "position:fixed",
+      "right:16px",
+      "bottom:16px",
+      "max-width:260px",
+      "padding:12px 32px 12px 16px",
+      "border-radius:6px",
+      "background:#1b2430",
+      "color:#e7eaed",
+      "font:400 14px/1.5 Arial, Helvetica, \"Helvetica Neue\", sans-serif",
+      "box-shadow:0 8px 24px rgba(0,0,0,0.35)",
+      "z-index:2147483647"
+    ].join(";");
+
+    heading.textContent = "Table Name Checker";
+    heading.style.cssText = "display:block;margin-bottom:4px";
+    wrapper.appendChild(heading);
+
+    wrapper.appendChild(makeCountLine("pass", "named by caption"));
+    wrapper.appendChild(makeCountLine("attribute", "named or described by ARIA or title"));
+    wrapper.appendChild(makeCountLine("missing", "no name"));
+    wrapper.appendChild(makeCountLine("broken", "with a broken description"));
+
+    close.type = "button";
+    close.textContent = "\u00d7";
+    close.setAttribute("aria-label", "Clear the table name check results");
+    close.style.cssText = [
+      "position:absolute",
+      "top:6px",
+      "right:6px",
+      "width:24px",
+      "height:24px",
+      "padding:2px 6px",
+      "border:none",
+      "background:transparent",
+      "color:#e7eaed",
+      "font:16px/1 Arial, Helvetica, \"Helvetica Neue\", sans-serif",
+      "cursor:pointer"
+    ].join(";");
+    close.addEventListener("click", clear);
+    wrapper.appendChild(close);
+
+    return wrapper;
+  }
+
+  function clear() {
+    records.forEach(function (record) {
+      record.el.style.outline = record.outline;
+      record.el.style.outlineOffset = record.offset;
+      if (!normalize(record.el.getAttribute("style"))) {
+        record.el.removeAttribute("style");
+      }
+      if (record.badge.parentNode) {
+        record.badge.parentNode.removeChild(record.badge);
+      }
+    });
+    records = [];
+    if (panel && panel.parentNode) {
+      panel.parentNode.removeChild(panel);
+    }
+    panel = null;
+    delete w[STATE_KEY];
+  }
+
+  Array.prototype.slice
+    .call(d.querySelectorAll(TABLE_SELECTOR))
+    .filter(function (el) {
+      return isTable(el) && !isHidden(el);
+    })
+    .forEach(mark);
+
+  panel = makePanel();
+  d.body.appendChild(panel);
+  w[STATE_KEY] = { clear: clear };
+})();
+</pre
+          >
+        </section>
+
+        <section aria-labelledby="notes-heading">
+          <h2 id="notes-heading">FYI</h2>
+          <ul class="notes">
+            <li>
+              A <code class="helper-text">caption</code> is the preferred method
+              for providing a name for a semantic table.
+            </li>
+            <li>
+              Names are computed in this order:
+              <code class="helper-text">aria-labelledby</code>,
+              <code class="helper-text">aria-label</code>,
+              <code class="helper-text">caption</code>, then
+              <code class="helper-text">title</code>. A table with both an
+              <code class="helper-text">aria-label</code> and a visible caption
+              is announced by the <code class="helper-text">aria-label</code>.
+            </li>
+            <li>
+              <code class="helper-text">aria-labelledby</code> pointing at a
+              visible heading is also a valid pattern.
+            </li>
+
+            <li>
+              The obsolete <code class="helper-text">summary</code> attribute is
+              not checked.
+            </li>
+
+            <li>
+              Hidden tables are skipped. That includes tables inside
+              <code class="helper-text">display: none</code>,
+              <code class="helper-text">visibility: hidden</code>, or
+              <code class="helper-text">aria-hidden="true"</code>, since they
+              aren't exposed to assistive technology.
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>
+          <a href="index.html">
+            <span
+              class="logo-footer"
+              role="img"
+              aria-label="SpotCheck logo - home"
+            ></span
+          ></a>
+        </p>
+
+        <p>
+          &copy; 2026
+          <a
+            href="https://www.homergaines.com"
+            rel="noopener noreferrer"
+            target="_blank"
+            >Homer Gaines</a
+          >
+        </p>
+      </div>
+    </footer>
+    <script src="js/table-name-checker.js"></script>
+    <script src="js/play.js"></script>
+  </body>
+</html>
